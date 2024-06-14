@@ -23,11 +23,11 @@ const InputItem: React.FC<InputItemProps> = ({
     setToggle(!toggle);
   };
   return (
-    <div className="w-[500px] h-[80px] content-between border-solid border-2 border-red-500 ">
+    <div className="w-[500px] h-[80px] content-between">
       <div>{label}</div>
       <div className="relative w-[100%] h-[50px]">
         <input
-          className="w-[100%] h-[50px] relative border-solid border-2 border-gray-500 rounded-[10px] p-[10px]"
+          className="w-[100%] h-[50px] relative border-solid border-2 border-grayColor rounded-[10px] p-[10px]"
           type={type}
           placeholder={placeholder}
           value={inputValue}
@@ -42,7 +42,7 @@ const InputItem: React.FC<InputItemProps> = ({
           </button>
         )}
         {extraBtn && (
-          <button className="absolute bg-green-500 top-[8px] right-[10px] w-[84px] p-[5px] rounded-[10px]">
+          <button className="absolute bg-subColor top-[8px] right-[10px] w-[84px] p-[5px] rounded-[10px]">
             {extraBtn}
           </button>
         )}
