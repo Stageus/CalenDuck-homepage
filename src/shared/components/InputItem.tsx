@@ -7,10 +7,17 @@ interface InputItemProps {
   label: string;
   type: string;
   placeholder: string;
+  inputValue: string;
   extraBtn: string;
 }
 
-const InputItem: React.FC<InputItemProps> = ({ label, type, placeholder, extraBtn }) => {
+const InputItem: React.FC<InputItemProps> = ({
+  label,
+  type,
+  placeholder,
+  inputValue,
+  extraBtn,
+}) => {
   const [toggle, setToggle] = useState(false);
   const clickToggleEvent = () => {
     setToggle(!toggle);
@@ -23,6 +30,7 @@ const InputItem: React.FC<InputItemProps> = ({ label, type, placeholder, extraBt
           className="w-[100%] h-[50px] relative border-solid border-2 border-gray-500 rounded-[10px] p-[10px]"
           type={type}
           placeholder={placeholder}
+          value={inputValue}
         />
         {type === "pw" && (
           <button className="absolute top-[13px] right-[10px]" onClick={clickToggleEvent}>
