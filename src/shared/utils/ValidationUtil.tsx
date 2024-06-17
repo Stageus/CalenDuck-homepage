@@ -1,16 +1,16 @@
 export const idValueValidation = (value: string) => {
-  const regex = /^[a-zA-Z0-9]{4,20}$/;
+  const regex = /^[a-zA-Z0-9]{6,12}$/;
   if (!regex.test(value)) {
-    alert("아이디는 4~20글자로 이루어져야 합니다.");
+    alert("아이디는 6~12글자로 이루어져야 합니다.");
     return false;
   }
   return true;
 };
 
 export const pwValueValidation = (value: string) => {
-  const regex = /^[^\s]{8,20}$/;
+  const regex = /^[^\s]{8,16}$/;
   if (!regex.test(value)) {
-    alert("비밀번호는 8~20글자로 이루어져야 합니다.");
+    alert("비밀번호는 8~16글자로 이루어져야 합니다.");
     return false;
   }
   return true;

@@ -9,38 +9,18 @@ const SignUpPage = () => {
       <InputItem
         label="아이디"
         type="text"
-        placeholder="3~10글자로 입력해주세요"
+        placeholder="6~12글자로 입력해주세요"
         extraBtn="중복확인"
-        inputValue="3lkjalkdj"
       />
       <InputItem
         label="비밀번호"
-        type="pw"
-        placeholder="3~10글자로 입력해주세요"
+        type="password"
+        placeholder="8~16글자로 입력해주세요"
         extraBtn=""
-        inputValue="3lkjalkdj"
       />
-      <InputItem
-        label="이름"
-        type="text"
-        placeholder="3~10글자로 입력해주세요"
-        extraBtn=""
-        inputValue="3lkjalkdj"
-      />
-      <InputItem
-        label="이메일"
-        type="email"
-        placeholder="3~10글자로 입력해주세요"
-        extraBtn="번호 전송"
-        inputValue="3lkjalkdj"
-      />
-      <InputItem
-        label="인증번호"
-        type="text"
-        placeholder="3~10글자로 입력해주세요"
-        extraBtn="인증 확인"
-        inputValue="3lkjalkdj"
-      />
+      <InputItem label="이름" type="text" placeholder="" extraBtn="" />
+      <InputItem label="이메일" type="email" placeholder="" extraBtn="번호 전송" />
+      <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" />
     </>
   );
 };
