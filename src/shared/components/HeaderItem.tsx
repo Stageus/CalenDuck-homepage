@@ -1,9 +1,9 @@
 import React from "react";
 
-import logo from "imgs/logo.svg";
-import alarm from "imgs/alarm.svg";
-import search from "imgs/search.svg";
-import hamberger from "imgs/hamburger.svg";
+import logo from "../imgs/logo.svg";
+import alarm from "../imgs/alarm.svg";
+import search from "../imgs/search.svg";
+import hamberger from "../imgs/hamburger.svg";
 
 import { Link } from "react-router-dom";
 

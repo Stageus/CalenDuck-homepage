@@ -1,5 +1,5 @@
 import React from "react";
-import InputItem from "../shared/components/InputItem";
+import InputItem from "shared/components/InputItem";
 
 const SignUpPage = () => {
   return (

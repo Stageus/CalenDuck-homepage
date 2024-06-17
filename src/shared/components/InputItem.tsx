@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import visibility from "imgs/visibility.svg";
-import visibilityOff from "imgs/visibilityOff.svg";
+import visibility from "../imgs/visibility.svg";
+import visibilityOff from "../imgs/visibilityOff.svg";
 
 interface InputItemProps {
   label: string;
