@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderItem from "../shared/components/HeaderItem";
+import HeaderItem from "shared/components/HeaderItem";
 
 const MainPage = () => {
   return (
