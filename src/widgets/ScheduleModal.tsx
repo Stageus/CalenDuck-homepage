@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
-import ScheduleItem from "shared/components/ScheduleItem";
+import ScheduleItem from "widgets/ScheduleItem";
 
 import alarmOn from "shared/imgs/alarmOn.svg";
 import alarmOff from "shared/imgs/alarmOff.svg";

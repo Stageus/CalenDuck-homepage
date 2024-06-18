@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 
-import alarmOn from "../imgs/alarmOn.svg";
-import alarmOff from "../imgs/alarmOff.svg";
-import edit from "../imgs/edit.svg";
-import remove from "../imgs/remove.svg";
-import finish from "../imgs/finish.svg";
+import alarmOn from "shared/imgs/alarmOn.svg";
+import alarmOff from "shared/imgs/alarmOff.svg";
+import edit from "shared/imgs/edit.svg";
+import remove from "shared/imgs/remove.svg";
+import finish from "shared/imgs/finish.svg";
 
 interface ScheduleItemProps {
   data: {
