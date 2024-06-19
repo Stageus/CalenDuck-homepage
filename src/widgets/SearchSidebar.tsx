@@ -71,28 +71,26 @@ const SearchSidebar: React.FC = () => {
   ];
 
   // 검색 기간의 시작점 지정에 따른 끝점의 최소값 설정
-  const startDateRef = useRef<HTMLInputElement>(null);
-  const endDateRef = useRef<HTMLInputElement>(null);
-  const keyWordRef = useRef<HTMLInputElement>(null);
+  const startDate = useRef<HTMLInputElement>(null);
+  const endDate = useRef<HTMLInputElement>(null);
+  const keyWord = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    return SearchDateUtil(startDateRef, endDateRef);
+    return SearchDateUtil(startDate, endDate);
   }, []);
 
-  // 검색기간, 검색어 미입력 후 검색 진행 시 경고문구 출력
+  // 검색기간, 검색어 중 하나라도 미입력 후 검색 진행 시 경고문구 출력
   const [alert, setAlert] = useState<boolean>(false);
 
-  const startDate = startDateRef.current?.value;
-  const endDate = endDateRef.current?.value;
-  const keyWord = keyWordRef.current?.value;
+  const clickSearchEvent = () => {
+    const startDateValue = startDate.current?.value;
+    const endDateValue = endDate.current?.value;
+    const keyWordValue = keyWord.current?.value;
 
-  const clickSearchEvent = (
-    startDate: string | undefined,
-    endDate: string | undefined,
-    keyWord: string | undefined
-  ) => {
-    if (!startDate || !endDate || keyWord == "") {
-      setAlert(!alert);
+    if (!startDateValue || !endDateValue || !keyWordValue) {
+      setAlert(true);
+    } else {
+      setAlert(false);
     }
   };
 
@@ -127,9 +125,7 @@ const SearchSidebar: React.FC = () => {
               ref={keyWord}
             />
             <button
-              onClick={() => {
-                clickSearchEvent(startDate, endDate, keyWord);
-              }}
+              onClick={clickSearchEvent}
               className="w-[20px] h-[20px] absolute top-1/2 right-[10px] transform -translate-y-1/2"
             >
               <img src={search} alt="검색하기" className="w-[100%] h-[100%]" />
