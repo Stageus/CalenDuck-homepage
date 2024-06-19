@@ -12,6 +12,12 @@ module.exports = {
         grayColor: "#727272",
         lightgrayColor: "#e8e8e8",
       },
+      height: {
+        sidebar: "calc(100vh - 70px)",
+      },
+      boxShadow: {
+        inputFocus: "0 0 0 2px #ff6633",
+      },
     },
   },
   plugins: [],

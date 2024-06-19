@@ -1,13 +1,13 @@
 import React from "react";
 import HeaderItem from "shared/components/HeaderItem";
-import SearchItem from "widgets/SearchItem";
+import SearchSidebar from "widgets/SearchSidebar";
 
 const MainPage = () => {
   return (
     <>
       <HeaderItem />
-      <h1>메인페이지</h1>
-      <SearchItem />
+      {/* <h1>메인페이지</h1> */}
+      <SearchSidebar />
     </>
   );
 };
