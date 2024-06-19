@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import SearchItem from "widgets/SearchItem";
 
@@ -67,6 +67,30 @@ const SearchSidebar: React.FC = () => {
       date: "2024/04/19",
     },
   ];
+
+  // 검색 기간의 시작점 지정에 따른 끝점의 최소값 설정
+  const startDate = useRef<HTMLInputElement>(null);
+  const endDate = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleStartDateChange = () => {
+      if (startDate.current && endDate.current) {
+        endDate.current.min = startDate.current.value;
+      }
+    };
+
+    const startDateElem = startDate.current;
+    if (startDateElem) {
+      startDateElem.addEventListener("change", handleStartDateChange);
+    }
+
+    return () => {
+      if (startDateElem) {
+        startDateElem.removeEventListener("change", handleStartDateChange);
+      }
+    };
+  }, []);
+
   return (
     <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
       {/* 검색 입력 */}
@@ -85,12 +109,14 @@ const SearchSidebar: React.FC = () => {
         <div className="flex justify-between items-center">
           <input
             type="date"
-            className="h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+            className="h-[42px] p-[5px] text-sm	border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+            ref={startDate}
           />
           <div className="mx-[10px]">-</div>
           <input
             type="date"
             className="h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+            ref={endDate}
           />
         </div>
       </article>
