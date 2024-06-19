@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 import SearchItem from "widgets/SearchItem";
+import SearchDateUtil from "shared/utils/SearchDateUtil";
 
 import search from "shared/imgs/search.svg";
 
@@ -73,51 +74,40 @@ const SearchSidebar: React.FC = () => {
   const endDate = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const handleStartDateChange = () => {
-      if (startDate.current && endDate.current) {
-        endDate.current.min = startDate.current.value;
-      }
-    };
-
-    const startDateElem = startDate.current;
-    if (startDateElem) {
-      startDateElem.addEventListener("change", handleStartDateChange);
-    }
-
-    return () => {
-      if (startDateElem) {
-        startDateElem.removeEventListener("change", handleStartDateChange);
-      }
-    };
+    return SearchDateUtil(startDate, endDate);
   }, []);
 
   return (
     <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
       {/* 검색 입력 */}
       <article className="w-[100%] h-[100px] mb-[50px] flex flex-col justify-between">
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="스케줄을 입력하세요"
-            className="w-[100%] h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
-          />
-          <button className="w-[20px] h-[20px] absolute top-1/2 right-[10px] transform -translate-y-1/2">
-            <img src={search} alt="검색하기" className="w-[100%] h-[100%]" />
-          </button>
-        </div>
-
+        {/* 검색 기간 */}
         <div className="flex justify-between items-center">
           <input
             type="date"
+            required
             className="h-[42px] p-[5px] text-sm	border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
             ref={startDate}
           />
           <div className="mx-[10px]">-</div>
           <input
             type="date"
+            required
             className="h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
             ref={endDate}
           />
+        </div>
+        {/* 검색어 */}
+        <div className="relative">
+          <input
+            type="text"
+            required
+            placeholder="스케줄을 입력하세요"
+            className="w-[100%] h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+          />
+          <button className="w-[20px] h-[20px] absolute top-1/2 right-[10px] transform -translate-y-1/2">
+            <img src={search} alt="검색하기" className="w-[100%] h-[100%]" />
+          </button>
         </div>
       </article>
 
