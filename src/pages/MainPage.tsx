@@ -1,12 +1,12 @@
 import React from "react";
 import HeaderItem from "shared/components/HeaderItem";
-import MasterSidebar from "widgets/MasterSidebar";
+import ScheduleNumTagItem from "widgets/ScheduleNumTagItem";
 
 const MainPage = () => {
   return (
     <>
       <HeaderItem />
-      <MasterSidebar />
+      <ScheduleNumTagItem />
     </>
   );
 };
