@@ -4,7 +4,6 @@ import SearchItem from "widgets/SearchItem";
 import SearchDateUtil from "shared/utils/SearchDateUtil";
 
 import search from "shared/imgs/search.svg";
-import { start } from "repl";
 
 const SearchSidebar: React.FC = () => {
   const dummyData = [
