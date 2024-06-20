@@ -1,12 +1,12 @@
 import React from "react";
 import HeaderItem from "shared/components/HeaderItem";
-import SettingSidebar from "widgets/SettingSidebar";
+import MasterSidebar from "widgets/MasterSidebar";
 
 const MainPage = () => {
   return (
     <>
       <HeaderItem />
-      <SettingSidebar />
+      <MasterSidebar />
     </>
   );
 };
