@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import SearchItem from "widgets/SearchItem";
+import SearchItem from "widgets/searchSidebar/SearchItem";
 import SearchDateUtil from "shared/utils/SearchDateUtil";
 
 import search from "shared/imgs/search.svg";

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import search from "shared/imgs/search.svg";
-import MySubjectItem from "widgets/MySubjectItem";
+import MySubjectItem from "widgets/settingSidebar/MySubjectItem";
 
 const SettingSidebar = () => {
   const dummyData = [

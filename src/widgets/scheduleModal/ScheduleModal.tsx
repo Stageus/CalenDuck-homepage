@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import ScheduleItem from "widgets/ScheduleItem";
+import ScheduleItem from "widgets/scheduleModal/ScheduleItem";
 
 import alarmOn from "shared/imgs/alarmOn.svg";
 import alarmOff from "shared/imgs/alarmOff.svg";
