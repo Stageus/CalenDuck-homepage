@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import ScheduleItem from "widgets/scheduleModal/ScheduleItem";
+import DropDownItem from "shared/components/DropDownItem";
 
 import alarmOn from "shared/imgs/alarmOn.svg";
 import alarmOff from "shared/imgs/alarmOff.svg";
@@ -50,6 +51,16 @@ const ScheduleModal: React.FC = () => {
       title: "가나다라마바사아자차카타파하가나다라마바사",
     },
   ];
+  //
+  const categoryOptions = [
+    "전체보기",
+    "미식축구",
+    "아이브",
+    "뮤지컬",
+    "르세라핌",
+    "에스파",
+    "개인",
+  ];
 
   // 스케줄 알람 여부 토글
   const [alarm, setAlarm] = useState<boolean>(false);
@@ -72,15 +83,9 @@ const ScheduleModal: React.FC = () => {
 
         {/* 최상단 */}
         <article className="w-[655px] h-[15%] px-[20px] flex justify-start items-center">
-          <select name="관심사목록" className="mr-[20px]">
-            <option value="select">전체보기</option>
-            <option>미식축구</option>
-            <option>뮤지컬</option>
-            <option>에스파</option>
-            <option>아이브</option>
-            <option>개인</option>
-          </select>
-
+          <div className="mr-[20px]">
+            <DropDownItem options={categoryOptions} />
+          </div>
           <div className="font-bold	text-xl">2024/06/18</div>
         </article>
 
