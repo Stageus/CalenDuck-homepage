@@ -14,12 +14,17 @@ const HeaderItem = () => {
         <img src={logo} alt="" />
       </Link>
       <div className="flex justify-between items-center w-[200px]">
-        <button className="h-[30px]">
-          <img src={alarm} className="w-[100%] h-[100%]" alt="" />
-        </button>
+        {/* AlarmPage로 이동 */}
+        <Link to="/alarm">
+          <button className="h-[30px]">
+            <img src={alarm} className="w-[100%] h-[100%]" alt="" />
+          </button>
+        </Link>
+        {/* SearchSidebar 토글 */}
         <button className="h-[30px]">
           <img src={search} className="w-[100%] h-[100%]" alt="" />
         </button>
+        {/* SettingSidebar 토글 */}
         <button className="h-[30px]">
           <img src={hamberger} className="w-[100%] h-[100%]" alt="" />
         </button>
