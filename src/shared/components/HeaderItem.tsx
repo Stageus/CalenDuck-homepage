@@ -9,6 +9,8 @@ import alarm from "shared/imgs/alarm.svg";
 import search from "shared/imgs/search.svg";
 import hamberger from "shared/imgs/hamburger.svg";
 
+import HeaderAlarmNumTagItem from "shared/components/HeaderAlarmNumTagItem";
+
 import { Link } from "react-router-dom";
 
 const HeaderItem = () => {
@@ -34,8 +36,11 @@ const HeaderItem = () => {
       <div className="flex justify-between items-center w-[200px]">
         {/* AlarmPage로 이동 */}
         <Link to="/alarm">
-          <button className="h-[30px]">
+          <button className="h-[30px] relative">
             <img src={alarm} className="w-[100%] h-[100%]" alt="알림" />
+            <div className="absolute top-[-7px] right-[-13px]">
+              <HeaderAlarmNumTagItem />
+            </div>
           </button>
         </Link>
         {/* SearchSidebar 토글 */}
