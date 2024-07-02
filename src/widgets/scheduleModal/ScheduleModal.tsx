@@ -84,7 +84,11 @@ const ScheduleModal: React.FC = () => {
         {/* 최상단 */}
         <article className="w-[655px] h-[15%] px-[20px] flex justify-start items-center">
           <div className="mr-[20px]">
-            <DropDownItem options={categoryOptions} />
+            <DropDownItem
+              options={categoryOptions}
+              value={categoryOptions[0]}
+              onChange={() => {}}
+            />
           </div>
           <div className="font-bold	text-xl">2024/06/18</div>
         </article>

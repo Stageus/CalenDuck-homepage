@@ -7,7 +7,7 @@ const ScheduleNumTagItem = () => {
   };
 
   return (
-    <div className="w-[72px] h-[27px] bg-tagColor px-[5px] flex justify-between items-center rounded-[20px]">
+    <div className="w-[70px] h-[27px] bg-tagColor m-[2px] px-[5px] flex justify-between items-center rounded-[20px]">
       <button title={dummyData.subject} className="w-[45px] mr-[1px] text-[10px] truncate ... ">
         {dummyData.subject}
       </button>

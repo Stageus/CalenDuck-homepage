@@ -37,24 +37,26 @@ const AllDay = ({ day, nowDate, setNowDate, clickedDate, setClickedDate }: Props
     setClickedDate(day);
   };
 
-  const dayClassNames = ["border flex justify-center items-center hover:bg-subColor"].join(" ");
-
   const numClassNames = [
     articleProps.sameMonth ? "font-semibold" : "font-thin",
     articleProps.sameDay ? "text-alertColor" : "text-black",
   ].join(" ");
 
-  const tagClassNames = ["border border-red-500 flex grid grid-cols-2"].join(" ");
-
   return (
-    <div onClick={clickDate} className={dayClassNames}>
+    <div
+      onClick={clickDate}
+      className="border flex justify-center items-center hover:bg-subColor grid flex-wrap	content-between"
+    >
       <p className={numClassNames}>{day.getDate()}</p>
-      <div className={tagClassNames}>
-        <ScheduleNumTagItem />
-        <ScheduleNumTagItem />
-        <ScheduleNumTagItem />
-        <ScheduleNumTagItem />
-      </div>
+      {/* 해당 달의 스케줄만 보임 */}
+      {articleProps.sameMonth && (
+        <div className="flex grid grid-cols-2">
+          <ScheduleNumTagItem />
+          <ScheduleNumTagItem />
+          <ScheduleNumTagItem />
+          <ScheduleNumTagItem />
+        </div>
+      )}
     </div>
   );
 };

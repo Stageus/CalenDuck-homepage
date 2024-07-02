@@ -18,12 +18,14 @@ const ControlDate = ({ nowDate, setNowDate }: Props) => {
   };
 
   return (
-    <article className="border border-blue-500 w-[100%] h-[15%] flex justify-center items-center">
+    <article className="w-[100%] h-[40px] flex justify-center items-center">
       <div>
         <button onClick={() => changeYear(-1)} className="m-[10px]">{`<<`}</button>
         <button onClick={() => changeMonth(-1)} className="m-[10px]">{`<`}</button>
       </div>
-      <h2 className="font-bold text-xl">{`${nowDate.getFullYear()}.${nowDate.getMonth() + 1}`}</h2>
+      <h2 className="font-bold text-xl mx-[15px]">{`${nowDate.getFullYear()}.${
+        nowDate.getMonth() + 1
+      }`}</h2>
       <div>
         <button onClick={() => changeMonth(1)} className="m-[10px]">{`>`}</button>
         <button onClick={() => changeYear(1)} className="m-[10px]">{`>>`}</button>

@@ -6,7 +6,7 @@ interface Props {
 
 const WeekBox = ({ weekName }: Props) => {
   return (
-    <article className="bg-lightgrayColor w-[100%] flex justify-center items-center">
+    <article className="w-[100%] flex justify-center items-center">
       <p>{weekName}</p>
     </article>
   );

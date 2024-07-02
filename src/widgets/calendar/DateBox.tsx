@@ -41,7 +41,7 @@ const DateBox = ({ nowDate, setNowDate, clickedDate, setClickedDate }: Props) =>
   const weeks = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   return (
-    <article className="border border-pink-500 w-[100%] h-[85%] flex grid grid-cols-7 ">
+    <article className="w-[100%] h-[70vh] flex grid grid-cols-7 ">
       {weeks.map((week: string) => {
         return <WeekBox weekName={week} />;
       })}
