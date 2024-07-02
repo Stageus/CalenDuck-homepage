@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useRecoilState } from "recoil";
-import SidebarToggleAtom from "shared/recoil/SidebarToggleAtom";
+import searchSidebarToggleAtom from "shared/recoil/searchSidebarToggleAtom";
 
 import logo from "shared/imgs/logo.svg";
 import alarm from "shared/imgs/alarm.svg";
@@ -11,9 +11,9 @@ import hamberger from "shared/imgs/hamburger.svg";
 import { Link } from "react-router-dom";
 
 const HeaderItem = () => {
-  const [sidebarToggle, setSidebarToggle] = useRecoilState(SidebarToggleAtom);
+  const [searchSidebarToggle, setSearchSidebarToggle] = useRecoilState(searchSidebarToggleAtom);
   const searchBtnToggleEvent = () => {
-    setSidebarToggle(!sidebarToggle);
+    setSearchSidebarToggle(!searchSidebarToggle);
   };
 
   return (

@@ -1,17 +1,17 @@
 import React from "react";
 
 import { useRecoilState } from "recoil";
-import SidebarToggleAtom from "shared/recoil/SidebarToggleAtom";
+import searchSidebarToggleAtom from "shared/recoil/searchSidebarToggleAtom";
 
 import HeaderItem from "shared/components/HeaderItem";
 import CalendarItem from "widgets/calendar/CalendarItem";
 import SearchSidebar from "widgets/searchSidebar/SearchSidebar";
 
 const MainPage = () => {
-  const [sidebarToggle, setSidebarToggle] = useRecoilState(SidebarToggleAtom);
+  const [searchSidebarToggle, setSearchSidebarToggle] = useRecoilState(searchSidebarToggleAtom);
 
   const closeSidebar = () => {
-    setSidebarToggle(false);
+    setSearchSidebarToggle(false);
   };
 
   return (
@@ -22,7 +22,7 @@ const MainPage = () => {
       </article>
 
       {/* 사이드바 외부 클릭 시 닫힘 기능 */}
-      {sidebarToggle && (
+      {searchSidebarToggle && (
         <div
           className="mt-[70px] fixed inset-0 bg-lightgrayColor bg-opacity-50 z-10"
           onClick={closeSidebar}
@@ -31,7 +31,7 @@ const MainPage = () => {
 
       <article
         className={`fixed mt-[70px] right-0 top-0 h-full z-20 transform transition-transform duration-300 ${
-          sidebarToggle ? "translate-x-0" : "translate-x-full"
+          searchSidebarToggle ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <SearchSidebar />

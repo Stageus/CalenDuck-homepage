@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-//   // 검색 기간의 시작점 지정에 따른 끝점의 최소값 설정
+// 검색 기간의 시작점 지정에 따른 끝점의 최소값 설정
 
 const SearchDateUtil = (
   startDateRef: React.MutableRefObject<HTMLInputElement | null>,
@@ -13,6 +13,7 @@ const SearchDateUtil = (
   };
 
   const startDateElem = startDateRef.current;
+
   if (startDateElem) {
     startDateElem.addEventListener("change", handleStartDateChange);
   }

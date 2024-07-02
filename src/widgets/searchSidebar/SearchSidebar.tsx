@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import { useRecoilState } from "recoil";
-import SidebarToggleAtom from "shared/recoil/SidebarToggleAtom";
+import searchSidebarToggleAtom from "shared/recoil/searchSidebarToggleAtom";
 
 import SearchItem from "widgets/searchSidebar/SearchItem";
-import SearchDateUtil from "shared/utils/SearchDateUtil";
+import SearchDateUtil from "widgets/searchSidebar/SearchDateUtil";
 
 import search from "shared/imgs/search.svg";
 
@@ -72,24 +72,22 @@ const SearchSidebar: React.FC = () => {
     },
   ];
 
-  const [sidebarToggle, setSidebarToggle] = useRecoilState(SidebarToggleAtom);
-
   // 검색 기간의 시작점 지정에 따른 끝점의 최소값 설정
-  const startDate = useRef<HTMLInputElement>(null);
-  const endDate = useRef<HTMLInputElement>(null);
-  const keyWord = useRef<HTMLInputElement>(null);
+  const startDateRef = useRef<HTMLInputElement>(null);
+  const endDateRef = useRef<HTMLInputElement>(null);
+  const keyWordRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    return SearchDateUtil(startDate, endDate);
+    return SearchDateUtil(startDateRef, endDateRef);
   }, []);
 
   // 검색기간, 검색어 중 하나라도 미입력 후 검색 진행 시 경고문구 출력
   const [alert, setAlert] = useState<boolean>(false);
 
   const clickSearchEvent = () => {
-    const startDateValue = startDate.current?.value;
-    const endDateValue = endDate.current?.value;
-    const keyWordValue = keyWord.current?.value;
+    const startDateValue = startDateRef.current?.value;
+    const endDateValue = endDateRef.current?.value;
+    const keyWordValue = keyWordRef.current?.value;
 
     if (!startDateValue || !endDateValue || !keyWordValue) {
       setAlert(true);
@@ -98,7 +96,9 @@ const SearchSidebar: React.FC = () => {
     }
   };
 
-  if (!sidebarToggle) {
+  // 검색 사이드바 토글
+  const [searchSidebarToggle, setSearchSidebarToggle] = useRecoilState(searchSidebarToggleAtom);
+  if (!searchSidebarToggle) {
     return null;
   }
 
@@ -113,14 +113,14 @@ const SearchSidebar: React.FC = () => {
               type="date"
               required
               className="h-[42px] p-[5px] text-sm	border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
-              ref={startDate}
+              ref={startDateRef}
             />
             <div className="mx-[10px]">-</div>
             <input
               type="date"
               required
-              className="h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
-              ref={endDate}
+              className="h-[42px] p-[5px] text-sm border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+              ref={endDateRef}
             />
           </div>
           {/* 검색어 */}
@@ -130,7 +130,7 @@ const SearchSidebar: React.FC = () => {
               required
               placeholder="스케줄을 입력하세요"
               className="w-[100%] h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
-              ref={keyWord}
+              ref={keyWordRef}
             />
             <button
               onClick={clickSearchEvent}
