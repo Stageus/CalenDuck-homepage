@@ -10,13 +10,13 @@ interface ScheduleItemProps {
   data: {
     privacy: boolean;
     time: string;
-    category: string;
+    subject: string;
     title: string;
   };
 }
 
 const ScheduleItem: React.FC<ScheduleItemProps> = (props) => {
-  const { privacy, time, category, title } = props.data;
+  const { privacy, time, subject, title } = props.data;
 
   // 스케줄 알람 여부 토글
   const [alarm, setAlarm] = useState<boolean>(false);
@@ -53,7 +53,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = (props) => {
           />
         </button>
         <div className="w-[15%]">{time}</div>
-        <div className="w-[20%]">{category}</div>
+        <div className="w-[20%]">{subject}</div>
         {editing ? (
           <input
             type="text"

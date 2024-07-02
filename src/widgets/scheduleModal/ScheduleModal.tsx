@@ -15,7 +15,7 @@ const ScheduleModal: React.FC = () => {
       date: "2024/06/18",
       privacy: true,
       time: "14:00",
-      category: "개인",
+      subject: "개인",
       title: "인프 11주차 과제",
     },
     {
@@ -23,7 +23,7 @@ const ScheduleModal: React.FC = () => {
       date: "2024/06/18",
       privacy: true,
       time: "12:00",
-      category: "개인",
+      subject: "개인",
       title: "콘서트 티켓팅",
     },
     {
@@ -31,7 +31,7 @@ const ScheduleModal: React.FC = () => {
       date: "2024/06/18",
       privacy: false,
       time: "19:30",
-      category: "뮤지컬",
+      subject: "뮤지컬",
       title: "시카고",
     },
     {
@@ -39,7 +39,7 @@ const ScheduleModal: React.FC = () => {
       date: "2024/06/18",
       privacy: false,
       time: "23:00",
-      category: "미식축구",
+      subject: "미식축구",
       title: "미국 vs 멕시코 경기",
     },
     {
@@ -47,20 +47,12 @@ const ScheduleModal: React.FC = () => {
       date: "2024/06/18",
       privacy: true,
       time: "23:59",
-      category: "개인",
+      subject: "개인",
       title: "가나다라마바사아자차카타파하가나다라마바사",
     },
   ];
   //
-  const categoryOptions = [
-    "전체보기",
-    "미식축구",
-    "아이브",
-    "뮤지컬",
-    "르세라핌",
-    "에스파",
-    "개인",
-  ];
+  const subjectOptions = ["전체보기", "미식축구", "아이브", "뮤지컬", "르세라핌", "에스파", "개인"];
 
   // 스케줄 알람 여부 토글
   const [alarm, setAlarm] = useState<boolean>(false);
@@ -84,11 +76,7 @@ const ScheduleModal: React.FC = () => {
         {/* 최상단 */}
         <article className="w-[655px] h-[15%] px-[20px] flex justify-start items-center">
           <div className="mr-[20px]">
-            <DropDownItem
-              options={categoryOptions}
-              value={categoryOptions[0]}
-              onChange={() => {}}
-            />
+            <DropDownItem options={subjectOptions} value={subjectOptions[0]} onChange={() => {}} />
           </div>
           <div className="font-bold	text-xl">2024/06/18</div>
         </article>
