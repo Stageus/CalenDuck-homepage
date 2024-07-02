@@ -29,7 +29,7 @@ const HeaderItem = () => {
   };
 
   return (
-    <header className="y-[70px] px-10 flex justify-between items-center">
+    <header className="y-[70px] flex justify-between items-center">
       <Link to="/main">
         <img src={logo} alt="메인" />
       </Link>
