@@ -1,5 +1,9 @@
 import React from "react";
 
+import { useRecoilState } from "recoil";
+import searchSidebarToggleAtom from "shared/recoil/searchSidebarToggleAtom";
+import settingSidebarToggleAtom from "shared/recoil/settingSidebarToggleAtom";
+
 import logo from "shared/imgs/logo.svg";
 import alarm from "shared/imgs/alarm.svg";
 import search from "shared/imgs/search.svg";
@@ -8,20 +12,39 @@ import hamberger from "shared/imgs/hamburger.svg";
 import { Link } from "react-router-dom";
 
 const HeaderItem = () => {
+  const [searchSidebarToggle, setSearchSidebarToggle] = useRecoilState(searchSidebarToggleAtom);
+  const [settingSidebarToggle, setSettingSidebarToggle] = useRecoilState(settingSidebarToggleAtom);
+
+  // 검색 사이드바 토글 이벤트
+  const searchBtnToggleEvent = () => {
+    setSearchSidebarToggle(!searchSidebarToggle);
+    setSettingSidebarToggle(false); // 설정 사이드바는 닫음
+  };
+  // 설정 사이드바 토글 이벤트
+  const settingBtnToggleEvent = () => {
+    setSettingSidebarToggle(!settingSidebarToggle);
+    setSearchSidebarToggle(false); // 검색 사이드바는 닫음
+  };
+
   return (
-    <header className="border-solid border-2 border-green-500 y-[70px] px-10 flex justify-between items-center">
-      <Link to="/">
-        <img src={logo} alt="" />
+    <header className="y-[70px] px-10 flex justify-between items-center">
+      <Link to="/main">
+        <img src={logo} alt="메인" />
       </Link>
       <div className="flex justify-between items-center w-[200px]">
-        <button className="h-[30px]">
-          <img src={alarm} className="w-[100%] h-[100%]" alt="" />
+        {/* AlarmPage로 이동 */}
+        <Link to="/alarm">
+          <button className="h-[30px]">
+            <img src={alarm} className="w-[100%] h-[100%]" alt="알림" />
+          </button>
+        </Link>
+        {/* SearchSidebar 토글 */}
+        <button className="h-[30px]" onClick={searchBtnToggleEvent}>
+          <img src={search} className="w-[100%] h-[100%]" alt="검색" />
         </button>
-        <button className="h-[30px]">
-          <img src={search} className="w-[100%] h-[100%]" alt="" />
-        </button>
-        <button className="h-[30px]">
-          <img src={hamberger} className="w-[100%] h-[100%]" alt="" />
+        {/* SettingSidebar 토글 */}
+        <button className="h-[30px]" onClick={settingBtnToggleEvent}>
+          <img src={hamberger} className="w-[100%] h-[100%]" alt="설정" />
         </button>
       </div>
     </header>
