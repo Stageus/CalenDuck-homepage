@@ -6,17 +6,14 @@ interface Props {
   day: Date;
   nowDate: Date;
   setNowDate: React.Dispatch<React.SetStateAction<Date>>;
-  clickedDate: Date | undefined;
-  setClickedDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
 }
 
 interface ArticleProps {
   sameMonth: boolean;
   sameDay: boolean;
-  clickDay: boolean;
 }
 
-const AllDay = ({ day, nowDate, setNowDate, clickedDate, setClickedDate }: Props) => {
+const AllDay = ({ day, nowDate, setNowDate }: Props) => {
   const nowTime = new Date();
 
   const articleProps: ArticleProps = {
@@ -25,17 +22,10 @@ const AllDay = ({ day, nowDate, setNowDate, clickedDate, setClickedDate }: Props
       nowTime.getFullYear() === day.getFullYear() &&
       nowTime.getMonth() === day.getMonth() &&
       nowTime.getDate() === day.getDate(),
-
-    clickDay: clickedDate
-      ? clickedDate.getFullYear() === day.getFullYear() &&
-        clickedDate.getMonth() === day.getMonth() &&
-        clickedDate.getDate() === day.getDate()
-      : false,
   };
 
-  const clickDate = () => {
-    setClickedDate(day);
-  };
+  // 해당 날짜에 해당하는 ScheduleModal 열림
+  const openScheduleModalEvent = () => {};
 
   const dayClassNames = [articleProps.sameMonth && "hover:bg-subColor"].join(" ");
   const numClassNames = [
@@ -45,7 +35,7 @@ const AllDay = ({ day, nowDate, setNowDate, clickedDate, setClickedDate }: Props
 
   return (
     <div
-      onClick={clickDate}
+      onClick={openScheduleModalEvent}
       className={`border flex justify-center items-center grid flex-wrap content-between ${dayClassNames}`}
     >
       <p className={numClassNames}>{day.getDate()}</p>

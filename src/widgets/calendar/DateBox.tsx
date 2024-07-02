@@ -32,29 +32,21 @@ const monthList = (nowDate: Date) => {
 interface Props {
   nowDate: Date;
   setNowDate: React.Dispatch<React.SetStateAction<Date>>;
-  clickedDate: Date | undefined;
-  setClickedDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
 }
 
-const DateBox = ({ nowDate, setNowDate, clickedDate, setClickedDate }: Props) => {
+const DateBox = ({ nowDate, setNowDate }: Props) => {
   const allDay: Date[] = monthList(nowDate);
   const weeks = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   return (
     <article className="w-[100%] h-[70vh] flex grid grid-cols-7 ">
       {weeks.map((week: string) => {
-        return <WeekBox weekName={week} />;
+        return <WeekBox key={week} weekName={week} />;
       })}
 
       {allDay.map((day: Date) => {
         return (
-          <AllDay
-            day={day}
-            nowDate={nowDate}
-            setNowDate={setNowDate}
-            clickedDate={clickedDate}
-            setClickedDate={setClickedDate}
-          />
+          <AllDay key={day.toISOString()} day={day} nowDate={nowDate} setNowDate={setNowDate} />
         );
       })}
     </article>

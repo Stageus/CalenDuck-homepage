@@ -18,7 +18,6 @@ const CalendarItem = () => {
   const monthOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
   const [nowDate, setNowDate] = useState<Date>(new Date());
-  const [clickedDate, setClickedDate] = useState<Date>();
   const [selectedCategory, setSelectedCategory] = useState<string>(categoryOptions[0]);
   const [selectedYear, setSelectedYear] = useState<string>(String(nowDate.getFullYear()));
   const [selectedMonth, setSelectedMonth] = useState<string>(String(nowDate.getMonth() + 1));
@@ -59,12 +58,7 @@ const CalendarItem = () => {
       {/* 달력 부분 */}
       <article className="w-[100%] h-[90%]">
         <ControlDate nowDate={nowDate} setNowDate={setNowDate} />
-        <DateBox
-          nowDate={nowDate}
-          setNowDate={setNowDate}
-          clickedDate={clickedDate}
-          setClickedDate={setClickedDate}
-        />
+        <DateBox nowDate={nowDate} setNowDate={setNowDate} />
       </article>
     </section>
   );
