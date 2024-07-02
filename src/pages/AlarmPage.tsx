@@ -46,7 +46,7 @@ const AlarmPage = () => {
   return (
     <section>
       <HeaderItem />
-      <h1 className="font-bold text-xl my-5">[ 1:1 문의 ]</h1>
+      <h1 className="font-bold text-xl my-5">[ 알림함 ]</h1>
       <h2 className="font-bold text-l mt-7 mb-2">오늘 받은 알림</h2>
       <article className="flex flex-col items-center justify-start">
         {dummyData.map((elem) => {

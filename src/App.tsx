@@ -4,6 +4,7 @@ import SignInPage from "pages/SignInPage";
 import SignUpPage from "pages/SignUpPage";
 import MainPage from "pages/MainPage";
 import AlarmPage from "pages/AlarmPage";
+import ContactPage from "pages/ContactPage";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/alarm" element={<AlarmPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
   );
