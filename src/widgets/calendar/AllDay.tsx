@@ -37,6 +37,7 @@ const AllDay = ({ day, nowDate, setNowDate, clickedDate, setClickedDate }: Props
     setClickedDate(day);
   };
 
+  const dayClassNames = [articleProps.sameMonth && "hover:bg-subColor"].join(" ");
   const numClassNames = [
     articleProps.sameMonth ? "font-semibold" : "font-thin",
     articleProps.sameDay ? "text-alertColor" : "text-black",
@@ -45,7 +46,7 @@ const AllDay = ({ day, nowDate, setNowDate, clickedDate, setClickedDate }: Props
   return (
     <div
       onClick={clickDate}
-      className="border flex justify-center items-center hover:bg-subColor grid flex-wrap	content-between"
+      className={`border flex justify-center items-center grid flex-wrap content-between ${dayClassNames}`}
     >
       <p className={numClassNames}>{day.getDate()}</p>
       {/* 해당 달의 스케줄만 보임 */}
