@@ -1,0 +1,46 @@
+import React, { useState } from "react";
+
+import visibility from "shared/imgs/visibility.svg";
+import visibilityOff from "shared/imgs/visibilityOff.svg";
+
+interface InputItemProps {
+  label: string;
+  type: string;
+  placeholder: string;
+  extraBtn?: string;
+}
+
+const InputItem: React.FC<InputItemProps> = ({ label, type, placeholder, extraBtn }) => {
+  const [showPw, setShowPw] = useState<boolean>(false);
+  const clickShowPwEvent = () => {
+    setShowPw(!showPw);
+  };
+
+  const inputType = type === "password" ? (showPw ? "text" : "password") : type;
+
+  return (
+    <div className="w-[500px] h-[80px] content-between">
+      <label htmlFor={label}>{label}</label>
+      <div className="relative w-[100%] h-[50px]">
+        <input
+          className="w-[100%] h-[50px] relative border-solid border-2 border-grayColor rounded-[10px] p-[10px]"
+          type={inputType}
+          placeholder={placeholder}
+        />
+        {type === "password" && (
+          <button className="absolute top-[13px] right-[10px]" onClick={clickShowPwEvent}>
+            <img src={showPw ? visibility : visibilityOff} alt={showPw ? "보임" : "숨김"} />
+          </button>
+        )}
+
+        {extraBtn && (
+          <button className="absolute bg-subColor top-[8px] right-[10px] px-[10px] py-[5px] rounded-[10px]">
+            {extraBtn}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default InputItem;
