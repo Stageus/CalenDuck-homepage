@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import { useRecoilState } from "recoil";
+import SidebarToggleAtom from "shared/recoil/SidebarToggleAtom";
+
 import SearchItem from "widgets/searchSidebar/SearchItem";
 import SearchDateUtil from "shared/utils/SearchDateUtil";
 
@@ -69,6 +72,8 @@ const SearchSidebar: React.FC = () => {
     },
   ];
 
+  const [sidebarToggle, setSidebarToggle] = useRecoilState(SidebarToggleAtom);
+
   // 검색 기간의 시작점 지정에 따른 끝점의 최소값 설정
   const startDate = useRef<HTMLInputElement>(null);
   const endDate = useRef<HTMLInputElement>(null);
@@ -92,6 +97,10 @@ const SearchSidebar: React.FC = () => {
       setAlert(false);
     }
   };
+
+  if (!sidebarToggle) {
+    return null;
+  }
 
   return (
     <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">

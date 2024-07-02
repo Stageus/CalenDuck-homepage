@@ -1,5 +1,8 @@
 import React from "react";
 
+import { useRecoilState } from "recoil";
+import SidebarToggleAtom from "shared/recoil/SidebarToggleAtom";
+
 import logo from "shared/imgs/logo.svg";
 import alarm from "shared/imgs/alarm.svg";
 import search from "shared/imgs/search.svg";
@@ -8,8 +11,13 @@ import hamberger from "shared/imgs/hamburger.svg";
 import { Link } from "react-router-dom";
 
 const HeaderItem = () => {
+  const [sidebarToggle, setSidebarToggle] = useRecoilState(SidebarToggleAtom);
+  const searchBtnToggleEvent = () => {
+    setSidebarToggle(!sidebarToggle);
+  };
+
   return (
-    <header className="border-solid border-2 border-green-500 y-[70px] px-10 flex justify-between items-center">
+    <header className="y-[70px] px-10 flex justify-between items-center">
       <Link to="/">
         <img src={logo} alt="" />
       </Link>
@@ -21,7 +29,7 @@ const HeaderItem = () => {
           </button>
         </Link>
         {/* SearchSidebar 토글 */}
-        <button className="h-[30px]">
+        <button className="h-[30px]" onClick={searchBtnToggleEvent}>
           <img src={search} className="w-[100%] h-[100%]" alt="" />
         </button>
         {/* SettingSidebar 토글 */}
