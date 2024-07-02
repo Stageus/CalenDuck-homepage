@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { useRecoilState } from "recoil";
+import settingSidebarToggleAtom from "shared/recoil/settingSidebarToggleAtom";
+
 import search from "shared/imgs/search.svg";
 import MySubjectItem from "widgets/settingSidebar/MySubjectItem";
 
@@ -27,6 +30,14 @@ const SettingSidebar = () => {
       subject: "뮤지컬",
     },
   ];
+
+  // 설정 사이드바 토글
+  const [settingSidebarToggle, setSettingSearchSidebarToggle] =
+    useRecoilState(settingSidebarToggleAtom);
+  if (!settingSidebarToggle) {
+    return null;
+  }
+
   return (
     <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
       {/* 검색기능 */}
