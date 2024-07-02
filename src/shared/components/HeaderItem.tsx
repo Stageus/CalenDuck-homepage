@@ -28,8 +28,8 @@ const HeaderItem = () => {
 
   return (
     <header className="y-[70px] px-10 flex justify-between items-center">
-      <Link to="/">
-        <img src={logo} alt="" />
+      <Link to="/main">
+        <img src={logo} alt="메인" />
       </Link>
       <div className="flex justify-between items-center w-[200px]">
         {/* AlarmPage로 이동 */}
