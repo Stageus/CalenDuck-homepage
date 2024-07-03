@@ -9,8 +9,8 @@ import AlarmPage from "pages/AlarmPage";
 import ContactPage from "pages/ContactPage";
 
 // Master 계정
-import ManageRequestSubjectPage from "pages/ManageRequestSubjectPage";
-import ManageRequestEtcPage from "pages/ManageRequestEtcPage";
+import ManageSubjectRequestPage from "pages/ManageSubjectRequestPage";
+import ManageEtcRequestPage from "pages/ManageEtcRequestPage";
 import ManageManagersPage from "pages/ManageManagersPage";
 import ManageSubjectsPage from "pages/ManageSubjectsPage";
 
@@ -24,8 +24,8 @@ const App = () => {
         <Route path="/alarm" element={<AlarmPage />} />
         <Route path="/contact" element={<ContactPage />} />
 
-        <Route path="/manageSubjectRequests" element={<ManageRequestSubjectPage />} />
-        <Route path="/manageEtcRequests" element={<ManageRequestEtcPage />} />
+        <Route path="/manageSubjectRequests" element={<ManageSubjectRequestPage />} />
+        <Route path="/manageEtcRequests" element={<ManageEtcRequestPage />} />
         <Route path="/manageManagers" element={<ManageManagersPage />} />
         <Route path="/manageSubjects" element={<ManageSubjectsPage />} />
       </Routes>

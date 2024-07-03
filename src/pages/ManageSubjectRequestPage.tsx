@@ -4,8 +4,8 @@ import { useLocation } from "react-router-dom";
 import HeaderItem from "shared/components/HeaderItem";
 import MasterSidebar from "widgets/masterSidebar/MasterSidebar";
 
-// 관심사 관리자(매니저) 계정 관리 페이지
-const ManageManagersPage = () => {
+// 관심사 추가 문의 관리 페이지
+const ManageSubjectRequestPage = () => {
   const location = useLocation();
 
   return (
@@ -18,4 +18,4 @@ const ManageManagersPage = () => {
   );
 };
 
-export default ManageManagersPage;
+export default ManageSubjectRequestPage;
