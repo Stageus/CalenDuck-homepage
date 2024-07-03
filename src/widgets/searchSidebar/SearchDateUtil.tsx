@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // 검색 기간의 시작점 지정에 따른 끝점의 최소값 설정
 

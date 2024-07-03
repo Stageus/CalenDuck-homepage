@@ -5,12 +5,12 @@ import CalendarItem from "widgets/calendar/CalendarItem";
 
 const MainPage = () => {
   return (
-    <section className="relative flex z-0">
-      <article className="flex flex-col flex-grow">
-        <HeaderSidebarContainer />
+    <>
+      <HeaderSidebarContainer />
+      <article className="mt-[70px] flex flex-col flex-grow">
         <CalendarItem />
       </article>
-    </section>
+    </>
   );
 };
 export default MainPage;

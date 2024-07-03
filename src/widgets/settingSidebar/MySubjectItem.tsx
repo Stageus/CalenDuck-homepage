@@ -20,7 +20,7 @@ const MySubjectItem: React.FC<MySubjectItemProps> = (props) => {
     <div className="w-[100%] h-[42px] bg-lightgrayColor rounded-[5px] p-[10px] mb-[8px] flex justify-between items-center">
       <div>{subject}</div>
       <button onClick={clickRemoveSubject}>
-        <img src={removeSubject} />
+        <img src={removeSubject} alt="관심사 제거" />
       </button>
     </div>
   );
