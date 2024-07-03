@@ -59,19 +59,28 @@ const ManageEtcRequestPage = () => {
   ];
 
   return (
-    <section>
+    <>
       <HeaderItem />
 
       <article className="fixed mt-[70px] left-0 top-0 h-full">
         <MasterSidebar currentPath={location.pathname} />
       </article>
 
-      <article className="mt-[70px] flex flex-col items-center justify-start">
-        {dummyData.map((elem) => {
-          return <RequestItem key={elem.id} data={elem} />;
-        })}
-      </article>
-    </section>
+      <section className="mt-[70px] ml-[90px]">
+        <table className="min-w-full bg-white">
+          <thead className="w-[100%]">
+            <tr className="w-[100%] px-[10%] flex justify-start border-b border-gray-200">
+              <th className="py-4">No</th>
+            </tr>
+          </thead>
+          <tbody className="flex flex-col items-center">
+            {dummyData.map((elem) => {
+              return <RequestItem key={elem.id} data={elem} />;
+            })}
+          </tbody>
+        </table>
+      </section>
+    </>
   );
 };
 

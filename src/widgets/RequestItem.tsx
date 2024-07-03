@@ -32,7 +32,7 @@ const RequestItem: React.FC<AlarmItemProps> = (props) => {
   return (
     <div className="w-[80%] flex justify-between m-[20px] items-center">
       <span className="w-[5%]">{id}</span>
-      <article className=" h-fit bg-tagColor rounded-[5px] p-[10px]">
+      <article className="w-[90%] h-fit bg-tagColor rounded-[5px] p-[10px]">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <span className="mx-[10px]">{alarmSymbol}</span>
