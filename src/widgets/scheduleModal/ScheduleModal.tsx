@@ -68,7 +68,7 @@ const ScheduleModal: React.FC = () => {
         {/* 모달창 닫기 */}
         <div className="w-[100%] flex justify-end pt-[5px] pr-[5px]">
           <button onClick={clickCloseModalEvent}>
-            <img src={exit} />
+            <img src={exit} alt="닫기" />
           </button>
         </div>
 
