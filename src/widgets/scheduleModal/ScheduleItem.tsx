@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
-import alarmOn from "shared/imgs/alarmOn.svg";
-import alarmOff from "shared/imgs/alarmOff.svg";
+import ScheduleAlarmOnBtn from "widgets/scheduleModal/ScheduleAlarmOnBtn";
+import ScheduleAlarmOffBtn from "widgets/scheduleModal/ScheduleAlarmOffBtn";
 import edit from "shared/imgs/edit.svg";
 import remove from "shared/imgs/remove.svg";
 import finish from "shared/imgs/finish.svg";
@@ -45,13 +45,16 @@ const ScheduleItem: React.FC<ScheduleItemProps> = (props) => {
       } w-[638px] h-[70px] rounded-[5px] flex justify-between items-center p-[20px] m-[5px]`}
     >
       <div className="w-[80%] flex items-center">
-        <button onClick={clickSetAlarmEvent} className="w-[25px] mr-[20px]">
-          <img
-            src={alarm ? alarmOff : alarmOn}
-            alt={alarm ? "알람off" : "알람on"}
-            className="w-[100%]"
-          />
-        </button>
+        {alarm ? (
+          <div onClick={clickSetAlarmEvent}>
+            <ScheduleAlarmOnBtn />
+          </div>
+        ) : (
+          <div onClick={clickSetAlarmEvent}>
+            <ScheduleAlarmOffBtn />
+          </div>
+        )}
+
         <div className="w-[15%]">{time}</div>
         <div className="w-[20%]">{subject}</div>
         {editing ? (

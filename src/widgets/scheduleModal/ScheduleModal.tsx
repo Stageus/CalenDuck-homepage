@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 import ScheduleItem from "widgets/scheduleModal/ScheduleItem";
 import DropDownItem from "shared/components/DropDownItem";
-
-import alarmOn from "shared/imgs/alarmOn.svg";
-import alarmOff from "shared/imgs/alarmOff.svg";
+import ScheduleAlarmOnBtn from "widgets/scheduleModal/ScheduleAlarmOnBtn";
+import ScheduleAlarmOffBtn from "widgets/scheduleModal/ScheduleAlarmOffBtn";
 import finish from "shared/imgs/finish.svg";
 import exit from "shared/imgs/exit.svg";
 
@@ -84,13 +83,15 @@ const ScheduleModal: React.FC = () => {
         {/* 개인 스케줄 입력란 */}
         <article className="w-[655px] h-[15%] p-[20px] flex justify-between border-y border-black">
           <div className="w-[85%] flex items-center">
-            <button onClick={clickSetAlarmEvent} className="w-[25px] mr-[15px]">
-              <img
-                src={alarm ? alarmOff : alarmOn}
-                alt={alarm ? "알람off" : "알람on"}
-                className="w-[100%]"
-              />
-            </button>
+            {alarm ? (
+              <div onClick={clickSetAlarmEvent}>
+                <ScheduleAlarmOnBtn />
+              </div>
+            ) : (
+              <div onClick={clickSetAlarmEvent}>
+                <ScheduleAlarmOffBtn />
+              </div>
+            )}
             <div>
               <input type="time" />
             </div>
