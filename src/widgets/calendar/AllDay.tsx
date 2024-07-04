@@ -1,6 +1,8 @@
 import React from "react";
 
-import ScheduleNumTagItem from "./ScheduleNumTagItem";
+import ScheduleNumTagItem from "widgets/calendar/ScheduleNumTagItem";
+import { useRecoilState } from "recoil";
+import scheduleModalToggleAtom from "shared/recoil/scheduleModalToggleAtom";
 
 interface Props {
   day: Date;
@@ -13,6 +15,35 @@ interface ArticleProps {
   sameDay: boolean;
 }
 
+const dummyData = [
+  {
+    id: 1,
+    subject: "분데스리가",
+    scheduleNum: 1,
+  },
+  {
+    id: 2,
+    subject: "뮤지컬",
+    scheduleNum: 2,
+  },
+  {
+    id: 3,
+    subject: "클래식",
+    scheduleNum: 3,
+  },
+  {
+    id: 4,
+    subject: "에스파",
+    scheduleNum: 5,
+  },
+  {
+    id: 5,
+    subject: "아이브",
+    scheduleNum: 5,
+  },
+];
+
+// ScheduleNumTagItem를 위해 각 subject 별 스케줄 개수 GET api 연결
 const AllDay = ({ day, nowDate, setNowDate }: Props) => {
   const nowTime = new Date();
 
@@ -25,7 +56,10 @@ const AllDay = ({ day, nowDate, setNowDate }: Props) => {
   };
 
   // 해당 날짜에 해당하는 ScheduleModal 열림
-  const openScheduleModalEvent = () => {};
+  const [openModal, setOpenModal] = useRecoilState(scheduleModalToggleAtom);
+  const openScheduleModalEvent = () => {
+    setOpenModal(!openModal);
+  };
 
   const dayClassNames = [articleProps.sameMonth && "hover:bg-subColor"].join(" ");
   const numClassNames = [
@@ -34,21 +68,19 @@ const AllDay = ({ day, nowDate, setNowDate }: Props) => {
   ].join(" ");
 
   return (
-    <div
-      onClick={openScheduleModalEvent}
+    <button
+      onClick={articleProps.sameMonth ? openScheduleModalEvent : undefined}
       className={`border flex justify-center items-center grid flex-wrap content-between ${dayClassNames}`}
     >
       <p className={numClassNames}>{day.getDate()}</p>
-      {/* 해당 달의 스케줄만 보임 */}
       {articleProps.sameMonth && (
         <div className="flex grid grid-cols-2">
-          <ScheduleNumTagItem />
-          <ScheduleNumTagItem />
-          <ScheduleNumTagItem />
-          <ScheduleNumTagItem />
+          {dummyData.map((elem) => {
+            return <ScheduleNumTagItem key={elem.id} data={elem} />;
+          })}
         </div>
       )}
-    </div>
+    </button>
   );
 };
 
