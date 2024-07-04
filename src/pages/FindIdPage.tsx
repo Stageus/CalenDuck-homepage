@@ -13,7 +13,7 @@ const FindIdPage = () => {
       </div>
 
       <article className="flex flex-col justify-center items-center w-[55vw] bg-white rounded-l-[30px]">
-        <div className="h-[50%] flex flex-col justify-around border border-blue-500">
+        <div className="h-[50%] flex flex-col justify-around">
           <div className="w-[100%]">
             <InputItem label="이름" type="text" placeholder="" extraBtn="" />
             <InputItem label="이메일" type="email" placeholder="" extraBtn="번호 전송" />
