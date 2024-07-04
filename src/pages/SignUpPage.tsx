@@ -18,7 +18,6 @@ const SignUpPage: React.FC = () => {
       prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
     );
   };
-  console.log(checkedList);
 
   // 전체동의 누를 경우 아래 checkbox 모두 속성 checked
   const toggleSelectAll = () => {

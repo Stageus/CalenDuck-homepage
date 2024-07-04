@@ -5,7 +5,6 @@ import DropDownItem from "shared/components/DropDownItem";
 import ScheduleAlarmOnBtn from "widgets/scheduleModal/ScheduleAlarmOnBtn";
 import ScheduleAlarmOffBtn from "widgets/scheduleModal/ScheduleAlarmOffBtn";
 import finish from "shared/imgs/finish.svg";
-// import exit from "shared/imgs/exit.svg";
 
 const ScheduleModal: React.FC = () => {
   const dummyData = [
@@ -59,20 +58,10 @@ const ScheduleModal: React.FC = () => {
     setAlarm(!alarm);
   };
 
-  // 모달창 닫힘 이벤트
-  const clickCloseModalEvent = () => {};
-
   return (
     <section className="bg-keyColor w-[717px] h-[486px] p-[20px] flex justify-center items-center drop-shadow">
       <div className="bg-white w-[100%] h-[100%] flex flex-col items-center ">
-        {/* 모달창 닫기
-        <div className="w-[100%] flex justify-end pt-[5px] pr-[5px]">
-          <button onClick={clickCloseModalEvent}>
-            <img src={exit} alt="닫기" />
-          </button>
-        </div> */}
-
-        {/* 최상단 */}
+        {/* 상단 */}
         <article className="w-[655px] h-[15%] px-[20px] flex justify-start items-center">
           <div className="mr-[20px]">
             <DropDownItem options={subjectOptions} value={subjectOptions[0]} onChange={() => {}} />

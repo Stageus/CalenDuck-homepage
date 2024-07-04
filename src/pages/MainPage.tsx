@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import HeaderSidebarContainer from "shared/components/HeaderSidebarContainer";
 import CalendarItem from "widgets/calendar/CalendarItem";
