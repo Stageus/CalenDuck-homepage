@@ -25,10 +25,10 @@ const SignInPage = () => {
 
           <div className="flex flex-col w-[100%]">
             <button className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold">
-              회원가입
+              로그인
             </button>
             <button className="w-[100%] py-[10px] bg-yellow-500 rounded-[5px] font-bold">
-              카카오로 시작
+              카카오 로그인
             </button>
           </div>
 

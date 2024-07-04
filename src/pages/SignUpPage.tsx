@@ -110,7 +110,7 @@ const SignUpPage: React.FC = () => {
             </label>
           </div>
 
-          <div className="w-[100%] flex flex-col justify-between items-center w-[100%]">
+          <div className="w-[100%] flex flex-col justify-between items-center">
             <button
               disabled={isSignUpBtnDisabled}
               className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
