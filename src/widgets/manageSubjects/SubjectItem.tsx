@@ -1,26 +1,25 @@
 import React, { useState, useRef } from "react";
 
 import edit from "shared/imgs/edit.svg";
-import DeleteManagerBtn from "widgets/manageManagers/DeleteManagerBtn";
-import SubmitNewManagerBtn from "widgets/manageManagers/SubmitNewManagerBtn";
+import DeleteSubjectBtn from "widgets/manageSubjects/DeleteSubjectBtn";
+import SubmitNewSubjectBtn from "widgets/manageSubjects/SubmitNewSubjectBtn";
 
 interface ManageItemProps {
   data: {
     id: number;
-    managerNickname?: string;
     subject: string;
   };
 }
 
-const ManageItem: React.FC<ManageItemProps> = (props) => {
-  const { id, managerNickname, subject } = props.data;
+const SubjectItem: React.FC<ManageItemProps> = (props) => {
+  const { id, subject } = props.data;
 
   // 수정하기 버튼 클릭 시
-  // 1. managerNickname input이 editable하게 됨
+  // 1. subject input이 editable하게 됨
   // 2. 기존 수정&삭제 버튼이 완료 버튼으로 변경됨
-  const nicknameRef = useRef<HTMLInputElement>(null);
+  const subjectRef = useRef<HTMLInputElement>(null);
   const [editing, setEditing] = useState<boolean>(false);
-  const editManagerEvent = () => {
+  const editSubjectEvent = () => {
     setEditing(!editing);
   };
 
@@ -30,39 +29,36 @@ const ManageItem: React.FC<ManageItemProps> = (props) => {
         <th className="w-[10%] px-[10px] py-4">
           <div className="flex justify-start">{id}</div>
         </th>
+
         {editing ? (
           <input
             type="text"
             className="w-[25%] px-[10px] py-4 mx-[10px] border border-alertColor outline-alertColor bg-transparent"
-            ref={nicknameRef}
-            defaultValue={managerNickname}
+            ref={subjectRef}
+            defaultValue={subject}
             maxLength={20}
           />
         ) : (
-          <th className="w-[30%] px-[10px] py-4">
-            <div className="flex justify-start px-2">{managerNickname}</div>
+          <th className="w-[50%] px-[10px] py-4">
+            <div className="flex justify-start px-2">{subject}</div>
           </th>
         )}
-
-        <th className="w-[50%] px-[10px] py-4">
-          <div className="flex justify-start px-2">{subject}</div>
-        </th>
       </div>
 
       {editing ? (
         <th className="w-[15%] flex justify-center px-[10px]">
-          <SubmitNewManagerBtn />
+          <SubmitNewSubjectBtn />
         </th>
       ) : (
         <th className="w-[15%] flex justify-between px-[10px]">
-          <button onClick={editManagerEvent}>
+          <button onClick={editSubjectEvent}>
             <img src={edit} alt="수정" />
           </button>
-          <DeleteManagerBtn />
+          <DeleteSubjectBtn />
         </th>
       )}
     </tr>
   );
 };
 
-export default ManageItem;
+export default SubjectItem;

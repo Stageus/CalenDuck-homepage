@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import HeaderItem from "shared/components/HeaderItem";
 import MasterSidebar from "widgets/masterSidebar/MasterSidebar";
-import ManageItem from "widgets/manageManagers/ManageItem";
+import ManagerItem from "widgets/manageManagers/ManagerItem";
 import NewManagerItem from "widgets/manageManagers/NewManagerItem";
 
 // 관심사 관리자(매니저) 계정 관리 페이지
@@ -99,7 +99,7 @@ const ManageManagersPage = () => {
           </thead>
           <tbody className="w-[100%] h-[65vh] overflow-y-auto flex flex-col">
             {dummyData.map((elem) => {
-              return <ManageItem key={elem.id} data={elem} />;
+              return <ManagerItem key={elem.id} data={elem} />;
             })}
           </tbody>
         </table>
