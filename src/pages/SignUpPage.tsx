@@ -78,25 +78,35 @@ const SignUpPage: React.FC = () => {
               <span className="text-sm">전체동의</span>
             </label>
             <hr className="my-[5px]" />
-            <label className="flex items-center">
-              <input
-                type="checkbox"
-                value="이용약관"
-                className="mr-[5px]"
-                checked={checkedList.includes("이용약관")}
-                onChange={toggleCheck}
-              />
-              <span className="text-sm">이용약관 (필수)</span>
+            <label className="w-[100%] flex justify-between items-center mb-[2px]">
+              <div>
+                <input
+                  type="checkbox"
+                  value="이용약관"
+                  className="mr-[5px]"
+                  checked={checkedList.includes("이용약관")}
+                  onChange={toggleCheck}
+                />
+                <span className="text-sm">이용약관 (필수)</span>
+              </div>
+              <button className="border border-black px-[5px] py-[3px] rounded-[5px] text-xs">
+                전문보기
+              </button>
             </label>
-            <label>
-              <input
-                type="checkbox"
-                value="개인정보 수집 및 동의"
-                className="mr-[5px]"
-                checked={checkedList.includes("개인정보 수집 및 동의")}
-                onChange={toggleCheck}
-              />
-              <span className="text-sm">개인정보 수집 및 동의 (필수)</span>
+            <label className="w-[100%] flex justify-between items-center">
+              <div>
+                <input
+                  type="checkbox"
+                  value="개인정보 수집 및 동의"
+                  className="mr-[5px]"
+                  checked={checkedList.includes("개인정보 수집 및 동의")}
+                  onChange={toggleCheck}
+                />
+                <span className="text-sm">개인정보 수집 및 동의 (필수)</span>
+              </div>
+              <button className="border border-black px-[5px] py-[3px] rounded-[5px] text-xs">
+                전문보기
+              </button>
             </label>
           </div>
 
