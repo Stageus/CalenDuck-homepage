@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 
 import edit from "shared/imgs/edit.svg";
 import DeleteManagerBtn from "widgets/manageManagers/DeleteManagerBtn";
-import SubmitNewManagerBtn from "widgets/manageManagers/SubmitNewManagerBtn";
+import SubmitEditedManagerBtn from "widgets/manageManagers/SubmitEditedManagerBtn";
 
 interface ManageItemProps {
   data: {
@@ -51,7 +51,7 @@ const ManagerItem: React.FC<ManageItemProps> = (props) => {
 
       {editing ? (
         <th className="w-[15%] flex justify-center px-[10px]">
-          <SubmitNewManagerBtn />
+          <SubmitEditedManagerBtn />
         </th>
       ) : (
         <th className="w-[15%] flex justify-between px-[10px]">

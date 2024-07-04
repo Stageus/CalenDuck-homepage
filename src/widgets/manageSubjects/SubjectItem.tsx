@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 
 import edit from "shared/imgs/edit.svg";
 import DeleteSubjectBtn from "widgets/manageSubjects/DeleteSubjectBtn";
-import SubmitNewSubjectBtn from "widgets/manageSubjects/SubmitNewSubjectBtn";
+import SubmitEditedSubjectBtn from "widgets/manageSubjects/SubmitEditedSubjectBtn";
 
 interface ManageItemProps {
   data: {
@@ -47,7 +47,7 @@ const SubjectItem: React.FC<ManageItemProps> = (props) => {
 
       {editing ? (
         <th className="w-[15%] flex justify-center px-[10px]">
-          <SubmitNewSubjectBtn />
+          <SubmitEditedSubjectBtn />
         </th>
       ) : (
         <th className="w-[15%] flex justify-between px-[10px]">
