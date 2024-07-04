@@ -30,7 +30,7 @@ const RequestItem: React.FC<RequestItemProps> = (props) => {
   };
 
   return (
-    <div className="w-[80%] flex justify-between m-[20px] items-center border border-red-500">
+    <div className="w-[80%] flex justify-between m-[20px] items-center">
       <span className="w-[5%]">{id}</span>
       <article className="w-[90%] h-fit bg-tagColor rounded-[5px] p-[10px]">
         <div className="flex justify-between items-center">

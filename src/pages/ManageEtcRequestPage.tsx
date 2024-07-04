@@ -75,7 +75,7 @@ const ManageEtcRequestPage = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="flex flex-col items-center border border-red-500">
+          <tbody className="flex flex-col items-center">
             {dummyData.map((elem) => {
               return <RequestItem key={elem.id} data={elem} />;
             })}
