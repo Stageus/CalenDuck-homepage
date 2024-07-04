@@ -40,7 +40,7 @@ const AlarmItem: React.FC<AlarmItemProps> = (props) => {
   return (
     <article
       className={`w-[100%] ${
-        openDetail ? "h-[70px]" : "h-[fit-content]]"
+        openDetail ? "h-[fit-content]" : "h-[70px]"
       } bg-tagColor rounded-[5px] p-[10px] m-[5px]`}
     >
       <div className="flex justify-between">
@@ -56,11 +56,11 @@ const AlarmItem: React.FC<AlarmItemProps> = (props) => {
 
         {type === 2 && (
           <button onClick={clickSeeDetailEvent}>
-            <img src={openDetail ? arrowDropDown : arrowDropUp} alt="자세히보기" />
+            <img src={openDetail ? arrowDropUp : arrowDropDown} alt="자세히보기" />
           </button>
         )}
       </div>
-      {type === 2 && !openDetail && <div className="mx-[50px] mt-[30px] mb-[20px]">{reply}</div>}
+      {type === 2 && openDetail && <div className="mx-[50px] mt-[30px] mb-[20px]">{reply}</div>}
     </article>
   );
 };
