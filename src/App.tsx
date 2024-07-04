@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // General, Manager 계정
 import SignInPage from "pages/SignInPage";
 import SignUpPage from "pages/SignUpPage";
+import FindIdPage from "pages/FindIdPage";
+import FindPwPage from "pages/FindPwPage";
+import SetNewPwPage from "pages/SetNewPwPage";
 import MainPage from "pages/MainPage";
 import AlarmPage from "pages/AlarmPage";
 import ContactPage from "pages/ContactPage";
@@ -20,6 +23,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/findId" element={<FindIdPage />} />
+        <Route path="/findPw" element={<FindPwPage />} />
+        <Route path="/setNewPw" element={<SetNewPwPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/alarm" element={<AlarmPage />} />
         <Route path="/contact" element={<ContactPage />} />
