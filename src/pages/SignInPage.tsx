@@ -12,7 +12,7 @@ const SignInPage = () => {
         <img src={mainLogo} alt="메인로고" />
       </div>
 
-      <article className="flex flex-col justify-center items-center w-[55vw] bg-white rounded-[30px]">
+      <article className="flex flex-col justify-center items-center w-[55vw] bg-white rounded-l-[30px]">
         <div className="h-[40%] flex flex-col justify-around">
           <div className="w-[100%]">
             <InputItem label="아이디" type="text" placeholder="최대 10자 이내로 입력해주세요" />
@@ -25,10 +25,10 @@ const SignInPage = () => {
 
           <div className="flex flex-col w-[100%]">
             <button className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold">
-              로그인
+              회원가입
             </button>
             <button className="w-[100%] py-[10px] bg-yellow-500 rounded-[5px] font-bold">
-              카카오 로그인
+              카카오로 시작
             </button>
           </div>
 
