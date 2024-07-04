@@ -68,12 +68,14 @@ const ManageEtcRequestPage = () => {
 
       <section className="mt-[70px] ml-[90px]">
         <table className="min-w-full bg-white">
-          <thead className="w-[100%]">
+          <thead className="w-[100%] flex justify-start">
             <tr className="w-[100%] px-[10%] flex justify-start border-b border-gray-200">
-              <th className="py-4">No</th>
+              <th className="w-[10%] py-4">
+                <div className="flex justify-start">No</div>
+              </th>
             </tr>
           </thead>
-          <tbody className="flex flex-col items-center">
+          <tbody className="flex flex-col items-center border border-red-500">
             {dummyData.map((elem) => {
               return <RequestItem key={elem.id} data={elem} />;
             })}

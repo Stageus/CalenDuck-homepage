@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import arrowDropDown from "shared/imgs/arrowDropDown.svg";
 import arrowDropUp from "shared/imgs/arrowDropUp.svg";
 
-interface AlarmItemProps {
+interface RequestItemProps {
   data: {
     id: number;
     nickname?: string;
@@ -16,7 +16,7 @@ interface AlarmItemProps {
 }
 
 // master가 받은 문의(관심사 추가 문의, 기타 문의)
-const RequestItem: React.FC<AlarmItemProps> = (props) => {
+const RequestItem: React.FC<RequestItemProps> = (props) => {
   const { id, nickname, date, title, content, reply } = props.data;
 
   let alarmSymbol, metaData;
@@ -30,7 +30,7 @@ const RequestItem: React.FC<AlarmItemProps> = (props) => {
   };
 
   return (
-    <div className="w-[80%] flex justify-between m-[20px] items-center">
+    <div className="w-[80%] flex justify-between m-[20px] items-center border border-red-500">
       <span className="w-[5%]">{id}</span>
       <article className="w-[90%] h-fit bg-tagColor rounded-[5px] p-[10px]">
         <div className="flex justify-between items-center">
