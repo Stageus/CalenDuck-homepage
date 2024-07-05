@@ -6,7 +6,6 @@ import ControlDate from "widgets/calendar/ControlDate";
 import DateBox from "widgets/calendar/DateBox";
 
 const CalendarItem = () => {
-  const isManager = true;
   // URL 쿼리스트링을 통한 내가 manager인 subject 추출
   const location = useLocation();
   const urlSearch = new URLSearchParams(location.search);
@@ -45,18 +44,18 @@ const CalendarItem = () => {
     <section className="w-[100%] h-[80vh] flex flex-col mt-[70px]">
       {/* 드롭다운 선택 부분 */}
       <article className="w-[25%] flex justify-between items-end">
-        {/* {isManager ? (
+        {managingSubject ? (
           <div className="flex flex-col">
             <span className="text-xs">👑 내가 관리자인 관심사</span>
             <span className="text-xl font-bold">{managingSubject}</span>
           </div>
-        ) : ( */}
-        <DropDownItem
-          options={subjectOptions}
-          value={selectedSubject}
-          onChange={handleSubjectChange}
-        />
-        {/* )} */}
+        ) : (
+          <DropDownItem
+            options={subjectOptions}
+            value={selectedSubject}
+            onChange={handleSubjectChange}
+          />
+        )}
 
         <DropDownItem options={yearOptions} value={selectedYear} onChange={handleYearChange} />
         <DropDownItem options={monthOptions} value={selectedMonth} onChange={handleMonthChange} />

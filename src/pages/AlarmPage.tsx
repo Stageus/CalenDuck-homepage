@@ -31,8 +31,11 @@ const AlarmPage = () => {
   return (
     <>
       <HeaderSidebarContainer />
-      <section className="mt-[70px]">
-        <h1 className="font-bold text-xl my-5">[ 알림함 ]</h1>
+      <div className="w-[100%] h-[50px] flex items-center font-bold text-xl mb-5 fixed top-[50px] bg-white">
+        [ 알림함 ]
+      </div>
+
+      <section className="mt-[120px]">
         <h2 className="font-bold text-l mt-7 mb-2">오늘 받은 알림</h2>
         <article className="flex flex-col items-center justify-start">
           {dummyData.map((elem) => {
