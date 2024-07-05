@@ -35,7 +35,7 @@ const CalendarItem = () => {
   };
 
   return (
-    <section className="w-[100%] h-[90vh] flex flex-col">
+    <section className="w-[100%] h-[80vh] flex flex-col">
       {/* 드롭다운 선택 부분 */}
       <article className="w-[20%] flex justify-between items-center mt-[30px]">
         <DropDownItem

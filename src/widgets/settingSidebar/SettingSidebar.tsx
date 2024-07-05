@@ -30,6 +30,7 @@ const SettingSidebar = () => {
       subject: "뮤지컬",
     },
   ];
+  const managingSubject = "뮤지컬";
 
   // 설정 사이드바 토글
   const [settingSidebarToggle, setSettingSearchSidebarToggle] =
@@ -74,7 +75,7 @@ const SettingSidebar = () => {
 
       {/* 하단 기능 버튼 */}
       <article className="w-[100%] h-[130px] mt-auto flex flex-col justify-between items-end">
-        <Link to="/manage?subject=미식축구">
+        <Link to={`/manager?subject=${managingSubject}`}>
           <button className="text-sm px-[10px] py-[5px] rounded-[5px] hover:bg-subColor">
             관심사 관리 페이지로 이동
           </button>
