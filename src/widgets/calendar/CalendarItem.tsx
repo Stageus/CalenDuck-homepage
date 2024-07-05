@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import DropDownItem from "shared/components/DropDownItem";
 import ControlDate from "widgets/calendar/ControlDate";
 import DateBox from "widgets/calendar/DateBox";
 
 const CalendarItem = () => {
+  const isManager = true;
+  // URL 쿼리스트링을 통한 내가 manager인 subject 추출
+  const location = useLocation();
+  const urlSearch = new URLSearchParams(location.search);
+  const managingSubject = urlSearch.get("subject");
+
   const subjectOptions = ["전체보기", "미식축구", "아이브", "뮤지컬", "르세라핌", "에스파", "개인"];
   const yearOptions = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027"];
   const monthOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
@@ -35,14 +42,22 @@ const CalendarItem = () => {
   };
 
   return (
-    <section className="w-[100%] h-[80vh] flex flex-col">
+    <section className="w-[100%] h-[80vh] flex flex-col mt-[70px]">
       {/* 드롭다운 선택 부분 */}
-      <article className="w-[20%] flex justify-between items-center mt-[30px]">
+      <article className="w-[25%] flex justify-between items-end">
+        {/* {isManager ? (
+          <div className="flex flex-col">
+            <span className="text-xs">👑 내가 관리자인 관심사</span>
+            <span className="text-xl font-bold">{managingSubject}</span>
+          </div>
+        ) : ( */}
         <DropDownItem
           options={subjectOptions}
           value={selectedSubject}
           onChange={handleSubjectChange}
         />
+        {/* )} */}
+
         <DropDownItem options={yearOptions} value={selectedYear} onChange={handleYearChange} />
         <DropDownItem options={monthOptions} value={selectedMonth} onChange={handleMonthChange} />
       </article>

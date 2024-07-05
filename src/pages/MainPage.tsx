@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 import scheduleModalToggleAtom from "shared/recoil/scheduleModalToggleAtom";
 
 const MainPage = () => {
+  const isManager = false;
   // 해당 날짜에 해당하는 ScheduleModal 열림
   const [openModal, setOpenModal] = useRecoilState(scheduleModalToggleAtom);
   const openScheduleModalEvent = () => {
@@ -17,7 +18,7 @@ const MainPage = () => {
   return (
     <>
       <HeaderSidebarContainer />
-      <article className="mt-[70px] flex flex-col flex-grow">
+      <article className="flex flex-col flex-grow">
         <CalendarItem />
       </article>
 

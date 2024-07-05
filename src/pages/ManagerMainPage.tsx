@@ -25,11 +25,6 @@ const ManagerMainPage = () => {
     <>
       <HeaderItem />
 
-      <article className="flex flex-col mt-[70px]">
-        <span className="text-xs">👑 내가 관리자인 관심사</span>
-        <span className="text-xl font-bold">{managingSubject}</span>
-      </article>
-
       <article className="flex flex-col flex-grow">
         <CalendarItem />
       </article>
