@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
-import alarmOn from "shared/imgs/alarmOn.svg";
-import alarmOff from "shared/imgs/alarmOff.svg";
+import ScheduleAlarmOnBtn from "widgets/scheduleModal/ScheduleAlarmOnBtn";
+import ScheduleAlarmOffBtn from "widgets/scheduleModal/ScheduleAlarmOffBtn";
 import edit from "shared/imgs/edit.svg";
 import remove from "shared/imgs/remove.svg";
 import finish from "shared/imgs/finish.svg";
@@ -10,13 +10,13 @@ interface ScheduleItemProps {
   data: {
     privacy: boolean;
     time: string;
-    category: string;
+    subject: string;
     title: string;
   };
 }
 
 const ScheduleItem: React.FC<ScheduleItemProps> = (props) => {
-  const { privacy, time, category, title } = props.data;
+  const { privacy, time, subject, title } = props.data;
 
   // 스케줄 알람 여부 토글
   const [alarm, setAlarm] = useState<boolean>(false);
@@ -45,15 +45,18 @@ const ScheduleItem: React.FC<ScheduleItemProps> = (props) => {
       } w-[638px] h-[70px] rounded-[5px] flex justify-between items-center p-[20px] m-[5px]`}
     >
       <div className="w-[80%] flex items-center">
-        <button onClick={clickSetAlarmEvent} className="w-[25px] mr-[20px]">
-          <img
-            src={alarm ? alarmOff : alarmOn}
-            alt={alarm ? "알람off" : "알람on"}
-            className="w-[100%]"
-          />
-        </button>
+        {alarm ? (
+          <div onClick={clickSetAlarmEvent}>
+            <ScheduleAlarmOnBtn />
+          </div>
+        ) : (
+          <div onClick={clickSetAlarmEvent}>
+            <ScheduleAlarmOffBtn />
+          </div>
+        )}
+
         <div className="w-[15%]">{time}</div>
-        <div className="w-[20%]">{category}</div>
+        <div className="w-[20%]">{subject}</div>
         {editing ? (
           <input
             type="text"

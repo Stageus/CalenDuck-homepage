@@ -1,22 +1,51 @@
 import React from "react";
 
-import ScheduleNumTagItem from "./ScheduleNumTagItem";
+import { useRecoilState } from "recoil";
+import scheduleModalToggleAtom from "shared/recoil/scheduleModalToggleAtom";
+
+import ScheduleNumTagItem from "widgets/calendar/ScheduleNumTagItem";
 
 interface Props {
   day: Date;
   nowDate: Date;
   setNowDate: React.Dispatch<React.SetStateAction<Date>>;
-  clickedDate: Date | undefined;
-  setClickedDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
 }
 
 interface ArticleProps {
   sameMonth: boolean;
   sameDay: boolean;
-  clickDay: boolean;
 }
 
-const AllDay = ({ day, nowDate, setNowDate, clickedDate, setClickedDate }: Props) => {
+const dummyData = [
+  {
+    id: 1,
+    subject: "분데스리가",
+    scheduleNum: 1,
+  },
+  {
+    id: 2,
+    subject: "뮤지컬",
+    scheduleNum: 2,
+  },
+  {
+    id: 3,
+    subject: "클래식",
+    scheduleNum: 3,
+  },
+  {
+    id: 4,
+    subject: "에스파",
+    scheduleNum: 5,
+  },
+  {
+    id: 5,
+    subject: "뉴진스의 이름이 엄청나게 길다면",
+    scheduleNum: 5,
+  },
+];
+
+// ScheduleNumTagItem를 위해 해당 날짜에 해당하는 각 subject 별 스케줄 개수 GET api 연결
+const AllDay = ({ day, nowDate, setNowDate }: Props) => {
   const nowTime = new Date();
 
   const articleProps: ArticleProps = {
@@ -25,39 +54,34 @@ const AllDay = ({ day, nowDate, setNowDate, clickedDate, setClickedDate }: Props
       nowTime.getFullYear() === day.getFullYear() &&
       nowTime.getMonth() === day.getMonth() &&
       nowTime.getDate() === day.getDate(),
-
-    clickDay: clickedDate
-      ? clickedDate.getFullYear() === day.getFullYear() &&
-        clickedDate.getMonth() === day.getMonth() &&
-        clickedDate.getDate() === day.getDate()
-      : false,
   };
 
-  const clickDate = () => {
-    setClickedDate(day);
+  // 해당 날짜에 해당하는 ScheduleModal 열림
+  const [openModal, setOpenModal] = useRecoilState(scheduleModalToggleAtom);
+  const openScheduleModalEvent = () => {
+    setOpenModal(!openModal);
   };
 
+  const dayClassNames = [articleProps.sameMonth && "hover:bg-subColor"].join(" ");
   const numClassNames = [
     articleProps.sameMonth ? "font-semibold" : "font-thin",
     articleProps.sameDay ? "text-alertColor" : "text-black",
   ].join(" ");
 
   return (
-    <div
-      onClick={clickDate}
-      className="border flex justify-center items-center hover:bg-subColor grid flex-wrap	content-between"
+    <button
+      onClick={articleProps.sameMonth ? openScheduleModalEvent : undefined}
+      className={`border flex justify-center items-center grid flex-wrap content-between ${dayClassNames}`}
     >
       <p className={numClassNames}>{day.getDate()}</p>
-      {/* 해당 달의 스케줄만 보임 */}
       {articleProps.sameMonth && (
         <div className="flex grid grid-cols-2">
-          <ScheduleNumTagItem />
-          <ScheduleNumTagItem />
-          <ScheduleNumTagItem />
-          <ScheduleNumTagItem />
+          {dummyData.map((elem) => {
+            return <ScheduleNumTagItem key={elem.id} data={elem} />;
+          })}
         </div>
       )}
-    </div>
+    </button>
   );
 };
 

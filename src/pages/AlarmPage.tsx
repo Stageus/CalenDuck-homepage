@@ -1,4 +1,6 @@
 import React from "react";
+
+import HeaderSidebarContainer from "shared/components/HeaderSidebarContainer";
 import AlarmItem from "widgets/AlarmItem";
 
 const AlarmPage = () => {
@@ -7,7 +9,7 @@ const AlarmPage = () => {
       id: "alarm_1",
       date: "2024/06/18",
       type: 1,
-      category: "프리미어리그",
+      subject: "프리미어리그",
       title: "토트넘 vs 울버햄튼",
     },
     {
@@ -28,12 +30,29 @@ const AlarmPage = () => {
 
   return (
     <>
-      <h1>알림페이지</h1>
-      <article className="flex flex-col items-center justify-start">
-        {dummyData.map((elem) => {
-          return <AlarmItem key={elem.id} data={elem} />;
-        })}
-      </article>
+      <HeaderSidebarContainer />
+      <div className="w-[100%] h-[50px] flex items-center font-bold text-xl mb-5 fixed top-[50px] bg-white">
+        [ 알림함 ]
+      </div>
+
+      <section className="mt-[120px]">
+        <h2 className="font-bold text-l mt-7 mb-2">오늘 받은 알림</h2>
+        <article className="flex flex-col items-center justify-start">
+          {dummyData.map((elem) => {
+            return <AlarmItem key={elem.id} data={elem} />;
+          })}
+        </article>
+
+        <div className="flex items-end mt-7 mb-2">
+          <h2 className="font-bold text-l mr-5">이전 알림</h2>
+          <span className="text-xs text-alertColor">30일 후 자동 삭제 됩니다</span>
+        </div>
+        <article className="flex flex-col items-center justify-start">
+          {dummyData.map((elem) => {
+            return <AlarmItem key={elem.id} data={elem} />;
+          })}
+        </article>
+      </section>
     </>
   );
 };

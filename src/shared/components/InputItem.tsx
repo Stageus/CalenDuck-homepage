@@ -19,11 +19,11 @@ const InputItem: React.FC<InputItemProps> = ({ label, type, placeholder, extraBt
   const inputType = type === "password" ? (showPw ? "text" : "password") : type;
 
   return (
-    <div className="w-[500px] h-[80px] content-between">
+    <div className="w-[500px] h-[80px] content-between mb-[10px]">
       <label htmlFor={label}>{label}</label>
       <div className="relative w-[100%] h-[50px]">
         <input
-          className="w-[100%] h-[50px] relative border-solid border-2 border-grayColor rounded-[10px] p-[10px]"
+          className="w-[100%] h-[50px] relative border-solid border-2 border-grayColor rounded-[10px] p-[10px] outline-alertColor"
           type={inputType}
           placeholder={placeholder}
         />

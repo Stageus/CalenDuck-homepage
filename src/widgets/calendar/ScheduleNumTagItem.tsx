@@ -1,20 +1,24 @@
 import React from "react";
 
-const ScheduleNumTagItem = () => {
-  const dummyData = {
-    subject: "분데스리가",
-    num: 123,
+interface ScheduleNumTagItemProps {
+  data: {
+    subject: string;
+    scheduleNum: number;
   };
-
+}
+const ScheduleNumTagItem: React.FC<ScheduleNumTagItemProps> = (props) => {
+  const { subject, scheduleNum } = props.data;
   return (
-    <div className="w-[70px] h-[27px] bg-tagColor m-[2px] px-[5px] flex justify-between items-center rounded-[20px]">
-      <button title={dummyData.subject} className="w-[45px] mr-[1px] text-[10px] truncate ... ">
-        {dummyData.subject}
-      </button>
+    <div className="w-[70px] h-[27px] bg-tagColor m-[2px] px-[10px] flex justify-center rounded-[20px]">
+      <div className="w-[60px] flex flex justify-between items-center">
+        <div className="flex justify-start w-[40px] text-[10px] ">
+          <div className="truncate ... ">{subject}</div>
+        </div>
 
-      <span className="flex justify-center w-[20px] text-[10px] ">
-        {dummyData.num >= 5 ? "[5+]" : dummyData.num}
-      </span>
+        <span className="flex justify-center w-[20px] text-[10px] ">
+          {scheduleNum >= 5 ? "[5+]" : `[${scheduleNum}]`}
+        </span>
+      </div>
     </div>
   );
 };

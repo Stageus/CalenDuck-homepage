@@ -1,14 +1,20 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
-import HeaderSidebarContainer from "shared/components/HeaderSidebarContainer";
+import HeaderItem from "shared/components/HeaderItem";
 import CalendarItem from "widgets/calendar/CalendarItem";
-import ScheduleModal from "widgets/scheduleModal/ScheduleModal";
+import ManagerScheduleModal from "widgets/managerScheduleModal/ManagerScheduleModal";
 
 import { useRecoilState } from "recoil";
 import scheduleModalToggleAtom from "shared/recoil/scheduleModalToggleAtom";
 
-const MainPage = () => {
-  const isManager = false;
+// 해당 subject의 스케줄 개수 GET api 연결
+const ManagerMainPage = () => {
+  // URL 쿼리스트링을 통한 내가 manager인 subject 추출
+  const location = useLocation();
+  const urlSearch = new URLSearchParams(location.search);
+  const managingSubject = urlSearch.get("subject");
+
   // 해당 날짜에 해당하는 ScheduleModal 열림
   const [openModal, setOpenModal] = useRecoilState(scheduleModalToggleAtom);
   const openScheduleModalEvent = () => {
@@ -17,7 +23,8 @@ const MainPage = () => {
 
   return (
     <>
-      <HeaderSidebarContainer />
+      <HeaderItem />
+
       <article className="flex flex-col flex-grow">
         <CalendarItem />
       </article>
@@ -29,10 +36,10 @@ const MainPage = () => {
             className="fixed inset-0 bg-lightgrayColor opacity-50"
             onClick={openScheduleModalEvent}
           ></div>
-          <ScheduleModal />
+          <ManagerScheduleModal />
         </div>
       )}
     </>
   );
 };
-export default MainPage;
+export default ManagerMainPage;
