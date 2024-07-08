@@ -58,6 +58,16 @@ const HeaderItem = () => {
           </button>
         </div>
       )}
+
+      {pathname === "/manager" && (
+        <div>
+          <Link to="/main">
+            <button className="flex items-center px-[10px] py-[5px] border border-black rounded-[5px]">
+              개인 스케줄
+            </button>
+          </Link>
+        </div>
+      )}
     </header>
   );
 };
