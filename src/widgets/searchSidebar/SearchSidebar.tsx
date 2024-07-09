@@ -148,7 +148,7 @@ const SearchSidebar: React.FC = () => {
       </article>
 
       {/* 검색결과 리스트 */}
-      <article className="w-[100%] h-[80%] overflow-scroll">
+      <article className="w-[100%] h-[80%] overflow-auto">
         {dummyData.map((elem) => {
           return <SearchItem key={elem.id} data={elem} />;
         })}
