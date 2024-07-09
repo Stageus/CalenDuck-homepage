@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 
 import HeaderItem from "shared/components/HeaderItem";
 import CalendarItem from "widgets/calendar/CalendarItem";
@@ -9,11 +8,6 @@ import { useRecoilState } from "recoil";
 import scheduleModalToggleAtom from "shared/recoil/scheduleModalToggleAtom";
 
 const ManagerMainPage = () => {
-  // URL 쿼리스트링을 통한 내가 manager인 subject 추출
-  const location = useLocation();
-  const urlSearch = new URLSearchParams(location.search);
-  const managingSubject = urlSearch.get("subject");
-
   // 해당 날짜에 해당하는 ScheduleModal 열림
   const [openModal, setOpenModal] = useRecoilState(scheduleModalToggleAtom);
   const openScheduleModalEvent = () => {
