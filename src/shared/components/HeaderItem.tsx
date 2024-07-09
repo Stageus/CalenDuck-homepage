@@ -16,9 +16,12 @@ import { Link } from "react-router-dom";
 
 const HeaderItem = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
   const [searchSidebarToggle, setSearchSidebarToggle] = useRecoilState(searchSidebarToggleAtom);
   const [settingSidebarToggle, setSettingSidebarToggle] = useRecoilState(settingSidebarToggleAtom);
+
+  const date = `${new Date().getFullYear()}${(new Date().getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}`;
 
   // 검색 사이드바 토글 이벤트
   const searchBtnToggleEvent = () => {
@@ -33,7 +36,7 @@ const HeaderItem = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 w-full bg-white y-[70px] flex justify-between items-center z-50 px-[200px]">
-      <Link to="/main">
+      <Link to={`/main?date=${date}`}>
         <img src={logo} alt="메인" />
       </Link>
 
@@ -61,7 +64,7 @@ const HeaderItem = () => {
 
       {pathname === "/manager" && (
         <div>
-          <Link to="/main">
+          <Link to={`/main?date=${date}`}>
             <button className="flex items-center px-[10px] py-[5px] border border-black rounded-[5px]">
               개인 스케줄
             </button>
