@@ -6,6 +6,8 @@ import settingSidebarToggleAtom from "shared/recoil/settingSidebarToggleAtom";
 
 import search from "shared/imgs/search.svg";
 import MySubjectList from "widgets/settingSidebar/MySubjectList";
+import LogoutItem from "widgets/settingSidebar/LogoutItem";
+import DeleteAccountItem from "widgets/settingSidebar/DeleteAccountItem";
 
 // 관심사 목록 불러오기 GET api 연결 (/subjects)
 const SettingSidebar = () => {
@@ -62,12 +64,12 @@ const SettingSidebar = () => {
             1:1문의
           </button>
         </Link>
-        <button className="text-sm px-[10px] py-[5px] rounded-[5px] hover:bg-subColor">
-          로그아웃
-        </button>
-        <button className="text-sm px-[10px] py-[5px] rounded-[5px] hover:bg-subColor">
-          탈퇴하기
-        </button>
+
+        {/* 로그아웃 */}
+        <LogoutItem />
+
+        {/* 탈퇴하기 */}
+        <DeleteAccountItem />
       </article>
     </section>
   );

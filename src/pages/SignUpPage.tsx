@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import mainLogo from "shared/imgs/mainLogo.svg";
 import InputItem from "shared/components/InputItem";
 
+// 회원가입 POST api 연결 (/users)
 const SignUpPage: React.FC = () => {
   const [checkedList, setCheckedList] = useState<string[]>([]);
   const [isSignUpBtnDisabled, setIsSignUpBtnDisabled] = useState(true);

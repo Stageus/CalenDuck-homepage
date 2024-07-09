@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import mainLogo from "shared/imgs/mainLogo.svg";
 import InputItem from "shared/components/InputItem";
 
+// 아이디 찾기 POST api 연결 (/users/id/find)
 const FindIdPage = () => {
   return (
     <section className="fixed left-0 w-[100vw] h-[100vh] flex bg-keyColor ">
