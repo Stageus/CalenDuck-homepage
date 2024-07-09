@@ -11,6 +11,7 @@ interface ManageItemProps {
   };
 }
 
+// 관심사 목록 불러오기 GET api 연결 (/subjects)
 const SubjectItem: React.FC<ManageItemProps> = (props) => {
   const { id, subject } = props.data;
 

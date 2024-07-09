@@ -2,7 +2,7 @@ import React from "react";
 
 import finish from "shared/imgs/finish.svg";
 
-// 수정된 관심사 PUT api 연결
+// 관심사 수정 PUT api 연결 (/master/subjects/:idx)
 const SubmitEditedSubjectBtn = () => {
   return (
     <button>

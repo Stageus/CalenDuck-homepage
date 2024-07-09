@@ -3,8 +3,8 @@ import React from "react";
 import minus from "shared/imgs/minus.svg";
 import plus from "shared/imgs/plus.svg";
 
-// 새로운 관심사 입력란
-const NewManagerItem = () => {
+// 관심사 수정 PUT api 연결 (/master/subjects/:idx)
+const NewSubjectItem = () => {
   return (
     <section className="fixed bottom-[50px] ml-[90px] w-[calc(100vw-500px)]">
       <table className="min-w-full">
@@ -21,8 +21,10 @@ const NewManagerItem = () => {
 
             <th className="w-[15%] flex justify-between px-[10px]">
               <button>
-                <img src={minus} alt="minu" />
+                <img src={minus} alt="minus" />
               </button>
+
+              {/* 새로운 관심사 추가 */}
               <button>
                 <img src={plus} alt="plus" />
               </button>
@@ -34,4 +36,4 @@ const NewManagerItem = () => {
   );
 };
 
-export default NewManagerItem;
+export default NewSubjectItem;

@@ -3,9 +3,9 @@ import { useLocation } from "react-router-dom";
 
 import HeaderItem from "shared/components/HeaderItem";
 import MasterSidebar from "widgets/masterSidebar/MasterSidebar";
-import RequestItem from "widgets/RequestItem";
+import RequestItem from "widgets/manageRequests/RequestItem";
 
-// 관심사 추가 문의 관리 페이지
+// 관심사 추가문의 목록 불러오기 GET api 연결 (/master/subjects)
 const ManageSubjectRequestPage = () => {
   const location = useLocation();
 
