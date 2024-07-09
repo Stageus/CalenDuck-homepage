@@ -8,7 +8,6 @@ import ManagerScheduleModal from "widgets/managerScheduleModal/ManagerScheduleMo
 import { useRecoilState } from "recoil";
 import scheduleModalToggleAtom from "shared/recoil/scheduleModalToggleAtom";
 
-// 해당 subject의 스케줄 개수 GET api 연결
 const ManagerMainPage = () => {
   // URL 쿼리스트링을 통한 내가 manager인 subject 추출
   const location = useLocation();

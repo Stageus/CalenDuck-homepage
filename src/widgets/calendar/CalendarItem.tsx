@@ -5,6 +5,7 @@ import DropDownItem from "shared/components/DropDownItem";
 import ControlDate from "widgets/calendar/ControlDate";
 import DateBox from "widgets/calendar/DateBox";
 
+// 특정 년월 스케줄 전체 불러오기 GET api 연결 (/schedules?date)
 const CalendarItem = () => {
   // URL 쿼리스트링을 통한 내가 manager인 subject 추출
   const location = useLocation();
