@@ -65,18 +65,7 @@ const RequestItem: React.FC<RequestItemProps> = (props) => {
             {reply}
           </div>
         )}
-        {!reply && !openDetail ? (
-          // <div className="mx-[50px] mt-[30px] mb-[20px] flex flex-col items-end">
-          //   <textarea
-          //     className="w-[100%] p-[10px] mb-[10px] outline-keyColor"
-          //     placeholder="( 답변 입력 )"
-          //   />
-          //   <button className="bg-subColor text-sm w-[80px] py-[3px] rounded-[5px]">전송</button>
-          // </div>
-          <ReplyRequestItem />
-        ) : (
-          ""
-        )}
+        {!reply && !openDetail ? <ReplyRequestItem /> : ""}
       </article>
     </div>
   );
