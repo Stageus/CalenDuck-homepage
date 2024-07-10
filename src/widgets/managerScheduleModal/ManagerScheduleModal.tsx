@@ -2,8 +2,9 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 import ManagerScheduleItem from "widgets/managerScheduleModal/ManagerScheduleItem";
-import finish from "shared/imgs/finish.svg";
+import NewSubjectScheduleItem from "widgets/managerScheduleModal/NewSubjectScheduleItem";
 
+// 특정 날짜 스케줄 전체 불러오기 GET api 연결 (/schedules/details?date)
 const ManagerScheduleModal: React.FC = () => {
   const dummyData = [
     {
@@ -43,12 +44,6 @@ const ManagerScheduleModal: React.FC = () => {
   const urlSearch = new URLSearchParams(location.search);
   const managingSubject = urlSearch.get("subject");
 
-  // 해당 subject의 새로운 스케줄 PUSH api 연결
-  const submitNewSubjectSchedule = () => {
-    // subject, date, time, title 데이터 전달
-  };
-
-  // 해당 날짜의 스케줄 목록 GET api 연결
   return (
     <section className="bg-keyColor w-[717px] h-[486px] p-[20px] flex justify-center items-center drop-shadow">
       <div className="bg-white w-[100%] h-[100%] flex flex-col items-center ">
@@ -58,26 +53,8 @@ const ManagerScheduleModal: React.FC = () => {
           <div className="font-bold	text-xl">2024/06/18</div>
         </article>
 
-        {/* 해당 subject 새로운 스케줄 입력란 */}
-        <article className="w-[655px] h-[15%] p-[20px] flex justify-between border-y border-black">
-          <div className="w-[85%] flex items-center">
-            <div>
-              <input type="time" />
-            </div>
-            <input
-              type="text"
-              className="w-[350px] border border-alertColor outline-alertColor bg-transparent p-[10px] ml-[30px] items-center"
-              maxLength={20}
-              placeholder="새로운 스케줄 입력"
-            />
-          </div>
-
-          <div className="w-[10%] flex justify-center">
-            <button onClick={submitNewSubjectSchedule}>
-              <img src={finish} alt="제출하기" />
-            </button>
-          </div>
-        </article>
+        {/* 새로운 스케줄 입력란 */}
+        <NewSubjectScheduleItem />
 
         {/* 해당 날짜의 스케줄 리스트 */}
         <article className="flex flex-col items-center justify-start h-[70%] overflow-auto">

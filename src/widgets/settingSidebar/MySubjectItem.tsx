@@ -8,10 +8,10 @@ interface MySubjectItemProps {
   };
 }
 
+// 내 관심사 삭제 DELETE api 연결 (/users/subjects/:idx)
 const MySubjectItem: React.FC<MySubjectItemProps> = (props) => {
   const { subject } = props.data;
 
-  // 내 관심사 목록에서 해당 관심사 제거
   const clickRemoveSubject = () => {
     console.log("해당 관심사가 제거되었습니다.");
   };

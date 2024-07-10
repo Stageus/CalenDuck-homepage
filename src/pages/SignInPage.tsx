@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import mainLogo from "shared/imgs/mainLogo.svg";
 import InputItem from "shared/components/InputItem";
 
+// 로그인 PUT api 연결 (/users/login)
 const SignInPage = () => {
   return (
     <section className="fixed left-0 w-[100vw] h-[100vh] flex bg-keyColor ">

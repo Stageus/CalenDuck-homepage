@@ -6,7 +6,7 @@ import MasterSidebar from "widgets/masterSidebar/MasterSidebar";
 import ManagerItem from "widgets/manageManagers/ManagerItem";
 import NewManagerItem from "widgets/manageManagers/NewManagerItem";
 
-// 관심사 관리자(매니저) 계정 관리 페이지
+// 관심사 계정 목록 불러오기 GET api 연결 (/master/managers)
 const ManageManagersPage = () => {
   const location = useLocation();
 

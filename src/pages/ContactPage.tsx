@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import HeaderSidebarContainer from "shared/components/HeaderSidebarContainer";
 import DropDownItem from "shared/components/DropDownItem";
 
+// 문의 작성 POST api 연결 (/asks)
 const ContactPage = () => {
   const contactOptions = ["관심사 추가 요청", "기타 문의"];
   const [selectedContact, setSelectedContact] = useState<string>(contactOptions[0]);
@@ -10,13 +11,15 @@ const ContactPage = () => {
     setSelectedContact(e.target.value);
   };
 
+  const submitRequest = () => {};
+
   return (
     <>
       <HeaderSidebarContainer />
-      <section className="mt-[70px]">
+      <section className="mt-[70px] w-[100%]">
         <h1 className="font-bold text-xl my-5">[ 1:1 문의 ]</h1>
 
-        <article className="flex w-[100%] justify-start items-center mt-7 mb-2">
+        <article className="flex w-[100%] justify-between items-center mt-7 mb-2">
           <h2 className="font-bold text-l mr-5">문의 유형</h2>
           <div className="border border-black w-[90%] h-[50px] flex justify-start p-[10px]">
             <DropDownItem
@@ -26,6 +29,7 @@ const ContactPage = () => {
             />
           </div>
         </article>
+
         {selectedContact === "관심사 추가 요청" && (
           <span className="text-alertColor my-[30px]">
             ️※ 관심사 추가 요청이 수락될 경우, <br />
@@ -34,15 +38,24 @@ const ContactPage = () => {
           </span>
         )}
 
-        <article className="flex w-[100%] justify-start items-center mt-7 mb-5">
+        <article className="flex w-[100%] justify-between items-center mt-7 mb-5">
           <h2 className="font-bold text-l mr-5">문의 제목</h2>
           <input className="border border-black w-[90%] h-[50px] p-[10px]" type="text" />
         </article>
 
-        <article className="flex w-[100%] justify-start items-center mt-7 mb-2">
+        <article className="flex w-[100%] justify-between items-center mt-7 mb-2">
           <h2 className="font-bold text-l mr-5">문의 내용</h2>
           <textarea className="border border-black w-[90%] h-[300px] p-[10px]" />
         </article>
+
+        <div className="w-[100%] flex justify-end mt-7">
+          <button
+            onClick={submitRequest}
+            className="bg-subColor text-sm w-[80px] py-[3px] rounded-[5px]"
+          >
+            작성완료
+          </button>
+        </div>
       </section>
     </>
   );

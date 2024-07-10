@@ -3,6 +3,7 @@ import React from "react";
 import HeaderSidebarContainer from "shared/components/HeaderSidebarContainer";
 import AlarmItem from "widgets/AlarmItem";
 
+// 알림 목록 불러오기 GET api 연결 (/notifications)
 const AlarmPage = () => {
   const dummyData = [
     {

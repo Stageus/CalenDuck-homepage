@@ -1,55 +1,103 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import DropDownItem from "shared/components/DropDownItem";
 import ControlDate from "widgets/calendar/ControlDate";
 import DateBox from "widgets/calendar/DateBox";
 
+// 특정 년월 스케줄 전체 불러오기 GET api 연결 (/schedules?date)
 const CalendarItem = () => {
-  // URL 쿼리스트링을 통한 내가 manager인 subject 추출
+  // URL 쿼리스트링을 통한 date의 year, month 추출
   const location = useLocation();
+  const navigate = useNavigate();
   const urlSearch = new URLSearchParams(location.search);
+  const initialDate =
+    urlSearch.get("date") ||
+    `${new Date().getFullYear()}${(new Date().getMonth() + 1).toString().padStart(2, "0")}`;
+
+  // URL 쿼리스트링을 통한 내가 manager인 subject 추출
+  const [status, setStatus] = useState<string>("general"); // 혹은 "manager"
   const managingSubject = urlSearch.get("subject");
 
+  useEffect(() => {
+    let queryString = `/main?date=${initialDate}`;
+    if (status === "manager" && managingSubject) {
+      queryString += `&subject=${managingSubject}`;
+    }
+  }, [initialDate, status, managingSubject]);
+
   const subjectOptions = ["전체보기", "미식축구", "아이브", "뮤지컬", "르세라핌", "에스파", "개인"];
-  const yearOptions = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027"];
-  const monthOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+  const yearOptions = [
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026",
+    "2027",
+    "2028",
+    "2029",
+    "2030",
+  ];
+  const monthOptions = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+
+  // date 값을 분해하여 초기 state 설정
+  const initialYear = initialDate.substring(0, 4);
+  const initialMonth = initialDate.substring(4, 6);
 
   const [nowDate, setNowDate] = useState<Date>(new Date());
   const [selectedSubject, setSelectedSubject] = useState<string>(subjectOptions[0]);
-  const [selectedYear, setSelectedYear] = useState<string>(String(nowDate.getFullYear()));
-  const [selectedMonth, setSelectedMonth] = useState<string>(String(nowDate.getMonth() + 1));
+  const [selectedYear, setSelectedYear] = useState<string>(initialYear);
+  const [selectedMonth, setSelectedMonth] = useState<string>(initialMonth);
 
   const handleSubjectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedSubject(e.target.value);
   };
 
+  const updateDate = (year: string, month: string) => {
+    const newDate = `${year}${month}`;
+    const params = new URLSearchParams(location.search);
+    params.set("date", newDate);
+
+    // 사용자가 "manager" 상태이고 관리 중인 subject가 있다면
+    if (status === "manager" && managingSubject) {
+      params.set("subject", managingSubject);
+    }
+
+    // 해당 params로 이동
+    navigate({ search: params.toString() });
+  };
+
   const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const year = e.target.value;
     setSelectedYear(year);
-    const newDate = new Date(nowDate);
-    newDate.setFullYear(Number(year));
-    setNowDate(newDate);
+    updateDate(year, selectedMonth);
   };
 
   const handleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const month = e.target.value;
     setSelectedMonth(month);
-    const newDate = new Date(nowDate);
-    newDate.setMonth(Number(month) - 1);
-    setNowDate(newDate);
+    updateDate(selectedYear, month);
   };
+
+  useEffect(() => {
+    const newDate = new Date(Number(selectedYear), Number(selectedMonth) - 1);
+    setNowDate(newDate);
+  }, [selectedYear, selectedMonth]);
 
   return (
     <section className="w-[100%] h-[80vh] flex flex-col mt-[70px]">
       {/* 드롭다운 선택 부분 */}
       <article className="w-[25%] flex justify-between items-end">
         {managingSubject ? (
+          // manager 계정으로 로그인
           <div className="flex flex-col">
             <span className="text-xs">👑 내가 관리자인 관심사</span>
             <span className="text-xl font-bold">{managingSubject}</span>
           </div>
         ) : (
+          // general 계정으로 로그인
           <DropDownItem
             options={subjectOptions}
             value={selectedSubject}

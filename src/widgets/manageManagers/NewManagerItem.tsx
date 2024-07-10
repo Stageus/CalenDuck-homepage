@@ -3,7 +3,7 @@ import React from "react";
 import minus from "shared/imgs/minus.svg";
 import plus from "shared/imgs/plus.svg";
 
-// 새로운 관심사 관리자(매니저) 입력란
+// 관심사 계정 권한 부여 POST api 연결 (/master/users/permission)
 const NewManagerItem = () => {
   return (
     <section className="fixed bottom-[50px] ml-[90px] w-[calc(100vw-500px)]">

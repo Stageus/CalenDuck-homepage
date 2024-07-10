@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 
 import edit from "shared/imgs/edit.svg";
-import remove from "shared/imgs/remove.svg";
-import finish from "shared/imgs/finish.svg";
+import EditSubjectScheduleItem from "./EditSubjectScheduleItem";
+import DeleteSubjectScheduleItem from "./DeleteSubjectScheduleItem";
 
 interface ManagerScheduleItemProps {
   data: {
@@ -52,19 +52,15 @@ const ManagerScheduleItem: React.FC<ManagerScheduleItemProps> = (props) => {
 
       <div className={`w-[13%] flex ${editing ? "justify-center" : "justify-between"}`}>
         {editing ? (
-          <>
-            <button onClick={editTitleEvent}>
-              <img src={finish} alt="제출하기" />
-            </button>
-          </>
+          // 수정하기
+          <EditSubjectScheduleItem />
         ) : (
           <>
             <button onClick={editTitleEvent}>
               <img src={edit} alt="수정하기" />
             </button>
-            <button>
-              <img src={remove} alt="삭제하기" />
-            </button>
+            {/* 삭제하기 */}
+            <DeleteSubjectScheduleItem />
           </>
         )}
       </div>

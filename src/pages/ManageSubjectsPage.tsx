@@ -6,7 +6,7 @@ import MasterSidebar from "widgets/masterSidebar/MasterSidebar";
 import SubjectItem from "widgets/manageSubjects/SubjectItem";
 import NewSubjectItem from "widgets/manageSubjects/NewSubjectItem";
 
-// 관심사 관리 페이지
+// 관심사 목록 불러오기 GET api 연결 (/subjects)
 const ManageSubjectsPage = () => {
   const location = useLocation();
 
