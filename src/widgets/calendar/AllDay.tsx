@@ -19,32 +19,32 @@ interface ArticleProps {
 const dummyData = [
   {
     id: 1,
-    subject: "분데스리가",
+    interest: "분데스리가",
     scheduleNum: 1,
   },
   {
     id: 2,
-    subject: "뮤지컬",
+    interest: "뮤지컬",
     scheduleNum: 2,
   },
   {
     id: 3,
-    subject: "클래식",
+    interest: "클래식",
     scheduleNum: 3,
   },
   {
     id: 4,
-    subject: "에스파",
+    interest: "에스파",
     scheduleNum: 5,
   },
   {
     id: 5,
-    subject: "뉴진스의 이름이 엄청나게 길다면",
+    interest: "뉴진스의 이름이 엄청나게 길다면",
     scheduleNum: 5,
   },
 ];
 
-// ScheduleNumTagItem를 위해 해당 날짜에 해당하는 각 subject 별 스케줄 개수 GET api 연결
+// ScheduleNumTagItem를 위해 해당 날짜에 해당하는 각 interest 별 스케줄 개수 GET api 연결
 const AllDay = ({ day, nowDate, setNowDate }: Props) => {
   const nowTime = new Date();
 

@@ -10,7 +10,7 @@ const AlarmPage = () => {
       id: "alarm_1",
       date: "2024/06/18",
       type: 1,
-      subject: "프리미어리그",
+      interest: "프리미어리그",
       title: "토트넘 vs 울버햄튼",
     },
     {

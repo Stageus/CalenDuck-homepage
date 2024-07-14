@@ -3,7 +3,7 @@ import React from "react";
 import finish from "shared/imgs/finish.svg";
 
 // 관심사 스케줄 수정 PUT api 연결 (/managers/schedules/:idx)
-const EditSubjectScheduleItem = () => {
+const EditInterestScheduleItem = () => {
   const editTitleEvent = () => {};
   return (
     <button onClick={editTitleEvent}>
@@ -12,4 +12,4 @@ const EditSubjectScheduleItem = () => {
   );
 };
 
-export default EditSubjectScheduleItem;
+export default EditInterestScheduleItem;

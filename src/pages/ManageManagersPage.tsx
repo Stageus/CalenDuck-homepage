@@ -14,62 +14,62 @@ const ManageManagersPage = () => {
     {
       id: 1,
       managerNickname: "민석최",
-      subject: "에스파",
+      interest: "에스파",
     },
     {
       id: 2,
       managerNickname: "소미유",
-      subject: "클래식 연주회",
+      interest: "클래식 연주회",
     },
     {
       id: 3,
       managerNickname: "윤서박",
-      subject: "미식축구",
+      interest: "미식축구",
     },
     {
       id: 4,
       managerNickname: "수인리",
-      subject: "리그오브레전드",
+      interest: "리그오브레전드",
     },
     {
       id: 5,
       managerNickname: "경은조",
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
       managerNickname: "경은조",
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
       managerNickname: "경은조",
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
       managerNickname: "경은조",
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
       managerNickname: "경은조",
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
       managerNickname: "경은조",
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
       managerNickname: "경은조",
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
       managerNickname: "경은조",
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
   ];
 

@@ -8,12 +8,12 @@ interface ManageItemProps {
   data: {
     id: number;
     managerNickname: string;
-    subject: string;
+    interest: string;
   };
 }
 
 const ManagerItem: React.FC<ManageItemProps> = (props) => {
-  const { id, managerNickname, subject } = props.data;
+  const { id, managerNickname, interest } = props.data;
 
   // 수정하기 버튼 클릭 시
   // 1. managerNickname input이 editable하게 됨
@@ -45,7 +45,7 @@ const ManagerItem: React.FC<ManageItemProps> = (props) => {
         )}
 
         <th className="w-[50%] px-[10px] py-4">
-          <div className="flex justify-start px-2">{subject}</div>
+          <div className="flex justify-start px-2">{interest}</div>
         </th>
       </div>
 

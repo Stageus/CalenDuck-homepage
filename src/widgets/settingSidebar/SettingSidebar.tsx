@@ -5,16 +5,16 @@ import { useRecoilState } from "recoil";
 import settingSidebarToggleAtom from "shared/recoil/settingSidebarToggleAtom";
 
 import search from "shared/imgs/search.svg";
-import MySubjectList from "widgets/settingSidebar/MySubjectList";
+import MyInterestList from "widgets/settingSidebar/MyInterestList";
 import LogoutItem from "widgets/settingSidebar/LogoutItem";
 import DeleteAccountItem from "widgets/settingSidebar/DeleteAccountItem";
 
-// 관심사 목록 불러오기 GET api 연결 (/subjects)
+// 관심사 목록 불러오기 GET api 연결 (/interests)
 const SettingSidebar = () => {
   const date = `${new Date().getFullYear()}${(new Date().getMonth() + 1)
     .toString()
     .padStart(2, "0")}`;
-  const managingSubject = "뮤지컬";
+  const managingInterest = "뮤지컬";
 
   // 설정 사이드바 토글
   const [settingSidebarToggle, setSettingSearchSidebarToggle] =
@@ -51,12 +51,12 @@ const SettingSidebar = () => {
       </article>
 
       {/* 내 관심사 목록 */}
-      <MySubjectList />
+      <MyInterestList />
 
       {/* 하단 기능 버튼 */}
       <article className="w-[100%] h-[130px] mt-auto flex flex-col justify-between items-end">
-        {managingSubject && (
-          <Link to={`/manager?date=${date}&subject=${managingSubject}`}>
+        {managingInterest && (
+          <Link to={`/manager?date=${date}&interest=${managingInterest}`}>
             <button className="text-sm px-[10px] py-[5px] rounded-[5px] hover:bg-subColor">
               관심사 관리 페이지로 이동
             </button>

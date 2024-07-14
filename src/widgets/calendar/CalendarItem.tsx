@@ -15,18 +15,26 @@ const CalendarItem = () => {
     urlSearch.get("date") ||
     `${new Date().getFullYear()}${(new Date().getMonth() + 1).toString().padStart(2, "0")}`;
 
-  // URL 쿼리스트링을 통한 내가 manager인 subject 추출
+  // URL 쿼리스트링을 통한 내가 manager인 interest 추출
   const [status, setStatus] = useState<string>("general"); // 혹은 "manager"
-  const managingSubject = urlSearch.get("subject");
+  const managingInterest = urlSearch.get("interest");
 
   useEffect(() => {
     let queryString = `/main?date=${initialDate}`;
-    if (status === "manager" && managingSubject) {
-      queryString += `&subject=${managingSubject}`;
+    if (status === "manager" && managingInterest) {
+      queryString += `&interest=${managingInterest}`;
     }
-  }, [initialDate, status, managingSubject]);
+  }, [initialDate, status, managingInterest]);
 
-  const subjectOptions = ["전체보기", "미식축구", "아이브", "뮤지컬", "르세라핌", "에스파", "개인"];
+  const interestOptions = [
+    "전체보기",
+    "미식축구",
+    "아이브",
+    "뮤지컬",
+    "르세라핌",
+    "에스파",
+    "개인",
+  ];
   const yearOptions = [
     "2020",
     "2021",
@@ -47,12 +55,12 @@ const CalendarItem = () => {
   const initialMonth = initialDate.substring(4, 6);
 
   const [nowDate, setNowDate] = useState<Date>(new Date());
-  const [selectedSubject, setSelectedSubject] = useState<string>(subjectOptions[0]);
+  const [selectedInterest, setSelectedInterest] = useState<string>(interestOptions[0]);
   const [selectedYear, setSelectedYear] = useState<string>(initialYear);
   const [selectedMonth, setSelectedMonth] = useState<string>(initialMonth);
 
-  const handleSubjectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedSubject(e.target.value);
+  const handleInterestChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedInterest(e.target.value);
   };
 
   const updateDate = (year: string, month: string) => {
@@ -60,9 +68,9 @@ const CalendarItem = () => {
     const params = new URLSearchParams(location.search);
     params.set("date", newDate);
 
-    // 사용자가 "manager" 상태이고 관리 중인 subject가 있다면
-    if (status === "manager" && managingSubject) {
-      params.set("subject", managingSubject);
+    // 사용자가 "manager" 상태이고 관리 중인 interest가 있다면
+    if (status === "manager" && managingInterest) {
+      params.set("interest", managingInterest);
     }
 
     // 해당 params로 이동
@@ -90,18 +98,18 @@ const CalendarItem = () => {
     <section className="w-[100%] h-[80vh] flex flex-col mt-[70px]">
       {/* 드롭다운 선택 부분 */}
       <article className="w-[25%] flex justify-between items-end">
-        {managingSubject ? (
+        {managingInterest ? (
           // manager 계정으로 로그인
           <div className="flex flex-col">
             <span className="text-xs">👑 내가 관리자인 관심사</span>
-            <span className="text-xl font-bold">{managingSubject}</span>
+            <span className="text-xl font-bold">{managingInterest}</span>
           </div>
         ) : (
           // general 계정으로 로그인
           <DropDownItem
-            options={subjectOptions}
-            value={selectedSubject}
-            onChange={handleSubjectChange}
+            options={interestOptions}
+            value={selectedInterest}
+            onChange={handleInterestChange}
           />
         )}
 

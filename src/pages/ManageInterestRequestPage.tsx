@@ -5,8 +5,8 @@ import HeaderItem from "shared/components/HeaderItem";
 import MasterSidebar from "widgets/masterSidebar/MasterSidebar";
 import RequestItem from "widgets/manageRequests/RequestItem";
 
-// 관심사 추가문의 목록 불러오기 GET api 연결 (/master/subjects)
-const ManageSubjectRequestPage = () => {
+// 관심사 추가문의 목록 불러오기 GET api 연결 (/master/interests)
+const ManageInterestRequestPage = () => {
   const location = useLocation();
 
   const dummyData = [
@@ -84,4 +84,4 @@ const ManageSubjectRequestPage = () => {
   );
 };
 
-export default ManageSubjectRequestPage;
+export default ManageInterestRequestPage;

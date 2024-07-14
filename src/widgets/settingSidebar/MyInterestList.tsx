@@ -1,28 +1,28 @@
 import React from "react";
-import MySubjectItem from "widgets/settingSidebar/MySubjectItem";
+import MyInterestItem from "widgets/settingSidebar/MyInterestItem";
 
-// 내 관심사 불러오기 GET api 연결 (/users/subjects)
-const MySubjectList = () => {
+// 내 관심사 불러오기 GET api 연결 (/users/interests)
+const MyInterestList = () => {
   const dummyData = [
     {
-      id: "mySubject_1",
-      subject: "미식축구",
+      id: "myInterest_1",
+      interest: "미식축구",
     },
     {
-      id: "mySubject_2",
-      subject: "야구",
+      id: "myInterest_2",
+      interest: "야구",
     },
     {
-      id: "mySubject_3",
-      subject: "분데스리가",
+      id: "myInterest_3",
+      interest: "분데스리가",
     },
     {
-      id: "mySubject_4",
-      subject: "NBA",
+      id: "myInterest_4",
+      interest: "NBA",
     },
     {
-      id: "mySubject_5",
-      subject: "뮤지컬",
+      id: "myInterest_5",
+      interest: "뮤지컬",
     },
   ];
 
@@ -34,11 +34,11 @@ const MySubjectList = () => {
       </div>
       <div className="w-[100%] h-[250px] mt-[10px] flex flex-col justify-start">
         {dummyData.map((elem) => {
-          return <MySubjectItem key={elem.id} data={elem} />;
+          return <MyInterestItem key={elem.id} data={elem} />;
         })}
       </div>
     </article>
   );
 };
 
-export default MySubjectList;
+export default MyInterestList;

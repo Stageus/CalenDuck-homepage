@@ -2,9 +2,9 @@ import React from "react";
 
 import finish from "shared/imgs/finish.svg";
 
-// 관심사 스케줄 생성 POST api 연결 (/managers/schedules/subjects)
-const NewSubjectScheduleItem = () => {
-  const submitNewSubjectSchedule = () => {};
+// 관심사 스케줄 생성 POST api 연결 (/managers/schedules/interests)
+const NewInterestScheduleItem = () => {
+  const submitNewInterestSchedule = () => {};
 
   return (
     <article className="w-[655px] h-[15%] p-[20px] flex justify-between border-y border-black">
@@ -21,7 +21,7 @@ const NewSubjectScheduleItem = () => {
       </div>
 
       <div className="w-[10%] flex justify-center">
-        <button onClick={submitNewSubjectSchedule}>
+        <button onClick={submitNewInterestSchedule}>
           <img src={finish} alt="제출하기" />
         </button>
       </div>
@@ -29,4 +29,4 @@ const NewSubjectScheduleItem = () => {
   );
 };
 
-export default NewSubjectScheduleItem;
+export default NewInterestScheduleItem;

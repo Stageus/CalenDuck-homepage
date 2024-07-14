@@ -3,61 +3,61 @@ import { useLocation } from "react-router-dom";
 
 import HeaderItem from "shared/components/HeaderItem";
 import MasterSidebar from "widgets/masterSidebar/MasterSidebar";
-import SubjectItem from "widgets/manageSubjects/SubjectItem";
-import NewSubjectItem from "widgets/manageSubjects/NewSubjectItem";
+import InterestItem from "widgets/manageInterests/InterestItem";
+import NewInterestItem from "widgets/manageInterests/NewInterestItem";
 
-// 관심사 목록 불러오기 GET api 연결 (/subjects)
-const ManageSubjectsPage = () => {
+// 관심사 목록 불러오기 GET api 연결 (/interests)
+const ManageInterestsPage = () => {
   const location = useLocation();
 
   const dummyData = [
     {
       id: 1,
-      subject: "에스파",
+      interest: "에스파",
     },
     {
       id: 2,
-      subject: "클래식 연주회",
+      interest: "클래식 연주회",
     },
     {
       id: 3,
-      subject: "미식축구",
+      interest: "미식축구",
     },
     {
       id: 4,
-      subject: "리그오브레전드",
+      interest: "리그오브레전드",
     },
     {
       id: 5,
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
     {
       id: 5,
-      subject: "뮤지컬",
+      interest: "뮤지컬",
     },
   ];
 
@@ -84,16 +84,16 @@ const ManageSubjectsPage = () => {
           </thead>
           <tbody className="w-[100%] h-[65vh] overflow-y-auto flex flex-col">
             {dummyData.map((elem) => {
-              return <SubjectItem key={elem.id} data={elem} />;
+              return <InterestItem key={elem.id} data={elem} />;
             })}
           </tbody>
         </table>
       </section>
 
       {/* 새로운 관심사 입력란 */}
-      <NewSubjectItem />
+      <NewInterestItem />
     </>
   );
 };
 
-export default ManageSubjectsPage;
+export default ManageInterestsPage;

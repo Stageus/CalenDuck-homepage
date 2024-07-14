@@ -12,8 +12,8 @@ const MasterSidebar = ({ currentPath }: any) => {
   return (
     <section className="w-[256px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center py-[20px]">
       <article className="w-[100%]">
-        <Link to="/manageSubjectRequests">
-          <button className={getLinkBtnClassNames("/manageSubjectRequests")}>
+        <Link to="/manageInterestRequests">
+          <button className={getLinkBtnClassNames("/manageInterestRequests")}>
             관심사 추가 문의
           </button>
         </Link>
@@ -25,8 +25,8 @@ const MasterSidebar = ({ currentPath }: any) => {
             관심사 관리자 계정 관리
           </button>
         </Link>
-        <Link to="/manageSubjects">
-          <button className={getLinkBtnClassNames("/manageSubjects")}>관심사 관리</button>
+        <Link to="/manageInterests">
+          <button className={getLinkBtnClassNames("/manageInterests")}>관심사 관리</button>
         </Link>
       </article>
 

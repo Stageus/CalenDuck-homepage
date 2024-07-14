@@ -9,7 +9,7 @@ interface RequestItemProps {
     id: number;
     nickname?: string;
     date: string;
-    subject?: string;
+    interest?: string;
     title: string;
     content: string;
     reply?: string;

@@ -3,8 +3,8 @@ import React from "react";
 import minus from "shared/imgs/minus.svg";
 import plus from "shared/imgs/plus.svg";
 
-// 관심사 수정 PUT api 연결 (/master/subjects/:idx)
-const NewSubjectItem = () => {
+// 관심사 수정 PUT api 연결 (/master/interests/:idx)
+const NewInterestItem = () => {
   return (
     <section className="fixed bottom-[50px] ml-[90px] w-[calc(100vw-500px)]">
       <table className="min-w-full">
@@ -36,4 +36,4 @@ const NewSubjectItem = () => {
   );
 };
 
-export default NewSubjectItem;
+export default NewInterestItem;

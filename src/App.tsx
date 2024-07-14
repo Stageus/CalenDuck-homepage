@@ -15,10 +15,10 @@ import ContactPage from "pages/ContactPage";
 import ManagerMainPage from "pages/ManagerMainPage";
 
 // Master
-import ManageSubjectRequestPage from "pages/ManageSubjectRequestPage";
+import ManageInterestRequestPage from "pages/ManageInterestRequestPage";
 import ManageEtcRequestPage from "pages/ManageEtcRequestPage";
 import ManageManagersPage from "pages/ManageManagersPage";
-import ManageSubjectsPage from "pages/ManageSubjectsPage";
+import ManageInterestsPage from "pages/ManageInterestsPage";
 
 const App = () => {
   return (
@@ -34,10 +34,10 @@ const App = () => {
         <Route path="/alarm" element={<AlarmPage />} />
         <Route path="/contact" element={<ContactPage />} />
 
-        <Route path="/manageSubjectRequests" element={<ManageSubjectRequestPage />} />
+        <Route path="/manageInterestRequests" element={<ManageInterestRequestPage />} />
         <Route path="/manageEtcRequests" element={<ManageEtcRequestPage />} />
         <Route path="/manageManagers" element={<ManageManagersPage />} />
-        <Route path="/manageSubjects" element={<ManageSubjectsPage />} />
+        <Route path="/manageInterests" element={<ManageInterestsPage />} />
       </Routes>
     </Router>
   );
