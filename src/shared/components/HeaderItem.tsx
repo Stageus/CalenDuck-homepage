@@ -46,9 +46,9 @@ const HeaderItem = () => {
           <Link to="/alarm">
             <button className="h-[30px] relative">
               <img src={alarm} className="w-[100%] h-[100%]" alt="알림" />
-              <div className="absolute top-[-7px] right-[-13px]">
-                <HeaderAlarmNumTagItem />
-              </div>
+              {/* <div className="absolute top-[-7px] right-[-13px]"> */}
+              <HeaderAlarmNumTagItem />
+              {/* </div> */}
             </button>
           </Link>
           {/* SearchSidebar 토글 */}
