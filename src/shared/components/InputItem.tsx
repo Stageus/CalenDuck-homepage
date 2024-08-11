@@ -36,7 +36,7 @@ const InputItem: React.FC<InputItemProps> = ({ label, type, placeholder, extraBt
         )}
 
         {extraBtn && (
-          <button className="w-[100%] absolute bg-subColor top-[8px] right-[10px] px-[10px] py-[5px] rounded-[10px]">
+          <button className="absolute bg-subColor top-[8px] right-[10px] px-[10px] py-[5px] rounded-[10px]">
             {extraBtn}
           </button>
         )}

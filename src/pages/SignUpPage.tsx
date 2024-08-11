@@ -1,35 +1,47 @@
 import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import mainLogo from "shared/imgs/mainLogo.svg";
 import InputItem from "shared/components/InputItem";
 
 // 회원가입 POST api 연결 (/users)
-const SignUpPage: React.FC = () => {
+const SignUpPage = () => {
+  const navigate = useNavigate();
   const [cookies, setCookies] = useCookies(["token"]);
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const signUpEvent = () => {
-    fetch(`${process.env.REACT_APP_API_KEY}/users`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${cookies.token}`,
-      },
-      body: JSON.stringify({ id, pw, name, email }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+  const signUpEvent = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_KEY}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${cookies.token}`,
+        },
+        body: JSON.stringify({
+          id: id,
+          pw: pw,
+          name: name,
+          email: email,
+        }),
       });
+      if (response.ok) {
+        const data = await response.json();
+        setCookies("token", data.token, { path: "/" });
+        alert("회원가입에 성공하셨습니다.");
+        navigate("/");
+      } else {
+        alert("회원가입에 실패하셨습니다.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("회원가입 중 오류가 발생했습니다.");
+    }
   };
 
   const [checkedList, setCheckedList] = useState<string[]>([]);
@@ -62,13 +74,13 @@ const SignUpPage: React.FC = () => {
 
   return (
     <section className="fixed left-0 w-[100vw] h-[100vh] flex bg-keyColor ">
-      <div className="flex justify-center items-center w-[45vw]">
+      <div className="flex justify-center items-center w-[40%]">
         <img src={mainLogo} alt="메인로고" />
       </div>
 
-      <article className="flex flex-col justify-center items-center w-[55vw] bg-white rounded-l-[30px]">
-        <div className="h-[75%] flex flex-col justify-around">
-          <div className="w-[100%]">
+      <article className="flex flex-col justify-center items-center w-[60%] bg-white rounded-l-[30px]">
+        <div className="w-[100%] flex flex-col justify-around items-center">
+          <div className="w-[70%]">
             <InputItem
               label="아이디"
               type="text"
@@ -104,7 +116,7 @@ const SignUpPage: React.FC = () => {
             <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" value="" />
           </div>
 
-          <div className="flex flex-col mb-[10px]">
+          <div className="flex flex-col w-[70%] mb-[10px]">
             <label>
               <input
                 type="checkbox"
@@ -149,7 +161,7 @@ const SignUpPage: React.FC = () => {
             </label>
           </div>
 
-          <div className="w-[100%] flex flex-col justify-between items-center">
+          <div className="w-[70%] flex flex-col justify-between items-center">
             <button
               disabled={isSignUpBtnDisabled}
               className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
