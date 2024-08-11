@@ -6,7 +6,7 @@ import visibilityOff from "shared/imgs/visibilityOff.svg";
 interface InputItemProps {
   label: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   extraBtn?: string;
   value: string;
   onChange?: (e: any) => void;
