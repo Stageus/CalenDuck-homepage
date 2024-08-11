@@ -16,9 +16,9 @@ const FindIdPage = () => {
       <article className="flex flex-col justify-center items-center w-[55vw] bg-white rounded-l-[30px]">
         <div className="h-[50%] flex flex-col justify-around">
           <div className="w-[100%]">
-            <InputItem label="이름" type="text" placeholder="" extraBtn="" />
-            <InputItem label="이메일" type="email" placeholder="" extraBtn="번호 전송" />
-            <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" />
+            <InputItem label="이름" type="text" placeholder="" extraBtn="" value="" />
+            <InputItem label="이메일" type="email" placeholder="" extraBtn="번호 전송" value="" />
+            <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" value="" />
           </div>
 
           {/* 아이디 찾기 결과 */}

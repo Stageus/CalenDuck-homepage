@@ -8,6 +8,8 @@ interface InputItemProps {
   type: string;
   placeholder: string;
   extraBtn?: string;
+  value: string;
+  onChange?: (e: any) => void;
 }
 
 const InputItem: React.FC<InputItemProps> = ({ label, type, placeholder, extraBtn }) => {
@@ -19,7 +21,7 @@ const InputItem: React.FC<InputItemProps> = ({ label, type, placeholder, extraBt
   const inputType = type === "password" ? (showPw ? "text" : "password") : type;
 
   return (
-    <div className="w-[500px] h-[80px] content-between mb-[10px]">
+    <div className="w-[100%] h-[80px] content-between mb-[10px]">
       <label htmlFor={label}>{label}</label>
       <div className="relative w-[100%] h-[50px]">
         <input
@@ -34,7 +36,7 @@ const InputItem: React.FC<InputItemProps> = ({ label, type, placeholder, extraBt
         )}
 
         {extraBtn && (
-          <button className="absolute bg-subColor top-[8px] right-[10px] px-[10px] py-[5px] rounded-[10px]">
+          <button className="w-[100%] absolute bg-subColor top-[8px] right-[10px] px-[10px] py-[5px] rounded-[10px]">
             {extraBtn}
           </button>
         )}

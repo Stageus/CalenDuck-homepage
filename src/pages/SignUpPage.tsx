@@ -1,12 +1,37 @@
 import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 import mainLogo from "shared/imgs/mainLogo.svg";
 import InputItem from "shared/components/InputItem";
 
 // 회원가입 POST api 연결 (/users)
 const SignUpPage: React.FC = () => {
+  const [cookies, setCookies] = useCookies(["token"]);
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const signUpEvent = () => {
+    fetch(`${process.env.REACT_APP_API_KEY}/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${cookies.token}`,
+      },
+      body: JSON.stringify({ id, pw, name, email }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   const [checkedList, setCheckedList] = useState<string[]>([]);
   const [isSignUpBtnDisabled, setIsSignUpBtnDisabled] = useState(true);
 
@@ -19,7 +44,6 @@ const SignUpPage: React.FC = () => {
       prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
     );
   };
-
   // 전체동의 누를 경우 아래 checkbox 모두 속성 checked
   const toggleSelectAll = () => {
     if (checkedList.length === requiredCheckboxes.length) {
@@ -28,7 +52,6 @@ const SignUpPage: React.FC = () => {
       setCheckedList(requiredCheckboxes);
     }
   };
-
   // 체크된 아이템이 두 개 모두 있을 경우 signUpBtn 활성화, 하나라도 체크가 안 되었을 경우 비활성화
   const requiredCheckboxes = ["이용약관", "개인정보 수집 및 동의"];
   useEffect(() => {
@@ -36,9 +59,6 @@ const SignUpPage: React.FC = () => {
   }, [checkedList]);
 
   // 회원가입 버튼 클릭 이벤트
-  const signUpEvent = () => {
-    console.log("회원가입!!!!!!");
-  };
 
   return (
     <section className="fixed left-0 w-[100vw] h-[100vh] flex bg-keyColor ">
@@ -54,16 +74,34 @@ const SignUpPage: React.FC = () => {
               type="text"
               placeholder="6~12글자로 입력해주세요"
               extraBtn="중복확인"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
             />
             <InputItem
               label="비밀번호"
               type="password"
               placeholder="8~16글자로 입력해주세요"
               extraBtn=""
+              value={pw}
+              onChange={(e) => setPw(e.target.value)}
             />
-            <InputItem label="이름" type="text" placeholder="" extraBtn="" />
-            <InputItem label="이메일" type="email" placeholder="" extraBtn="번호 전송" />
-            <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" />
+            <InputItem
+              label="이름"
+              type="text"
+              placeholder=""
+              extraBtn=""
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <InputItem
+              label="이메일"
+              type="email"
+              placeholder=""
+              extraBtn="번호 전송"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" value="" />
           </div>
 
           <div className="flex flex-col mb-[10px]">

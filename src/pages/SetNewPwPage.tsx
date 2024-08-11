@@ -21,6 +21,7 @@ const SetNewPwPage = () => {
               type="password"
               placeholder="8~16글자로 입력해주세요"
               extraBtn=""
+              value=""
             />
           </div>
 

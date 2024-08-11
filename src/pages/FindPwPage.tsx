@@ -21,10 +21,11 @@ const FindPwPage = () => {
               type="text"
               placeholder="6~12글자로 입력해주세요"
               extraBtn="중복확인"
+              value=""
             />
-            <InputItem label="이름" type="text" placeholder="" extraBtn="" />
-            <InputItem label="이메일" type="email" placeholder="" extraBtn="번호 전송" />
-            <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" />
+            <InputItem label="이름" type="text" placeholder="" extraBtn="" value="" />
+            <InputItem label="이메일" type="email" placeholder="" extraBtn="번호 전송" value="" />
+            <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" value="" />
           </div>
 
           <div className="flex flex-col w-[100%] justify-between items-center">
