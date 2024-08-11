@@ -93,27 +93,23 @@ const SignUpPage = () => {
               label="비밀번호"
               type="password"
               placeholder="8~16글자로 입력해주세요"
-              extraBtn=""
               value={pw}
               onChange={(e) => setPw(e.target.value)}
             />
             <InputItem
               label="이름"
               type="text"
-              placeholder=""
-              extraBtn=""
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <InputItem
               label="이메일"
               type="email"
-              placeholder=""
               extraBtn="번호 전송"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <InputItem label="인증번호" type="text" placeholder="" extraBtn="인증 확인" value="" />
+            <InputItem label="인증번호" type="text" extraBtn="인증 확인" value="" />
           </div>
 
           <div className="flex flex-col w-[70%] mb-[10px]">

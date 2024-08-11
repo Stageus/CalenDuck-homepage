@@ -60,14 +60,12 @@ const SignInPage = () => {
             <InputItem
               label="아이디"
               type="text"
-              placeholder=""
               value={id}
               onChange={(e) => setId(e.target.value)}
             />
             <InputItem
               label="비밀번호"
               type="password"
-              placeholder=""
               value={pw}
               onChange={(e) => setPw(e.target.value)}
             />
