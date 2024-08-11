@@ -17,7 +17,7 @@ const FindPwPage = () => {
 
   const findPwEvent = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_KEY}/users/id/find`, {
+      const response = await fetch(`${process.env.REACT_APP_API_KEY}/users/pw/find`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,6 +42,7 @@ const FindPwPage = () => {
       alert("비밀번호를 찾는 중 오류가 발생했습니다.");
     }
   };
+
   return (
     <section className="fixed left-0 w-[100vw] h-[100vh] flex bg-keyColor ">
       <div className="flex justify-center items-center w-[40%]">
