@@ -16,11 +16,12 @@ const ManagerItem: React.FC<{ data: TManagerItem }> = (props) => {
   const editManagerEvent = () => {
     setEditing(!editing);
   };
+  const [newManager, setNewManager] = useState(managerNickname);
 
   return (
     <tr className="w-full px-[10%] my-[10px] flex items-center">
       <td className="w-[10%] px-[10px] py-4">
-        <div className="flex justify-start">{managerIdx}</div>
+        <div className="flex justify-start">{managerNickname}</div>
       </td>
       <td className="w-[30%] px-[10px] py-4">
         {editing ? (
@@ -30,6 +31,7 @@ const ManagerItem: React.FC<{ data: TManagerItem }> = (props) => {
             ref={nicknameRef}
             defaultValue={managerNickname}
             maxLength={20}
+            onChange={(e) => setNewManager(e.target.value)}
           />
         ) : (
           <div className="flex justify-start px-2">{managerNickname}</div>
@@ -42,7 +44,7 @@ const ManagerItem: React.FC<{ data: TManagerItem }> = (props) => {
 
       <td className="w-[15%] flex justify-between px-[10px]">
         {editing ? (
-          <SubmitEditedManagerBtn />
+          <SubmitEditedManagerBtn {...props} newManager={newManager} />
         ) : (
           <>
             <button onClick={editManagerEvent}>

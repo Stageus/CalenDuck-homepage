@@ -29,7 +29,7 @@ const ManageInterestsPage = () => {
           if (response.status === 401) {
             console.log("잘못된 인증 정보 제공");
           } else if (response.status === 403) {
-            console.log("권한이 없는 사용자가 접근");
+            console.log("권한이 없는 사용자의 접근");
           }
           return;
         }
