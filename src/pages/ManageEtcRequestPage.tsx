@@ -68,11 +68,9 @@ const ManageEtcRequestPage = () => {
 
       <section className="mt-[70px] ml-[90px]">
         <table className="min-w-full bg-white">
-          <thead className="w-[100%] flex justify-start">
-            <tr className="w-[100%] px-[10%] flex justify-start border-b border-gray-200">
-              <th className="w-[10%] py-4">
-                <div className="flex justify-start">No</div>
-              </th>
+          <thead className="w-full flex justify-start">
+            <tr className="w-full px-[10%] flex justify-start border-b border-gray-200">
+              <th className="w-[10%] py-4 flex justify-start">No</th>
             </tr>
           </thead>
           <tbody className="flex flex-col items-center">

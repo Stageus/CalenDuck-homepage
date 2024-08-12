@@ -25,42 +25,38 @@ const ManagerItem: React.FC<ManageItemProps> = (props) => {
   };
 
   return (
-    <tr className="w-[100%] px-[10%] my-[10px] flex justify-between">
-      <div className="flex w-[80%]">
-        <th className="w-[10%] px-[10px] py-4">
-          <div className="flex justify-start">{id}</div>
-        </th>
+    <tr className="w-full px-[10%] my-[10px] flex">
+      <td className="w-[10%] px-[10px] py-4">
+        <div className="flex justify-start">{id}</div>
+      </td>
+      <td className="w-[30%] px-[10px] py-4">
         {editing ? (
           <input
             type="text"
-            className="w-[25%] px-[10px] py-4 mx-[10px] border border-alertColor outline-alertColor bg-transparent"
+            className="w-full px-[10px] py-4 border border-alertColor outline-alertColor bg-transparent"
             ref={nicknameRef}
             defaultValue={managerNickname}
             maxLength={20}
           />
         ) : (
-          <th className="w-[30%] px-[10px] py-4">
-            <div className="flex justify-start px-2">{managerNickname}</div>
-          </th>
+          <div className="flex justify-start px-2">{managerNickname}</div>
         )}
-
-        <th className="w-[50%] px-[10px] py-4">
-          <div className="flex justify-start px-2">{interest}</div>
-        </th>
-      </div>
-
-      {editing ? (
-        <th className="w-[15%] flex justify-center px-[10px]">
+      </td>
+      <td className="w-[50%] px-[10px] py-4">
+        <div className="flex justify-start px-2">{interest}</div>
+      </td>
+      <td className="w-[15%] flex justify-between px-[10px]">
+        {editing ? (
           <SubmitEditedManagerBtn />
-        </th>
-      ) : (
-        <th className="w-[15%] flex justify-between px-[10px]">
-          <button onClick={editManagerEvent}>
-            <img src={edit} alt="수정" />
-          </button>
-          <DeleteManagerBtn />
-        </th>
-      )}
+        ) : (
+          <>
+            <button onClick={editManagerEvent}>
+              <img src={edit} alt="수정" />
+            </button>
+            <DeleteManagerBtn />
+          </>
+        )}
+      </td>
     </tr>
   );
 };

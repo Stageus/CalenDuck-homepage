@@ -7,9 +7,8 @@ import ReplyRequestItem from "widgets/manageRequests/ReplyRequestItem";
 interface RequestItemProps {
   data: {
     id: number;
-    nickname?: string;
+    nickname: string;
     date: string;
-    interest?: string;
     title: string;
     content: string;
     reply?: string;
@@ -20,54 +19,54 @@ interface RequestItemProps {
 const RequestItem: React.FC<RequestItemProps> = (props) => {
   const { id, nickname, date, title, content, reply } = props.data;
 
-  let alarmSymbol, metaData;
-  alarmSymbol = reply ? "✅" : "❌";
-  metaData = `${nickname} - ${date}`;
+  const alarmSymbol = reply ? "✅" : "❌";
+  const metaData = `${nickname} - ${date}`;
 
-  // 드롭다운 버튼 클릭시 자세히 보기 열림
   const [openDetail, setOpenDetail] = useState<boolean>(true);
   const clickSeeDetailEvent = () => {
     setOpenDetail(!openDetail);
   };
 
   return (
-    <div className="w-[80%] flex justify-between m-[20px] items-center">
-      <span className="w-[5%]">{id}</span>
-      <article className="w-[90%] h-fit bg-tagColor rounded-[5px] p-[10px]">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <span className="mx-[10px]">{alarmSymbol}</span>
-            <div className="w-[600px] ml-[10px] flex flex-col justify-start">
-              <div className="text-sm text-grayColor">{metaData}</div>
-              <div className="text-lg">"{title}"</div>
+    <tr className="w-full bg-white px-[10%] my-[10px] flex items-center">
+      <td className="w-[5%] text-center">{id}</td>
+      <td className="w-[95%]">
+        <article className="w-full h-fit bg-tagColor rounded-[5px] p-[10px]">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <span className="mx-[10px]">{alarmSymbol}</span>
+              <div className="ml-[10px] flex flex-col">
+                <div className="text-sm text-grayColor">{metaData}</div>
+                <div className="text-lg">"{title}"</div>
+              </div>
             </div>
+
+            <button onClick={clickSeeDetailEvent} className="w-[20px] h-[20px]">
+              <img
+                src={openDetail ? arrowDropDown : arrowDropUp}
+                alt="자세히보기"
+                className="w-[100%]"
+              />
+            </button>
           </div>
 
-          <button onClick={clickSeeDetailEvent} className="w-[20px] h-[20px]">
-            <img
-              src={openDetail ? arrowDropDown : arrowDropUp}
-              alt="자세히보기"
-              className="w-[100%]"
-            />
-          </button>
-        </div>
+          {!openDetail && (
+            <div className="flex flex-col mx-[50px] mt-[30px] mb-[20px]">
+              <span className="font-bold">문의 내용</span>
+              <p>{content}</p>
+            </div>
+          )}
 
-        {!openDetail && (
-          <div className="flex flex-col mx-[50px] mt-[30px] mb-[20px]">
-            <span className="font-bold">문의내용</span>
-            {content}
-          </div>
-        )}
-
-        {reply && !openDetail && (
-          <div className="flex flex-col mx-[50px] mt-[30px] mb-[20px]">
-            <span className="font-bold">답변</span>
-            {reply}
-          </div>
-        )}
-        {!reply && !openDetail ? <ReplyRequestItem /> : ""}
-      </article>
-    </div>
+          {reply && !openDetail && (
+            <div className="flex flex-col mx-[50px] mt-[30px] mb-[20px]">
+              <span className="font-bold">답변</span>
+              <p>{reply}</p>
+            </div>
+          )}
+          {!reply && !openDetail && <ReplyRequestItem />}
+        </article>
+      </td>
+    </tr>
   );
 };
 

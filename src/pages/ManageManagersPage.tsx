@@ -37,37 +37,37 @@ const ManageManagersPage = () => {
       interest: "뮤지컬",
     },
     {
-      id: 5,
+      id: 6,
       managerNickname: "경은조",
       interest: "뮤지컬",
     },
     {
-      id: 5,
+      id: 7,
       managerNickname: "경은조",
       interest: "뮤지컬",
     },
     {
-      id: 5,
+      id: 8,
       managerNickname: "경은조",
       interest: "뮤지컬",
     },
     {
-      id: 5,
+      id: 9,
       managerNickname: "경은조",
       interest: "뮤지컬",
     },
     {
-      id: 5,
+      id: 10,
       managerNickname: "경은조",
       interest: "뮤지컬",
     },
     {
-      id: 5,
+      id: 11,
       managerNickname: "경은조",
       interest: "뮤지컬",
     },
     {
-      id: 5,
+      id: 12,
       managerNickname: "경은조",
       interest: "뮤지컬",
     },
@@ -84,20 +84,14 @@ const ManageManagersPage = () => {
       {/* 관심사 관리자(매니저) 계정 리스트 */}
       <section className="mt-[70px] ml-[90px]">
         <table className="min-w-full bg-white">
-          <thead className="w-[100%]">
-            <tr className="w-[80%] px-[10%] flex justify-start border-b border-gray-200">
-              <th className="w-[10%] py-4">
-                <div className="flex justify-start">No</div>
-              </th>
-              <th className="w-[30%] py-4">
-                <div className="flex justify-start px-2">관리자 닉네임</div>
-              </th>
-              <th className="w-[50%] py-4">
-                <div className="flex justify-start px-2">관심사</div>
-              </th>
+          <thead className="w-full">
+            <tr className="w-full px-[10%] flex justify-start border-b border-gray-200">
+              <th className="w-[10%] py-4 flex justify-start">No</th>
+              <th className="w-[30%] py-4 flex justify-start px-2">관리자 닉네임</th>
+              <th className="w-[50%] py-4 flex justify-start px-2">관심사</th>
             </tr>
           </thead>
-          <tbody className="w-[100%] h-[65vh] overflow-y-auto flex flex-col">
+          <tbody className="w-full h-[65vh] overflow-y-auto flex flex-col">
             {dummyData.map((elem) => {
               return <ManagerItem key={elem.id} data={elem} />;
             })}

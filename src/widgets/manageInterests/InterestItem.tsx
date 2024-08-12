@@ -1,19 +1,13 @@
 import React, { useState, useRef } from "react";
 
 import edit from "shared/imgs/edit.svg";
+import { TInterestItem } from "types";
 import DeleteInterestBtn from "widgets/manageInterests/DeleteInterestBtn";
 import SubmitEditedInterestBtn from "widgets/manageInterests/SubmitEditedInterestBtn";
 
-interface ManageItemProps {
-  data: {
-    id: number;
-    interest: string;
-  };
-}
-
 // 관심사 목록 불러오기 GET api 연결 (/interests)
-const InterestItem: React.FC<ManageItemProps> = (props) => {
-  const { id, interest } = props.data;
+const InterestItem: React.FC<{ data: TInterestItem }> = (props) => {
+  const { interestIdx, interestName } = props.data;
 
   // 수정하기 버튼 클릭 시
   // 1. interest input이 editable하게 됨
@@ -25,38 +19,34 @@ const InterestItem: React.FC<ManageItemProps> = (props) => {
   };
 
   return (
-    <tr className="w-[100%] px-[10%] my-[10px] flex justify-between">
-      <div className="flex w-[80%]">
-        <th className="w-[10%] px-[10px] py-4">
-          <div className="flex justify-start">{id}</div>
-        </th>
+    <tr className="w-full">
+      <td className="w-[10%] px-[10px] py-4">{interestIdx}</td>
 
+      <td className="w-[50%] px-[10px] py-4">
         {editing ? (
           <input
             type="text"
-            className="w-[25%] px-[10px] py-4 mx-[10px] border border-alertColor outline-alertColor bg-transparent"
+            className="w-full px-[10px] py-4 border border-alertColor outline-alertColor bg-transparent"
             ref={interestRef}
-            defaultValue={interest}
+            defaultValue={interestName}
             maxLength={20}
           />
         ) : (
-          <th className="w-[50%] px-[10px] py-4">
-            <div className="flex justify-start px-2">{interest}</div>
-          </th>
+          <div className="flex justify-start px-2">{interestName}</div>
         )}
-      </div>
+      </td>
 
       {editing ? (
-        <th className="w-[15%] flex justify-center px-[10px]">
+        <td className="w-[15%] flex justify-center px-[10px]">
           <SubmitEditedInterestBtn />
-        </th>
+        </td>
       ) : (
-        <th className="w-[15%] flex justify-between px-[10px]">
+        <td className="w-[15%] flex justify-between px-[10px]">
           <button onClick={editInterestEvent}>
             <img src={edit} alt="수정" />
           </button>
-          <DeleteInterestBtn />
-        </th>
+          <DeleteInterestBtn {...props.data} />
+        </td>
       )}
     </tr>
   );

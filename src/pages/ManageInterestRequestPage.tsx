@@ -68,9 +68,9 @@ const ManageInterestRequestPage = () => {
 
       <section className="mt-[70px] ml-[90px]">
         <table className="min-w-full bg-white">
-          <thead className="w-[100%]">
-            <tr className="w-[100%] px-[10%] flex justify-start border-b border-gray-200">
-              <th className="py-4">No</th>
+          <thead className="w-full">
+            <tr className="w-full px-[10%] py-4 flex justify-start border-b border-gray-200">
+              <th>No</th>
             </tr>
           </thead>
           <tbody className="flex flex-col items-center">
