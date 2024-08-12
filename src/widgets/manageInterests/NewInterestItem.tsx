@@ -49,11 +49,11 @@ const NewInterestItem = () => {
       <table className="min-w-full">
         <thead className="bg-tagColor">
           <tr className="w-full flex justify-between">
-            <td className="w-[10%] px-[10px] py-4 flex justify-center items-center">NEW</td>
+            <th className="w-[10%] px-[10px] py-4 flex justify-center items-center">NEW</th>
             <td className="w-[50%] px-[10px] py-4">
               <input
                 placeholder="관심사 입력"
-                className="w-full px-[10px] py-2 border border-gray-300 rounded"
+                className="w-full px-[10px] py-2  rounded"
                 type="text"
                 onChange={(e) => setNewInterestName(e.target.value)}
               />
