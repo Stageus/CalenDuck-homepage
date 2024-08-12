@@ -11,7 +11,7 @@ import { TInterestItem } from "types";
 // 관심사 목록 불러오기 GET api 연결 (/master/interests)
 const ManageInterestsPage = () => {
   const location = useLocation();
-  const [interestsListData, setInterestsiListData] = useState<TInterestItem[]>([]);
+  const [interestsListData, setInterestsListData] = useState<TInterestItem[]>([]);
   const [cookies] = useCookies(["token"]);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const ManageInterestsPage = () => {
         }
         const result = await response.json();
         if (response.status === 200) {
-          setInterestsiListData(result.list);
+          setInterestsListData(result.list);
         }
       } catch (error) {
         console.error("서버 에러: ", error);

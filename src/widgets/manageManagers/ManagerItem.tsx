@@ -3,17 +3,10 @@ import React, { useState, useRef } from "react";
 import edit from "shared/imgs/edit.svg";
 import DeleteManagerBtn from "widgets/manageManagers/DeleteManagerBtn";
 import SubmitEditedManagerBtn from "widgets/manageManagers/SubmitEditedManagerBtn";
+import { TManagerItem } from "types";
 
-interface ManageItemProps {
-  data: {
-    id: number;
-    managerNickname: string;
-    interest: string;
-  };
-}
-
-const ManagerItem: React.FC<ManageItemProps> = (props) => {
-  const { id, managerNickname, interest } = props.data;
+const ManagerItem: React.FC<{ data: TManagerItem }> = (props) => {
+  const { managerIdx, managerNickname, interestIdx, interest } = props.data;
 
   // 수정하기 버튼 클릭 시
   // 1. managerNickname input이 editable하게 됨
@@ -25,15 +18,15 @@ const ManagerItem: React.FC<ManageItemProps> = (props) => {
   };
 
   return (
-    <tr className="w-full px-[10%] my-[10px] flex">
+    <tr className="w-full px-[10%] my-[10px] flex items-center">
       <td className="w-[10%] px-[10px] py-4">
-        <div className="flex justify-start">{id}</div>
+        <div className="flex justify-start">{managerIdx}</div>
       </td>
       <td className="w-[30%] px-[10px] py-4">
         {editing ? (
           <input
             type="text"
-            className="w-full px-[10px] py-4 border border-alertColor outline-alertColor bg-transparent"
+            className="w-full px-[10px] py-2 border border-alertColor outline-alertColor bg-transparent"
             ref={nicknameRef}
             defaultValue={managerNickname}
             maxLength={20}
@@ -42,9 +35,11 @@ const ManagerItem: React.FC<ManageItemProps> = (props) => {
           <div className="flex justify-start px-2">{managerNickname}</div>
         )}
       </td>
+
       <td className="w-[50%] px-[10px] py-4">
         <div className="flex justify-start px-2">{interest}</div>
       </td>
+
       <td className="w-[15%] flex justify-between px-[10px]">
         {editing ? (
           <SubmitEditedManagerBtn />
@@ -53,7 +48,7 @@ const ManagerItem: React.FC<ManageItemProps> = (props) => {
             <button onClick={editManagerEvent}>
               <img src={edit} alt="수정" />
             </button>
-            <DeleteManagerBtn />
+            <DeleteManagerBtn {...props.data} />
           </>
         )}
       </td>
