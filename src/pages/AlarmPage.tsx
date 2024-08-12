@@ -43,44 +43,41 @@ const AlarmPage = () => {
   // ];
   const [cookies] = useCookies(["token"]);
   const navigate = useNavigate();
+  const [notifListData, setNotifListData] = useState<NotifData[]>([]);
 
   useEffect(() => {
-    // 토큰 없으면(비로그인) 홈화면으로 이동
     if (!cookies.token) {
       navigate("/");
     }
   }, [cookies.token]);
 
-  // 일반사용자 알림 목록보기 GET
-  const [notifListData, setNotifListData] = useState<NotifData[]>([]);
-
-  const getAlarmList = async () => {
-    try {
-      const response = await fetch(`${process.env.REACT_APP_API_KEY}/notifications`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${cookies.token}`,
-        },
-      });
-      const result = await response.json();
-      console.log("alarm 개수", notifListData);
-
-      if (response.status === 200) {
-        setNotifListData(result.count);
-      } else if (response.status === 400) {
-        alert("유효하지 않은 요청입니다.");
-      } else {
-        console.error("Unexpected response:", response);
-      }
-    } catch (error) {
-      console.error("Error fetching alarm number:", error);
-    }
-  };
-
   useEffect(() => {
+    const getAlarmList = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_KEY}/notifications`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${cookies.token}`,
+          },
+          body: JSON.stringify({
+            page: 1,
+          }),
+        });
+        const result = await response.json();
+        console.log("알람 리스트", result);
+
+        if (response.status === 200) {
+          setNotifListData(result.list);
+        } else if (response.status === 401) {
+          console.log("잘못된 인증 정보 제공");
+        }
+      } catch (error) {
+        console.error("서버 에러: ", error);
+      }
+    };
     getAlarmList();
-  }, []);
+  }, [cookies.token]);
 
   return (
     <>
@@ -89,30 +86,30 @@ const AlarmPage = () => {
         [ 알림함 ]
       </div>
 
-      <section className="mt-[120px]">
-        {notifListData.length > 0 ? (
-          <>
-            <h2 className="font-bold text-l mt-7 mb-2">오늘 받은 알림</h2>
-            <article className="flex flex-col items-center justify-start">
-              {notifListData.map((elem) => {
-                return <AlarmItem key={elem.id} data={elem} />;
-              })}
-            </article>
+      {notifListData.length > 0 ? (
+        <section className="mt-[120px] flex justify-start items-center">
+          <h2 className="font-bold text-l mt-7 mb-2">오늘 받은 알림</h2>
+          <article className="flex flex-col items-center justify-start">
+            {notifListData.map((elem) => {
+              return <AlarmItem key={elem.id} data={elem} />;
+            })}
+          </article>
 
-            <div className="flex items-end mt-7 mb-2">
-              <h2 className="font-bold text-l mr-5">이전 알림</h2>
-              <span className="text-xs text-alertColor">30일 후 자동 삭제 됩니다</span>
-            </div>
-            <article className="flex flex-col items-center justify-start">
-              {notifListData.map((elem) => {
-                return <AlarmItem key={elem.id} data={elem} />;
-              })}
-            </article>
-          </>
-        ) : (
-          <article>djqtdma</article>
-        )}
-      </section>
+          <div className="flex items-end mt-7 mb-2">
+            <h2 className="font-bold text-l mr-5">이전 알림</h2>
+            <span className="text-xs text-alertColor">30일 후 자동 삭제 됩니다</span>
+          </div>
+          <article className="flex flex-col items-center justify-start">
+            {notifListData.map((elem) => {
+              return <AlarmItem key={elem.id} data={elem} />;
+            })}
+          </article>
+        </section>
+      ) : (
+        <section className="flex justify-center items-center">
+          <h1>새로운 알림이 없습니다!</h1>
+        </section>
+      )}
     </>
   );
 };

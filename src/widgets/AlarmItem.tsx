@@ -7,20 +7,20 @@ interface AlarmItemProps {
   data: {
     type: number;
     date: string;
-    interest?: string;
+    interestName?: string;
     title: string;
     reply?: string;
   };
 }
 
 const AlarmItem: React.FC<AlarmItemProps> = (props) => {
-  const { type, date, interest, title, reply } = props.data;
+  const { type, date, interestName, title, reply } = props.data;
 
   let alarmSymbol, typeInterest, content;
   if (type === 1) {
     alarmSymbol = "🌟";
     typeInterest = "24시간 전";
-    content = `[ ${interest}: ${title} ] (이)가 하루 전으로 다가왔어요!`;
+    content = `[ ${interestName}: ${title} ] (이)가 하루 전으로 다가왔어요!`;
   } else if (type === 2) {
     alarmSymbol = "💌";
     typeInterest = "마스터 답변";
