@@ -24,10 +24,15 @@ const DeleteInterestBtn: React.FC<TInterestItem> = (props) => {
           },
         }
       );
+
       if (response.ok) {
         alert(`${interestName}를 관심사에서 삭제했습니다.`);
         navigate("/manageInterests");
-      } else {
+      } else if (response.status === 401) {
+        console.log("잘못된 인증 정보 제공");
+        alert(`${interestName} 삭제에 실패했습니다.`);
+      } else if (response.status === 403) {
+        console.log("권한이 없는 사용자의 접근");
         alert(`${interestName} 삭제에 실패했습니다.`);
       }
     } catch (error) {
