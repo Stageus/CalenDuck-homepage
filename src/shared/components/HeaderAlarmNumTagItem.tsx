@@ -17,18 +17,18 @@ const HeaderAlarmNumTagItem = () => {
           },
         });
 
+        if (!response.ok) {
+          if (response.status === 401) {
+            console.log("잘못된 인증 정보 제공");
+          }
+          return;
+        }
         const result = await response.json();
-        console.log("alarm 개수", notifCount);
-
         if (response.status === 200) {
-          setNotifCount(result.notifCount);
-        } else if (response.status === 400) {
-          alert("유효하지 않은 요청입니다.");
-        } else {
-          console.error("Unexpected response:", response);
+          setNotifCount(result.notif_count);
         }
       } catch (error) {
-        console.error("Error fetching alarm number:", error);
+        console.error("서버 에러: ", error);
       }
     };
 
@@ -40,9 +40,13 @@ const HeaderAlarmNumTagItem = () => {
   }
 
   return (
-    <div className="bg-alertColor rounded-full text-white px-[5px] py-[2px] text-xs">
-      {notifCount > 5 ? "5+" : notifCount}
-    </div>
+    <>
+      {notifCount > 0 && (
+        <div className="bg-alertColor rounded-full text-white px-[5px] py-[2px] text-xs">
+          {notifCount > 5 ? "5+" : notifCount}
+        </div>
+      )}
+    </>
   );
 };
 
