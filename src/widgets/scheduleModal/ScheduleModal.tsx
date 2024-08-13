@@ -58,6 +58,7 @@ const ScheduleModal: React.FC = () => {
   // ];
   const [cookies] = useCookies(["token"]);
   const [scheduleList, setScheduleList] = useState<TScheduleItem[]>([]);
+  const [interestOptions, setInterestOptions] = useState<string[]>([]);
 
   useEffect(() => {
     const getScheduleList = async () => {
@@ -89,15 +90,41 @@ const ScheduleModal: React.FC = () => {
     getScheduleList();
   }, [fullDate, cookies.token]);
 
-  const interestOptions = [
-    "전체보기",
-    "미식축구",
-    "아이브",
-    "뮤지컬",
-    "르세라핌",
-    "에스파",
-    "개인",
-  ];
+  // const interestOptions = [
+  //   "전체보기",
+  //   "미식축구",
+  //   "아이브",
+  //   "뮤지컬",
+  //   "르세라핌",
+  //   "에스파",
+  //   "개인",
+  // ];
+  useEffect(() => {
+    const getInterestOptions = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_KEY}/interests`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${cookies.token}`,
+          },
+        });
+        const result = await response.json();
+        if (response.status === 200) {
+          const interests = result.list.map((item: { interestName: string }) => item.interestName);
+          setInterestOptions(["전체보기", ...interests]);
+        } else if (response.status === 204) {
+          setInterestOptions(["전체보기"]);
+        } else if (response.status === 401) {
+          console.log("토큰 검증 실패");
+        }
+      } catch (error) {
+        console.error("서버 에러: ", error);
+      }
+    };
+
+    getInterestOptions();
+  }, [cookies.token]);
 
   // 스케줄 알람 여부 토글
   const [alarm, setAlarm] = useState<boolean>(false);
@@ -113,7 +140,7 @@ const ScheduleModal: React.FC = () => {
           <div className="mr-[20px]">
             <DropDownItem
               options={interestOptions}
-              value={interestOptions[0]}
+              value={interestOptions[0] || "전체보기"}
               onChange={() => {}}
             />
           </div>
