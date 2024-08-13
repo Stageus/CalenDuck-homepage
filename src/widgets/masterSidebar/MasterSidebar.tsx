@@ -1,7 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { Link, useNavigate } from "react-router-dom";
+import { useResetRecoilState } from "recoil";
+import userInfoAtom from "shared/recoil/userInfoAtom";
 
 const MasterSidebar = ({ currentPath }: any) => {
+  const navigate = useNavigate();
+  const [, , removeCookie] = useCookies(["token"]);
+  const resetUserInfo = useResetRecoilState(userInfoAtom);
+
+  const logoutEvent = () => {
+    removeCookie("token", { path: "/" });
+    resetUserInfo();
+    alert("로그아웃 되었습니다");
+    navigate("/");
+  };
+
   const getLinkBtnClassNames = (path: any) =>
     [
       `w-[100%] px-[15px] py-[15px] rounded-[5px] flex justify-end`,
@@ -31,7 +45,10 @@ const MasterSidebar = ({ currentPath }: any) => {
       </article>
 
       <div className="w-[100%] mt-auto flex justify-end">
-        <button className="border border-black rounded-[5px] px-[10px] py-[5px] mr-[15px]">
+        <button
+          onClick={logoutEvent}
+          className="border border-black rounded-[5px] px-[10px] py-[5px] mr-[15px]"
+        >
           로그아웃
         </button>
       </div>
