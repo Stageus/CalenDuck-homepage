@@ -53,7 +53,7 @@ const RequestItem: React.FC<{ data: TRequestItem }> = (props) => {
               <p>{reply}</p>
             </div>
           )}
-          {!reply && !openDetail && <ReplyRequestItem />}
+          {!reply && !openDetail && <ReplyRequestItem {...props.data} />}
         </article>
       </td>
     </tr>
