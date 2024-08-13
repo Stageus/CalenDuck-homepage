@@ -9,3 +9,12 @@ export type TManagerItem = {
   interestIdx: number;
   interest: string;
 };
+
+export type TRequestItem = {
+  askIdx: number;
+  nickname: string;
+  title: string;
+  contents: string;
+  reply?: string;
+  createdAt: string;
+};

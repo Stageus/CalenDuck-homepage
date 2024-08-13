@@ -2,25 +2,15 @@ import React, { useState } from "react";
 
 import arrowDropDown from "shared/imgs/arrowDropDown.svg";
 import arrowDropUp from "shared/imgs/arrowDropUp.svg";
+import { TRequestItem } from "types";
 import ReplyRequestItem from "widgets/manageRequests/ReplyRequestItem";
 
-interface RequestItemProps {
-  data: {
-    id: number;
-    nickname: string;
-    date: string;
-    title: string;
-    content: string;
-    reply?: string;
-  };
-}
-
 // master가 받은 문의(관심사 추가 문의, 기타 문의)
-const RequestItem: React.FC<RequestItemProps> = (props) => {
-  const { id, nickname, date, title, content, reply } = props.data;
+const RequestItem: React.FC<{ data: TRequestItem }> = (props) => {
+  const { askIdx, nickname, title, contents, reply, createdAt } = props.data;
 
   const alarmSymbol = reply ? "✅" : "❌";
-  const metaData = `${nickname} - ${date}`;
+  const metaData = `${nickname} - ${createdAt}`;
 
   const [openDetail, setOpenDetail] = useState<boolean>(true);
   const clickSeeDetailEvent = () => {
@@ -29,7 +19,7 @@ const RequestItem: React.FC<RequestItemProps> = (props) => {
 
   return (
     <tr className="w-full bg-white px-[10%] my-[10px] flex items-center">
-      <td className="w-[5%] text-center">{id}</td>
+      <td className="w-[5%] text-center">{askIdx}</td>
       <td className="w-[95%]">
         <article className="w-full h-fit bg-tagColor rounded-[5px] p-[10px]">
           <div className="flex justify-between items-center">
@@ -53,7 +43,7 @@ const RequestItem: React.FC<RequestItemProps> = (props) => {
           {!openDetail && (
             <div className="flex flex-col mx-[50px] mt-[30px] mb-[20px]">
               <span className="font-bold">문의 내용</span>
-              <p>{content}</p>
+              <p>{contents}</p>
             </div>
           )}
 
