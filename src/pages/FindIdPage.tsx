@@ -45,7 +45,7 @@ const FindIdPage = () => {
       </div>
 
       <article className="flex flex-col justify-center items-center w-[60%] bg-white rounded-l-[30px]">
-        <div className="w-[100%] flex flex-col justify-around items-center">
+        <div className="w-full flex flex-col justify-around items-center">
           <div className="w-[70%]">
             <InputItem
               label="이름"
@@ -77,7 +77,7 @@ const FindIdPage = () => {
           <div className="flex flex-col w-[70%] justify-between items-center">
             <button
               onClick={findIdEvent}
-              className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
+              className="w-full py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
             >
               아이디 찾기
             </button>

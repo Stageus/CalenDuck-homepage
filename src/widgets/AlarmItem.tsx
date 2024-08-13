@@ -39,7 +39,7 @@ const AlarmItem: React.FC<AlarmItemProps> = (props) => {
 
   return (
     <article
-      className={`w-[100%] ${
+      className={`w-full ${
         openDetail ? "h-[fit-content]" : "h-[70px]"
       } bg-tagColor rounded-[5px] p-[10px] m-[5px]`}
     >

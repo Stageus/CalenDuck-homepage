@@ -35,7 +35,7 @@ const RequestItem: React.FC<{ data: TRequestItem }> = (props) => {
               <img
                 src={openDetail ? arrowDropDown : arrowDropUp}
                 alt="자세히보기"
-                className="w-[100%]"
+                className="w-full"
               />
             </button>
           </div>

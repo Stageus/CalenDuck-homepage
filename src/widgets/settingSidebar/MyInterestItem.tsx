@@ -40,7 +40,7 @@ const MyInterestItem: React.FC<MyInterestItemProps> = ({ data, onRemove }) => {
   };
 
   return (
-    <div className="w-[100%] h-[42px] bg-lightgrayColor rounded-[5px] p-[10px] mb-[8px] flex justify-between items-center">
+    <div className="w-full h-[42px] bg-lightgrayColor rounded-[5px] p-[10px] mb-[8px] flex justify-between items-center">
       <div>{interestName}</div>
       <button onClick={removeInterestEvent}>
         <img src={removeInterest} alt="관심사 제거" />

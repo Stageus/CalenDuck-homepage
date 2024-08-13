@@ -43,7 +43,7 @@ const ReplyRequestItem = ({ askIdx }: TRequestItem) => {
   return (
     <div className="mx-[50px] mt-[30px] mb-[20px] flex flex-col items-end">
       <textarea
-        className="w-[100%] p-[10px] mb-[10px] outline-keyColor"
+        className="w-full p-[10px] mb-[10px] outline-keyColor"
         placeholder="( 답변 입력 )"
         onChange={(e) => setReply(e.target.value)}
       />

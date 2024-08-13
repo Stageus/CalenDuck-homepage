@@ -26,15 +26,15 @@ const SettingSidebar = () => {
   return (
     <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
       {/* 관심사 검색 */}
-      <article className="w-[100%] mb-[10px] flex flex-col justify-between">
+      <article className="w-full mb-[10px] flex flex-col justify-between">
         <div className="relative">
           <input
             type="text"
             placeholder="관심사를 입력하세요"
-            className="w-[100%] h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+            className="w-full h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
           />
           <button className="w-[20px] h-[20px] absolute top-1/2 right-[10px] transform -translate-y-1/2">
-            <img src={search} alt="검색하기" className="w-[100%] h-[100%]" />
+            <img src={search} alt="검색하기" className="w-full h-full" />
           </button>
         </div>
 
@@ -46,7 +46,7 @@ const SettingSidebar = () => {
       </article>
 
       {/* 검색 결과 */}
-      <article className="border-dashed border-2 border-alertColor w-[100%] h-[150px] mb-[50px] overflow-auto">
+      <article className="border-dashed border-2 border-alertColor w-full h-[150px] mb-[50px] overflow-auto">
         (검색결과 스크롤)
       </article>
 
@@ -54,7 +54,7 @@ const SettingSidebar = () => {
       <MyInterestList />
 
       {/* 하단 기능 버튼 */}
-      <article className="w-[100%] h-[130px] mt-auto flex flex-col justify-between items-end">
+      <article className="w-full h-[130px] mt-auto flex flex-col justify-between items-end">
         {managingInterest && (
           <Link to={`/manager?date=${date}&interest=${managingInterest}`}>
             <button className="text-sm px-[10px] py-[5px] rounded-[5px] hover:bg-subColor">

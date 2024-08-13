@@ -82,7 +82,7 @@ const AlarmPage = () => {
   return (
     <>
       <HeaderSidebarContainer />
-      <div className="w-[100%] h-[50px] flex items-center font-bold text-xl mb-5 fixed top-[50px] bg-white">
+      <div className="w-full h-[50px] flex items-center font-bold text-xl mb-5 fixed top-[50px] bg-white">
         [ 알림함 ]
       </div>
 

@@ -99,7 +99,7 @@ const CalendarItem: React.FC<CalendarItemProps> = ({ onDateClick }) => {
   }, [selectedYear, selectedMonth]);
 
   return (
-    <section className="w-[100%] h-[80vh] flex flex-col mt-[70px]">
+    <section className="w-full h-[80vh] flex flex-col mt-[70px]">
       {/* 드롭다운 선택 부분 */}
       <article className="w-[25%] flex justify-between items-end">
         {managingInterest ? (
@@ -122,7 +122,7 @@ const CalendarItem: React.FC<CalendarItemProps> = ({ onDateClick }) => {
       </article>
 
       {/* 달력 부분 */}
-      <article className="w-[100%] h-[90%]">
+      <article className="w-full h-[90%]">
         <ControlDate nowDate={nowDate} setNowDate={setNowDate} />
         <DateBox nowDate={nowDate} setNowDate={setNowDate} />
       </article>

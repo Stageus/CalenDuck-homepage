@@ -50,7 +50,7 @@ const FindPwPage = () => {
       </div>
 
       <article className="flex flex-col justify-center items-center w-[60%] bg-white rounded-l-[30px]">
-        <div className="w-[100%] flex flex-col items-center">
+        <div className="w-full flex flex-col items-center">
           <div className="w-[70%]">
             <InputItem
               label="아이디"
@@ -85,7 +85,7 @@ const FindPwPage = () => {
           <div className="flex flex-col w-[70%] mt-5 justify-between items-center">
             <button
               onClick={findPwEvent}
-              className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
+              className="w-full py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
             >
               비밀번호 재설정 하기
             </button>

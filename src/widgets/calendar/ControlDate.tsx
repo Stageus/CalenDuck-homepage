@@ -18,7 +18,7 @@ const ControlDate = ({ nowDate, setNowDate }: Props) => {
   };
 
   return (
-    <article className="w-[100%] h-[40px] flex justify-center items-center">
+    <article className="w-full h-[40px] flex justify-center items-center">
       <div>
         <button onClick={() => changeYear(-1)} className="m-[10px]">{`<<`}</button>
         <button onClick={() => changeMonth(-1)} className="m-[10px]">{`<`}</button>

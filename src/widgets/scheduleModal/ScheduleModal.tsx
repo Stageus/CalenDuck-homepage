@@ -134,7 +134,7 @@ const ScheduleModal: React.FC = () => {
 
   return (
     <section className="bg-keyColor w-[717px] h-[486px] p-[20px] flex justify-center items-center drop-shadow">
-      <div className="bg-white w-[100%] h-[100%] flex flex-col items-center ">
+      <div className="bg-white w-full h-full flex flex-col items-center ">
         {/* 상단 */}
         <article className="w-[655px] h-[15%] px-[20px] flex justify-start items-center">
           <div className="mr-[20px]">

@@ -18,14 +18,14 @@ const MasterSidebar = ({ currentPath }: any) => {
 
   const getLinkBtnClassNames = (path: any) =>
     [
-      `w-[100%] px-[15px] py-[15px] rounded-[5px] flex justify-end`,
+      `w-full px-[15px] py-[15px] rounded-[5px] flex justify-end`,
       currentPath === path && "bg-alertColor text-white",
       currentPath !== path && "hover:bg-subColor",
     ].join(" ");
 
   return (
     <section className="w-[256px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center py-[20px]">
-      <article className="w-[100%]">
+      <article className="w-full">
         <Link to="/manageInterestRequests">
           <button className={getLinkBtnClassNames("/manageInterestRequests")}>
             관심사 추가 문의
@@ -44,7 +44,7 @@ const MasterSidebar = ({ currentPath }: any) => {
         </Link>
       </article>
 
-      <div className="w-[100%] mt-auto flex justify-end">
+      <div className="w-full mt-auto flex justify-end">
         <button
           onClick={logoutEvent}
           className="border border-black rounded-[5px] px-[10px] py-[5px] mr-[15px]"

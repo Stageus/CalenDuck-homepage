@@ -45,7 +45,7 @@ const HeaderItem = () => {
           {/* AlarmPage로 이동 */}
           <Link to="/alarm">
             <button className="h-[30px] relative">
-              <img src={alarm} className="w-[100%] h-[100%]" alt="알림" />
+              <img src={alarm} className="w-full h-full" alt="알림" />
               {/* <div className="absolute top-[-7px] right-[-13px]"> */}
               <HeaderAlarmNumTagItem />
               {/* </div> */}
@@ -53,11 +53,11 @@ const HeaderItem = () => {
           </Link>
           {/* SearchSidebar 토글 */}
           <button className="h-[30px]" onClick={searchBtnToggleEvent}>
-            <img src={search} className="w-[100%] h-[100%]" alt="검색" />
+            <img src={search} className="w-full h-full" alt="검색" />
           </button>
           {/* SettingSidebar 토글 */}
           <button className="h-[30px]" onClick={settingBtnToggleEvent}>
-            <img src={hamberger} className="w-[100%] h-[100%]" alt="설정" />
+            <img src={hamberger} className="w-full h-full" alt="설정" />
           </button>
         </div>
       )}

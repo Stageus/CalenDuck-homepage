@@ -44,7 +44,7 @@ const SetNewPwPage = () => {
       </div>
 
       <article className="flex flex-col justify-center items-center w-[55vw] bg-white rounded-l-[30px]">
-        <div className="w-[100%] flex flex-col justify-around items-center">
+        <div className="w-full flex flex-col justify-around items-center">
           <div className="w-[70%]">
             <InputItem
               label="새로운 비밀번호"
@@ -58,7 +58,7 @@ const SetNewPwPage = () => {
           <div className="flex flex-col w-[70%] justify-between items-center mt-[20px]">
             <button
               onClick={setNewPwEvent}
-              className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
+              className="w-full py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
             >
               비밀번호 수정 하기
             </button>

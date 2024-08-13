@@ -79,7 +79,7 @@ const SignUpPage = () => {
       </div>
 
       <article className="flex flex-col justify-center items-center w-[60%] bg-white rounded-l-[30px]">
-        <div className="w-[100%] flex flex-col justify-around items-center">
+        <div className="w-full flex flex-col justify-around items-center">
           <div className="w-[70%]">
             <InputItem
               label="아이디"
@@ -125,7 +125,7 @@ const SignUpPage = () => {
               <span className="text-sm">전체동의</span>
             </label>
             <hr className="my-[5px]" />
-            <label className="w-[100%] flex justify-between items-center mb-[2px]">
+            <label className="w-full flex justify-between items-center mb-[2px]">
               <div>
                 <input
                   type="checkbox"
@@ -140,7 +140,7 @@ const SignUpPage = () => {
                 전문보기
               </button>
             </label>
-            <label className="w-[100%] flex justify-between items-center">
+            <label className="w-full flex justify-between items-center">
               <div>
                 <input
                   type="checkbox"
@@ -160,12 +160,12 @@ const SignUpPage = () => {
           <div className="w-[70%] flex flex-col justify-between items-center">
             <button
               disabled={isSignUpBtnDisabled}
-              className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
+              className="w-full py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
               onClick={signUpEvent}
             >
               회원가입
             </button>
-            <button className="w-[100%] py-[10px] mb-[10px] bg-yellow-500 rounded-[5px] font-bold">
+            <button className="w-full py-[10px] mb-[10px] bg-yellow-500 rounded-[5px] font-bold">
               카카오 회원가입
             </button>
             <Link to="/">

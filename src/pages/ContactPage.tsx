@@ -53,10 +53,10 @@ const ContactPage = () => {
   return (
     <>
       <HeaderSidebarContainer />
-      <section className="mt-[70px] w-[100%]">
+      <section className="mt-[70px] w-full">
         <h1 className="font-bold text-xl my-5">[ 1:1 문의 ]</h1>
 
-        <article className="flex w-[100%] justify-between items-center mt-7 mb-2">
+        <article className="flex w-full justify-between items-center mt-7 mb-2">
           <h2 className="font-bold text-l mr-5">문의 유형</h2>
           <div className="border border-black w-[90%] h-[50px] flex justify-start p-[10px]">
             <DropDownItem
@@ -75,7 +75,7 @@ const ContactPage = () => {
           </span>
         )}
 
-        <article className="flex w-[100%] justify-between items-center mt-7 mb-5">
+        <article className="flex w-full justify-between items-center mt-7 mb-5">
           <h2 className="font-bold text-l mr-5">문의 제목</h2>
           <input
             placeholder="50 글자 제한"
@@ -86,7 +86,7 @@ const ContactPage = () => {
           />
         </article>
 
-        <article className="flex w-[100%] justify-between items-center mt-7 mb-2">
+        <article className="flex w-full justify-between items-center mt-7 mb-2">
           <h2 className="font-bold text-l mr-5">문의 내용</h2>
           <textarea
             placeholder="300 글자 제한"
@@ -96,7 +96,7 @@ const ContactPage = () => {
           />
         </article>
 
-        <div className="w-[100%] flex justify-end mt-7">
+        <div className="w-full flex justify-end mt-7">
           <button
             onClick={submitRequest}
             className="bg-subColor text-sm w-[80px] py-[3px] rounded-[5px]"

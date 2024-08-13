@@ -55,7 +55,7 @@ const SignInPage = () => {
       </div>
 
       <article className="flex flex-col justify-center items-center w-[60%] bg-white rounded-l-[30px]">
-        <div className="w-[100%] h-[45%] flex flex-col justify-between items-center">
+        <div className="w-full h-[45%] flex flex-col justify-between items-center">
           <div className="w-[70%] flex flex-col justify-center items-center ">
             <InputItem
               label="아이디"
@@ -74,11 +74,11 @@ const SignInPage = () => {
           <div className="flex flex-col w-[70%]">
             <button
               onClick={signInEvent}
-              className="w-[100%] py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
+              className="w-full py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
             >
               로그인
             </button>
-            <button className="w-[100%] py-[10px] bg-yellow-500 rounded-[5px] font-bold">
+            <button className="w-full py-[10px] bg-yellow-500 rounded-[5px] font-bold">
               카카오 로그인
             </button>
           </div>

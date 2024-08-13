@@ -105,8 +105,8 @@ const SearchSidebar: React.FC = () => {
   return (
     <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
       {/* 검색 입력 */}
-      <article className="w-[100%] h-[120px] mb-[50px] flex flex-col justify-between">
-        <div className="w-[100%] h-[90px] flex flex-col justify-between">
+      <article className="w-full h-[120px] mb-[50px] flex flex-col justify-between">
+        <div className="w-full h-[90px] flex flex-col justify-between">
           {/* 검색 기간 */}
           <div className="flex justify-between items-center">
             <input
@@ -129,14 +129,14 @@ const SearchSidebar: React.FC = () => {
               type="text"
               required
               placeholder="스케줄을 입력하세요"
-              className="w-[100%] h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+              className="w-full h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
               ref={keyWordRef}
             />
             <button
               onClick={clickSearchEvent}
               className="w-[20px] h-[20px] absolute top-1/2 right-[10px] transform -translate-y-1/2"
             >
-              <img src={search} alt="검색하기" className="w-[100%] h-[100%]" />
+              <img src={search} alt="검색하기" className="w-full h-full" />
             </button>
           </div>
         </div>
@@ -148,7 +148,7 @@ const SearchSidebar: React.FC = () => {
       </article>
 
       {/* 검색결과 리스트 */}
-      <article className="w-[100%] h-[80%] overflow-auto">
+      <article className="w-full h-[80%] overflow-auto">
         {dummyData.map((elem) => {
           return <SearchItem key={elem.id} data={elem} />;
         })}
