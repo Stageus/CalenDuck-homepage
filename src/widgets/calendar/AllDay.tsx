@@ -2,6 +2,7 @@ import React from "react";
 
 import { useRecoilState } from "recoil";
 import scheduleModalToggleAtom from "shared/recoil/scheduleModalToggleAtom";
+import selectedDateAtom from "shared/recoil/selectedDateAtom";
 
 import ScheduleNumTagItem from "widgets/calendar/ScheduleNumTagItem";
 
@@ -9,6 +10,7 @@ interface Props {
   day: Date;
   nowDate: Date;
   setNowDate: React.Dispatch<React.SetStateAction<Date>>;
+  // onDateClick: (date: Date) => void;
 }
 
 interface ArticleProps {
@@ -58,8 +60,11 @@ const AllDay = ({ day, nowDate, setNowDate }: Props) => {
 
   // 해당 날짜에 해당하는 ScheduleModal 열림
   const [openModal, setOpenModal] = useRecoilState(scheduleModalToggleAtom);
+  const [, setSelectedDate] = useRecoilState(selectedDateAtom);
+
   const openScheduleModalEvent = () => {
     setOpenModal(!openModal);
+    setSelectedDate(day);
   };
 
   const dayClassNames = [articleProps.sameMonth && "hover:bg-subColor"].join(" ");

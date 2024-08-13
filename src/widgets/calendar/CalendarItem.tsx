@@ -6,7 +6,11 @@ import ControlDate from "widgets/calendar/ControlDate";
 import DateBox from "widgets/calendar/DateBox";
 
 // 특정 년월 스케줄 전체 불러오기 GET api 연결 (/schedules?date)
-const CalendarItem = () => {
+interface CalendarItemProps {
+  onDateClick: (date: Date) => void;
+}
+
+const CalendarItem: React.FC<CalendarItemProps> = ({ onDateClick }) => {
   // URL 쿼리스트링을 통한 date의 year, month 추출
   const location = useLocation();
   const navigate = useNavigate();

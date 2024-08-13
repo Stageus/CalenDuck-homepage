@@ -5,18 +5,10 @@ import ScheduleAlarmOffBtn from "widgets/scheduleModal/ScheduleAlarmOffBtn";
 import edit from "shared/imgs/edit.svg";
 import remove from "shared/imgs/remove.svg";
 import finish from "shared/imgs/finish.svg";
+import { TScheduleItem } from "types";
 
-interface ScheduleItemProps {
-  data: {
-    privacy: boolean;
-    time: string;
-    interest: string;
-    title: string;
-  };
-}
-
-const ScheduleItem: React.FC<ScheduleItemProps> = (props) => {
-  const { privacy, time, interest, title } = props.data;
+const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
+  const { idx, name, time, type, contents, priority } = props.data;
 
   // 스케줄 알람 여부 토글
   const [alarm, setAlarm] = useState<boolean>(false);
@@ -34,7 +26,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = (props) => {
   const editTitleEvent = () => {
     setEditing(!editing);
     if (!editing && titleRef.current) {
-      titleRef.current.value = title;
+      titleRef.current.value = contents;
     }
   };
 
@@ -56,22 +48,22 @@ const ScheduleItem: React.FC<ScheduleItemProps> = (props) => {
         )}
 
         <div className="w-[15%]">{time}</div>
-        <div className="w-[20%]">{interest}</div>
+        <div className="w-[20%]">{name}</div>
         {editing ? (
           <input
             type="text"
             className="w-[350px] outline-alertColor	bg-transparent p-[10px] items-center"
             ref={titleRef}
-            defaultValue={title}
+            defaultValue={contents}
             maxLength={20}
           />
         ) : (
-          <div className="w-[350px] h-[40px] flex items-center">{title}</div>
+          <div className="w-[350px] h-[40px] flex items-center">{contents}</div>
         )}
       </div>
 
       {/* 개인 스케줄일 때에만 수정 및 삭제 가능 */}
-      {privacy && (
+      {type === "personal" && (
         <div className={`w-[13%] flex ${editing ? "justify-center" : "justify-between"}`}>
           {editing ? (
             <>
