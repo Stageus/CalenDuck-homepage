@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import HeaderSidebarContainer from "shared/components/HeaderSidebarContainer";
 import DropDownItem from "shared/components/DropDownItem";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 // 문의 작성 POST api 연결 (/asks)
 const ContactPage = () => {
@@ -10,8 +12,43 @@ const ContactPage = () => {
   const handleContactChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedContact(e.target.value);
   };
+  const categoryIdx = selectedContact === contactOptions[0] ? 1 : 2;
 
-  const submitRequest = () => {};
+  const [cookies] = useCookies(["token"]);
+  const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [contents, setContents] = useState("");
+
+  const submitRequest = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_KEY}/asks`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${cookies.token}`,
+        },
+        body: JSON.stringify({
+          categoryIdx: categoryIdx,
+          askTitle: title,
+          askContents: contents,
+        }),
+      });
+
+      if (response.ok) {
+        alert("문의가 정상적으로 접수되었습니다.");
+        navigate("/main");
+      } else if (response.status === 400) {
+        console.log("정규식 위반");
+        alert("글자수 제한에 유의해주세요.");
+      } else if (response.status === 401) {
+        console.log("잘못된 인증 정보 제공");
+        alert("문의 접수에 실패하셨습니다.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("문의 접수 중 오류가 발생했습니다.");
+    }
+  };
 
   return (
     <>
@@ -40,12 +77,23 @@ const ContactPage = () => {
 
         <article className="flex w-[100%] justify-between items-center mt-7 mb-5">
           <h2 className="font-bold text-l mr-5">문의 제목</h2>
-          <input className="border border-black w-[90%] h-[50px] p-[10px]" type="text" />
+          <input
+            placeholder="50 글자 제한"
+            maxLength={50}
+            className="border border-black w-[90%] h-[50px] p-[10px]"
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </article>
 
         <article className="flex w-[100%] justify-between items-center mt-7 mb-2">
           <h2 className="font-bold text-l mr-5">문의 내용</h2>
-          <textarea className="border border-black w-[90%] h-[300px] p-[10px]" />
+          <textarea
+            placeholder="300 글자 제한"
+            maxLength={300}
+            className="border border-black w-[90%] h-[300px] p-[10px]"
+            onChange={(e) => setContents(e.target.value)}
+          />
         </article>
 
         <div className="w-[100%] flex justify-end mt-7">
