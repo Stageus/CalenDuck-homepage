@@ -12,12 +12,12 @@ import { TScheduleItem } from "types";
 
 const ScheduleModal: React.FC = () => {
   const selectedDate = useRecoilValue(selectedDateAtom);
-  console.log("선택된 날짜: ", selectedDate);
+  // console.log("선택된 날짜: ", selectedDate);
   const year = selectedDate && selectedDate.getFullYear();
   const month = selectedDate && (selectedDate.getMonth() + 1).toString().padStart(2, "0");
   const date = selectedDate && selectedDate.getDate().toString().padStart(2, "0");
   const fullDate = `${year}${month}${date}`;
-  console.log(fullDate);
+  // console.log(fullDate);
 
   // const dummyData = [
   //   {

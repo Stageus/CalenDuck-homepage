@@ -39,7 +39,7 @@ const SettingSidebar = () => {
         </div>
 
         {/* 검색 결과 없을 때 안내 문구 */}
-        <div className="text-alertColor text-xs flex justify-start">
+        <div className="text-alertColor text-xs flex justify-start mt-1">
           원하시는 관심사가 없을 경우 <br />
           하단의 1:1문의를 통해 요청해주세요
         </div>
@@ -47,7 +47,7 @@ const SettingSidebar = () => {
 
       {/* 검색 결과 */}
       <article className="border-dashed border-2 border-alertColor w-[100%] h-[150px] mb-[50px] overflow-auto">
-        검색결과 스크롤
+        (검색결과 스크롤)
       </article>
 
       {/* 내 관심사 목록 */}
