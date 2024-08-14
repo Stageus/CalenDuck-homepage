@@ -3,17 +3,12 @@ import React, { useState, useRef } from "react";
 import edit from "shared/imgs/edit.svg";
 import EditInterestScheduleItem from "widgets/managerScheduleModal/EditInterestScheduleItem";
 import DeleteInterestScheduleItem from "widgets/managerScheduleModal/DeleteInterestScheduleItem";
+import { useCookies } from "react-cookie";
+import { TScheduleItem } from "types";
 
-interface ManagerScheduleItemProps {
-  data: {
-    interest: string;
-    time: string;
-    title: string;
-  };
-}
-
-const ManagerScheduleItem: React.FC<ManagerScheduleItemProps> = (props) => {
-  const { time, title } = props.data;
+const ManagerScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
+  const { idx, name, time, contents, priority } = props.data;
+  const [cookies] = useCookies(["token"]);
 
   // 수정 중인 타이틀 반영
   const titleRef = useRef<HTMLInputElement>(null);
@@ -25,7 +20,7 @@ const ManagerScheduleItem: React.FC<ManagerScheduleItemProps> = (props) => {
   const editTitleEvent = () => {
     setEditing(!editing);
     if (!editing && titleRef.current) {
-      titleRef.current.value = title;
+      titleRef.current.value = contents;
     }
   };
 
@@ -42,11 +37,11 @@ const ManagerScheduleItem: React.FC<ManagerScheduleItemProps> = (props) => {
             type="text"
             className="w-[350px] outline-alertColor	bg-transparent p-[10px] items-center"
             ref={titleRef}
-            defaultValue={title}
+            defaultValue={contents}
             maxLength={20}
           />
         ) : (
-          <div className="w-[350px] h-[40px] flex items-center">{title}</div>
+          <div className="w-[350px] h-[40px] flex items-center">{contents}</div>
         )}
       </div>
 

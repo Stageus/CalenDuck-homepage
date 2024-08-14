@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import ScheduleItem from "widgets/scheduleModal/ScheduleItem";
 import DropDownItem from "shared/components/DropDownItem";
-import ScheduleAlarmOnBtn from "widgets/scheduleModal/ScheduleAlarmOnBtn";
-import ScheduleAlarmOffBtn from "widgets/scheduleModal/ScheduleAlarmOffBtn";
-import finish from "shared/imgs/finish.svg";
 import { useRecoilValue } from "recoil";
 import selectedDateAtom from "shared/recoil/selectedDateAtom";
 import { useCookies } from "react-cookie";
@@ -13,12 +10,10 @@ import PostNewPersonalScheduleItem from "./PostNewPersonalScheduleItem";
 
 const ScheduleModal: React.FC = () => {
   const selectedDate = useRecoilValue(selectedDateAtom);
-  // console.log("선택된 날짜: ", selectedDate);
   const year = selectedDate && selectedDate.getFullYear();
   const month = selectedDate && (selectedDate.getMonth() + 1).toString().padStart(2, "0");
   const date = selectedDate && selectedDate.getDate().toString().padStart(2, "0");
   const fullDate = `${year}${month}${date}`;
-  // console.log(fullDate);
 
   // const dummyData = [
   //   {
