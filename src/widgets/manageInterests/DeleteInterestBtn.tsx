@@ -8,7 +8,6 @@ import { TInterestItem } from "types";
 // 관심사 삭제 DELETE api (/master/interests/:idx)
 const DeleteInterestBtn: React.FC<TInterestItem> = (props) => {
   const { interestIdx, interestName } = props;
-
   const navigate = useNavigate();
   const [cookies] = useCookies(["token"]);
 

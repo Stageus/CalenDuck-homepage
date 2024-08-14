@@ -55,7 +55,7 @@ const ManagerScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
               <img src={edit} alt="수정하기" />
             </button>
             {/* 삭제하기 */}
-            <DeleteInterestScheduleItem />
+            <DeleteInterestScheduleItem {...props.data} />
           </>
         )}
       </div>

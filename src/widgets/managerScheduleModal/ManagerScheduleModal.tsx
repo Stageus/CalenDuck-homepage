@@ -39,12 +39,14 @@ const ManagerScheduleModal: React.FC = () => {
         );
         const result = await response.json();
 
-        if (response.status === 200) {
+        if (response.status === 201) {
           setManagingScheduleList(result.list);
-        } else if (response.status === 400) {
-          console.log("정규식 위반");
         } else if (response.status === 401) {
           console.log("잘못된 인증 정보 제공");
+        } else if (response.status === 403) {
+          console.log("권한이 없는 사용자의 접근");
+        } else if (response.status === 404) {
+          console.log("해당 스케줄 없음");
         }
       } catch (error) {
         console.error("서버 에러: ", error);
