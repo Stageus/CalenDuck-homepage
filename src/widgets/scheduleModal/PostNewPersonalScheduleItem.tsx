@@ -33,17 +33,17 @@ const PostNewPersonalScheduleItem = () => {
       });
 
       if (response.ok) {
-        alert("문의가 정상적으로 접수되었습니다.");
+        console.log("새로운 개인스케줄 추가 성공");
       } else if (response.status === 400) {
         console.log("정규식 위반");
         alert("글자수 제한에 유의해주세요.");
       } else if (response.status === 401) {
         console.log("잘못된 인증 정보 제공");
-        alert("문의 접수에 실패하셨습니다.");
+        alert("스케줄 등록에 실패하셨습니다.");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("문의 접수 중 오류가 발생했습니다.");
+      alert("스케줄 등록 중 오류가 발생했습니다.");
     }
   };
 
