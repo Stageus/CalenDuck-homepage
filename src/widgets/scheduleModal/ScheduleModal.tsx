@@ -9,6 +9,7 @@ import { useRecoilValue } from "recoil";
 import selectedDateAtom from "shared/recoil/selectedDateAtom";
 import { useCookies } from "react-cookie";
 import { TScheduleItem } from "types";
+import PostNewPersonalScheduleItem from "./PostNewPersonalScheduleItem";
 
 const ScheduleModal: React.FC = () => {
   const selectedDate = useRecoilValue(selectedDateAtom);
@@ -147,34 +148,7 @@ const ScheduleModal: React.FC = () => {
           <div className="font-bold	text-xl">{`${year}/${month}/${date}`}</div>
         </article>
 
-        {/* 개인 스케줄 입력란 */}
-        <article className="w-[655px] h-[15%] p-[20px] flex justify-between border-y border-black">
-          <div className="w-[85%] flex items-center">
-            {alarm ? (
-              <div onClick={clickSetAlarmEvent}>
-                <ScheduleAlarmOnBtn />
-              </div>
-            ) : (
-              <div onClick={clickSetAlarmEvent}>
-                <ScheduleAlarmOffBtn />
-              </div>
-            )}
-            <div>
-              <input type="time" />
-            </div>
-            <input
-              type="text"
-              className="w-[350px] border border-alertColor outline-alertColor bg-transparent p-[10px] ml-[30px] items-center"
-              maxLength={20}
-            />
-          </div>
-
-          <div className="w-[10%] flex justify-center">
-            <button>
-              <img src={finish} alt="제출하기" />
-            </button>
-          </div>
-        </article>
+        <PostNewPersonalScheduleItem />
 
         {/* 해당 날짜의 스케줄 리스트 */}
         <article className="flex flex-col items-center justify-start h-[70%] overflow-auto">

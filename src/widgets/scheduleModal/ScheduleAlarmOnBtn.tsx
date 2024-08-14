@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import alarmOn from "shared/imgs/alarmOn.svg";
 
 // 스케줄 중요 알림 설정 POST api (/schedules/:idx/notify)
-const ScheduleAlarmOnBtn: React.FC<{ idx: number }> = ({ idx }) => {
+const ScheduleAlarmOnBtn: React.FC<{ idx?: number }> = ({ idx }) => {
   const [cookies] = useCookies(["token"]);
 
   const scheduleAlarmOnEvent = async () => {

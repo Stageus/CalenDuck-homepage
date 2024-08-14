@@ -5,7 +5,7 @@ import alarmOff from "shared/imgs/alarmOff.svg";
 import { TScheduleItem } from "types";
 
 // 스케줄 알림 삭제 DELETE api (/schedules/:idx/notify)
-const ScheduleAlarmOffBtn: React.FC<{ idx: number }> = ({ idx }) => {
+const ScheduleAlarmOffBtn: React.FC<{ idx?: number }> = ({ idx }) => {
   const [cookies] = useCookies(["token"]);
 
   const scheduleAlarmOffEvent = async () => {
