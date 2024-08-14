@@ -10,8 +10,8 @@ import { TScheduleItem } from "types";
 const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
   const { idx, name, time, type, contents, priority } = props.data;
 
-  // 스케줄 알람 여부 토글
-  const [alarm, setAlarm] = useState<boolean>(false);
+  // 스케줄 알람 여부 버튼 토글
+  const [alarm, setAlarm] = useState<boolean>(priority);
   const clickSetAlarmEvent = () => {
     setAlarm(!alarm);
   };
@@ -39,11 +39,11 @@ const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
       <div className="w-[80%] flex items-center">
         {alarm ? (
           <div onClick={clickSetAlarmEvent}>
-            <ScheduleAlarmOnBtn />
+            <ScheduleAlarmOnBtn idx={idx} />
           </div>
         ) : (
           <div onClick={clickSetAlarmEvent}>
-            <ScheduleAlarmOffBtn />
+            <ScheduleAlarmOffBtn idx={idx} />
           </div>
         )}
 
