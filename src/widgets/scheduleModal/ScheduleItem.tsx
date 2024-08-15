@@ -3,10 +3,12 @@ import React, { useState, useRef } from "react";
 import ScheduleAlarmOnBtn from "widgets/scheduleModal/ScheduleAlarmOnBtn";
 import ScheduleAlarmOffBtn from "widgets/scheduleModal/ScheduleAlarmOffBtn";
 import edit from "shared/imgs/edit.svg";
-import remove from "shared/imgs/remove.svg";
 import finish from "shared/imgs/finish.svg";
 import { TScheduleItem } from "types";
 import { useCookies } from "react-cookie";
+import DeletePersonalScheduleItem from "./DeletePersonalScheduleItem";
+import { useRecoilState } from "recoil";
+import selectedDateAtom from "shared/recoil/selectedDateAtom";
 
 const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
   const { idx, name, time, type, contents, priority } = props.data;
@@ -32,31 +34,47 @@ const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
     }
   };
 
-  // 스케줄 삭제 DELETE api (/schedules/:idx)
-  const deleteScheduleEvent = async () => {
+  const [scheduleContents, setScheduleContents] = useState("");
+  const [scheduleTime, setScheduleTime] = useState("");
+  const [selectedDate] = useRecoilState(selectedDateAtom);
+  const year = selectedDate && selectedDate.getFullYear();
+  const month = selectedDate && (selectedDate.getMonth() + 1).toString().padStart(2, "0");
+  const date = selectedDate && selectedDate.getDate().toString().padStart(2, "0");
+  const selectedTime = scheduleTime.split(":").join("");
+  const fullDate = Number(`${year}${month}${date}${selectedTime}`);
+
+  // 스케줄 수정 PUT api 연결 (/schedules/:idx)
+  const postEditedScheduleEvent = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_API_KEY}/schedules/${idx}`, {
-        method: "DELETE",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${cookies.token}`,
         },
+        body: JSON.stringify({
+          fullDate: fullDate,
+          personalContents: scheduleContents,
+        }),
       });
 
       if (response.ok) {
-        alert(`해당 스케줄을 삭제했습니다.`);
+        alert(`스케줄 수정을 완료했습니다.`);
+      } else if (response.status === 400) {
+        console.log("정규식 위반");
+        alert(`글자수 제한에 유의해주세요.`);
       } else if (response.status === 401) {
         console.log("잘못된 인증 정보 제공");
-        alert(`스케줄 삭제에 실패했습니다.`);
+        alert(`스케줄 수정에 실패했습니다.`);
+      } else if (response.status === 404) {
+        console.log("해당 관심사 스케줄이 없음");
+        alert(`스케줄 수정에 실패했습니다.`);
       }
     } catch (error) {
       console.error("Error:", error);
-      alert(`스케줄 삭제 중 오류가 발생했습니다.`);
+      alert(`스케줄 수정 중 오류가 발생했습니다.`);
     }
   };
-
-  // 스케줄 수정 POST api
-  const postEditedScheduleEvent = () => {};
 
   return (
     <article
@@ -75,8 +93,14 @@ const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
           </div>
         )}
 
-        <div className="w-[15%]">{time}</div>
-        <div className="w-[20%]">{name}</div>
+        {editing ? (
+          <input type="time" onChange={(e) => setScheduleTime(e.target.value)} />
+        ) : (
+          <div className="w-[15%]">{time}</div>
+        )}
+
+        {type === "interest" && <div className="w-[20%]">{name}</div>}
+
         {editing ? (
           <input
             type="text"
@@ -84,6 +108,7 @@ const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
             ref={titleRef}
             defaultValue={contents}
             maxLength={20}
+            onChange={(e) => setScheduleContents(e.target.value)}
           />
         ) : (
           <div className="w-[350px] h-[40px] flex items-center">{contents}</div>
@@ -95,7 +120,7 @@ const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
         <div className={`w-[13%] flex ${editing ? "justify-center" : "justify-between"}`}>
           {editing ? (
             <>
-              <button onClick={editTitleEvent}>
+              <button onClick={postEditedScheduleEvent}>
                 <img src={finish} alt="제출하기" />
               </button>
             </>
@@ -104,9 +129,7 @@ const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
               <button onClick={editTitleEvent}>
                 <img src={edit} alt="수정하기" />
               </button>
-              <button onClick={deleteScheduleEvent}>
-                <img src={remove} alt="삭제하기" />
-              </button>
+              <DeletePersonalScheduleItem {...props.data} />
             </>
           )}
         </div>
