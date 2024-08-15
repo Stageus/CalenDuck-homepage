@@ -46,7 +46,7 @@ const SettingSidebar = () => {
       </article>
 
       {/* 검색 결과 */}
-      <article className="border-dashed border-2 border-alertColor w-full h-[150px] mb-[50px] overflow-auto">
+      <article className="border-dashed border-2 border-alertColor w-full h-[100px] mb-[10px] overflow-auto">
         (검색결과 스크롤)
       </article>
 
