@@ -20,12 +20,13 @@ const SettingSidebar = () => {
   const managingInterest = "뮤지컬";
 
   const [interestListData, setInterestListData] = useState<TInterestItem[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [cookies] = useCookies(["token"]);
 
   useEffect(() => {
     const getInterestList = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_KEY}/notifications`, {
+        const response = await fetch(`${process.env.REACT_APP_API_KEY}/interests/all`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -33,7 +34,6 @@ const SettingSidebar = () => {
           },
         });
         const result = await response.json();
-        console.log("알람 리스트", result);
 
         if (response.status === 200) {
           setInterestListData(result.list);
@@ -45,46 +45,52 @@ const SettingSidebar = () => {
       }
     };
     getInterestList();
-    console.log(interestListData);
   }, [cookies.token]);
 
-  const dummyData = [
-    {
-      interestIdx: 1,
-      interestName: "뮤지컬",
-    },
-    {
-      interestIdx: 2,
-      interestName: "프론트엔드",
-    },
-    {
-      interestIdx: 3,
-      interestName: "백엔드",
-    },
-    {
-      interestIdx: 4,
-      interestName: "롤토체스",
-    },
-  ];
+  // const dummyData = [
+  //   {
+  //     interestIdx: 1,
+  //     interestName: "뮤지컬",
+  //   },
+  //   {
+  //     interestIdx: 2,
+  //     interestName: "프론트엔드",
+  //   },
+  //   {
+  //     interestIdx: 3,
+  //     interestName: "백엔드",
+  //   },
+  //   {
+  //     interestIdx: 4,
+  //     interestName: "롤토체스",
+  //   },
+  // ];
 
   // 설정 사이드바 토글
+
   const [settingSidebarToggle, setSettingSearchSidebarToggle] =
     useRecoilState(settingSidebarToggleAtom);
   if (!settingSidebarToggle) {
     return null;
   }
 
+  // 검색어를 기준으로 관심사 필터링
+  const filteredInterestList = searchTerm
+    ? interestListData.filter((item) => item.interestName.includes(searchTerm))
+    : interestListData;
+
   return (
     <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
       {/* 관심사 검색 */}
       <article className="w-full mb-[10px] flex flex-col justify-between">
         <div className="relative">
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <input
               type="search"
               placeholder="관심사를 입력하세요"
               className="w-full h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
-              // onChange={(e) => setInterestListData(e.target.value)}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
             <button className="w-[20px] h-[20px] absolute top-1/2 right-[20px] transform -translate-y-1/2">
               <img src={search} alt="검색하기" className="w-full h-full" />
@@ -93,19 +99,23 @@ const SettingSidebar = () => {
         </div>
 
         {/* 검색 결과 없을 때 안내 문구 */}
-        <div className="text-alertColor text-xs flex justify-start mt-1">
+        <div className="text-alertColor text-xs flex justify-start my-1">
           원하시는 관심사가 없을 경우 <br />
           하단의 1:1문의를 통해 요청해주세요
         </div>
 
-        {interestListData ? (
+        {filteredInterestList.length > 0 ? (
           <article className="border-dashed border-2 border-alertColor w-full h-[100px] mb-[10px] overflow-auto">
-            {dummyData.map((elem) => {
+            {filteredInterestList.map((elem) => {
               return <InterestListItem key={elem.interestIdx} data={elem} />;
             })}
           </article>
         ) : (
-          <div>선택 가능한 관심사가 없습니다. 1:1문의를 통해 원하는 관심사를 제안해주세요.</div>
+          <article className="text-xs p-2 border-dashed border-2 border-alertColor w-full h-[100px] mb-[10px] overflow-auto">
+            선택 가능한 관심사가 없습니다.
+            <br />
+            1:1문의를 통해 원하는 관심사를 제안해주세요.
+          </article>
         )}
       </article>
 

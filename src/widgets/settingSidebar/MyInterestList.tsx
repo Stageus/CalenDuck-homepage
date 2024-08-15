@@ -74,7 +74,7 @@ const MyInterestList = () => {
             <MyInterestItem key={item.interestIdx} data={item} onRemove={handleRemoveInterest} />
           ))
         ) : (
-          <div className="py-2 px-2">
+          <div className="p-2 text-xs">
             관심사를 추가하여
             <br />
             달력을 통해 스케줄을 확인해보세요:)
