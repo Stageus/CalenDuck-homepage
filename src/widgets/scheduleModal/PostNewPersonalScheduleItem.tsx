@@ -22,7 +22,7 @@ const PostNewPersonalScheduleItem = () => {
   const month = selectedDate && (selectedDate.getMonth() + 1).toString().padStart(2, "0");
   const date = selectedDate && selectedDate.getDate().toString().padStart(2, "0");
   const selectedTime = scheduleTime.split(":").join("");
-  const fullDate = `${year}${month}${date}${selectedTime}`;
+  const fullDate = Number(`${year}${month}${date}${selectedTime}`);
 
   const postNewPersonalScheduleEvent = async () => {
     try {
