@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ManagerScheduleItem from "widgets/managerScheduleModal/ManagerScheduleItem";
-import NewInterestScheduleItem from "widgets/managerScheduleModal/NewInterestScheduleItem";
+import PostNewInterestScheduleItem from "widgets/managerScheduleModal/PostNewInterestScheduleItem";
 import { useRecoilValue } from "recoil";
 import selectedDateAtom from "shared/recoil/selectedDateAtom";
 import { useCookies } from "react-cookie";
@@ -101,7 +101,7 @@ const ManagerScheduleModal: React.FC = () => {
         </article>
 
         {/* 새로운 스케줄 입력란 */}
-        <NewInterestScheduleItem />
+        <PostNewInterestScheduleItem />
 
         {/* 해당 날짜의 스케줄 리스트 */}
         <article className="flex flex-col items-center justify-start h-[70%] overflow-auto">

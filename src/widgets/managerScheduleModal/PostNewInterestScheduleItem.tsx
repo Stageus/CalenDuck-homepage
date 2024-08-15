@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import selectedDateAtom from "shared/recoil/selectedDateAtom";
 
 // 관심사 스케줄 생성 POST api 연결 (/managers/schedules/interests)
-const NewInterestScheduleItem = () => {
+const PostNewInterestScheduleItem = () => {
   const [cookies] = useCookies(["token"]);
   const [scheduleTime, setScheduleTime] = useState("");
   const [interestContents, setInterestContents] = useState("");
@@ -79,4 +79,4 @@ const NewInterestScheduleItem = () => {
   );
 };
 
-export default NewInterestScheduleItem;
+export default PostNewInterestScheduleItem;
