@@ -55,6 +55,9 @@ const ScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
     }
   };
 
+  // 스케줄 수정 POST api
+  const postEditedScheduleEvent = () => {};
+
   return (
     <article
       className={`${
