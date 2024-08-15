@@ -15,8 +15,14 @@ const PostNewPersonalScheduleItem = () => {
   };
 
   const [cookies] = useCookies(["token"]);
+  const [scheduleTime, setScheduleTime] = useState("");
   const [personalContents, setPersonalContents] = useState("");
   const [selectedDate] = useRecoilState(selectedDateAtom);
+  const year = selectedDate && selectedDate.getFullYear();
+  const month = selectedDate && (selectedDate.getMonth() + 1).toString().padStart(2, "0");
+  const date = selectedDate && selectedDate.getDate().toString().padStart(2, "0");
+  const selectedTime = scheduleTime.split(":").join("");
+  const fullDate = `${year}${month}${date}${selectedTime}`;
 
   const postNewPersonalScheduleEvent = async () => {
     try {
@@ -27,7 +33,7 @@ const PostNewPersonalScheduleItem = () => {
           Authorization: `Bearer ${cookies.token}`,
         },
         body: JSON.stringify({
-          fullDate: selectedDate,
+          fullDate: fullDate,
           personalContents: personalContents,
         }),
       });
@@ -62,7 +68,7 @@ const PostNewPersonalScheduleItem = () => {
             </div>
           )}
           <div>
-            <input type="time" />
+            <input type="time" onChange={(e) => setScheduleTime(e.target.value)} />
           </div>
           <input
             type="text"

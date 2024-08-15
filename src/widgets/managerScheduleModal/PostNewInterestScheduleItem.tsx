@@ -10,16 +10,13 @@ const PostNewInterestScheduleItem = () => {
   const [cookies] = useCookies(["token"]);
   const [scheduleTime, setScheduleTime] = useState("");
   const [interestContents, setInterestContents] = useState("");
-
   const [selectedDate] = useRecoilState(selectedDateAtom);
   const year = selectedDate && selectedDate.getFullYear();
   const month = selectedDate && (selectedDate.getMonth() + 1).toString().padStart(2, "0");
   const date = selectedDate && selectedDate.getDate().toString().padStart(2, "0");
-
   const selectedTime = scheduleTime.split(":").join("");
   const fullDate = `${year}${month}${date}${selectedTime}`;
 
-  console.log(fullDate);
   const submitNewInterestSchedule = async () => {
     try {
       const response = await fetch(
