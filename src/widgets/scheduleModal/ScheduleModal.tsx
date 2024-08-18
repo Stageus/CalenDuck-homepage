@@ -56,6 +56,7 @@ const ScheduleModal: React.FC = () => {
   const [scheduleList, setScheduleList] = useState<TScheduleItem[]>([]);
   const [interestOptions, setInterestOptions] = useState<string[]>([]);
 
+  // 특정 날짜 스케줄 리스트 불러오기 GET api 연결 (/schedules/details?date)
   useEffect(() => {
     const getScheduleList = async () => {
       try {
@@ -86,6 +87,7 @@ const ScheduleModal: React.FC = () => {
     getScheduleList();
   }, [fullDate, cookies.token]);
 
+  // 관심사 카테고리 선택 GET api 연결 (/interests)
   // const interestOptions = [
   //   "전체보기",
   //   "미식축구",

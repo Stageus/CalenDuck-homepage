@@ -56,32 +56,37 @@ const SignInPage = () => {
 
       <article className="flex flex-col justify-center items-center w-[60%] bg-white rounded-l-[30px]">
         <div className="w-full h-[45%] flex flex-col justify-between items-center">
-          <div className="w-[70%] flex flex-col justify-center items-center ">
-            <InputItem
-              label="아이디"
-              type="text"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-            />
-            <InputItem
-              label="비밀번호"
-              type="password"
-              value={pw}
-              onChange={(e) => setPw(e.target.value)}
-            />
-          </div>
+          <form
+            onSubmit={(e) => e.preventDefault}
+            className="w-full flex flex-col justify-between items-center"
+          >
+            <div className="w-[70%] flex flex-col justify-center items-center ">
+              <InputItem
+                label="아이디"
+                type="text"
+                value={id}
+                onChange={(e) => setId(e.target.value)}
+              />
+              <InputItem
+                label="비밀번호"
+                type="password"
+                value={pw}
+                onChange={(e) => setPw(e.target.value)}
+              />
+            </div>
 
-          <div className="flex flex-col w-[70%]">
-            <button
-              onClick={signInEvent}
-              className="w-full py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
-            >
-              로그인
-            </button>
-            <button className="w-full py-[10px] bg-yellow-500 rounded-[5px] font-bold">
-              카카오 로그인
-            </button>
-          </div>
+            <div className="flex flex-col w-[70%]">
+              <button
+                onClick={signInEvent}
+                className="w-full py-[10px] mb-[10px] bg-keyColor rounded-[5px] font-bold"
+              >
+                로그인
+              </button>
+              <button className="w-full py-[10px] bg-yellow-500 rounded-[5px] font-bold">
+                카카오 로그인
+              </button>
+            </div>
+          </form>
 
           <div className="flex justify-between w-[70%]">
             <Link to="/signUp">

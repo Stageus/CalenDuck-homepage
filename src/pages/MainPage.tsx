@@ -16,6 +16,7 @@ const MainPage = () => {
   const openScheduleModalEvent = () => {
     setOpenModal(!openModal);
   };
+
   const handleDateClick = (date: Date) => {
     setSelectedDate(date);
     openScheduleModalEvent();

@@ -9,6 +9,7 @@ import SearchDateUtil from "widgets/searchSidebar/SearchDateUtil";
 import search from "shared/imgs/search.svg";
 import { useCookies } from "react-cookie";
 import { TScheduleItem } from "types";
+import ScheduleModal from "widgets/scheduleModal/ScheduleModal";
 
 // 스케줄 검색 결과 불러오기 GET api 연결 (/schedules/searches?start_date&end_date&content)
 const SearchSidebar: React.FC = () => {
