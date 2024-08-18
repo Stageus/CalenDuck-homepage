@@ -2,13 +2,13 @@ import React, { useState, useRef } from "react";
 
 import edit from "shared/imgs/edit.svg";
 import finish from "shared/imgs/finish.svg";
-import DeleteInterestScheduleItem from "widgets/managerScheduleModal/DeleteInterestScheduleItem";
+import DeleteInterestScheduleItem from "widgets/interestScheduleModal/DeleteInterestScheduleItem";
 import { useCookies } from "react-cookie";
 import { TScheduleItem } from "types";
 import { useRecoilState } from "recoil";
 import selectedDateAtom from "shared/recoil/selectedDateAtom";
 
-const ManagerScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
+const InterestScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
   const { idx, name, time, contents, priority } = props.data;
   const [cookies] = useCookies(["token"]);
 
@@ -118,4 +118,4 @@ const ManagerScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
   );
 };
 
-export default ManagerScheduleItem;
+export default InterestScheduleItem;

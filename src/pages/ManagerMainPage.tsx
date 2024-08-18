@@ -2,7 +2,7 @@ import React from "react";
 
 import HeaderItem from "shared/components/HeaderItem";
 import CalendarItem from "widgets/calendar/CalendarItem";
-import ManagerScheduleModal from "widgets/managerScheduleModal/ManagerScheduleModal";
+import InterestScheduleModal from "widgets/interestScheduleModal/InterestScheduleModal";
 
 import { useRecoilState } from "recoil";
 import scheduleModalToggleAtom from "shared/recoil/scheduleModalToggleAtom";
@@ -36,7 +36,7 @@ const ManagerMainPage = () => {
             className="fixed inset-0 bg-lightgrayColor opacity-50"
             onClick={openScheduleModalEvent}
           ></div>
-          <ManagerScheduleModal />
+          <InterestScheduleModal />
         </div>
       )}
     </>

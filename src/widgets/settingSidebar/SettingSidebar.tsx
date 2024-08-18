@@ -47,6 +47,11 @@ const SettingSidebar = () => {
     getInterestList();
   }, [cookies.token]);
 
+  // 검색어를 기준으로 관심사 필터링
+  const filteredInterestList = searchTerm
+    ? interestListData.filter((item) => item.interestName.includes(searchTerm))
+    : interestListData;
+
   // const dummyData = [
   //   {
   //     interestIdx: 1,
@@ -74,44 +79,28 @@ const SettingSidebar = () => {
     return null;
   }
 
-  // 검색어를 기준으로 관심사 필터링
-  const filteredInterestList = searchTerm
-    ? interestListData.filter((item) => item.interestName.includes(searchTerm))
-    : interestListData;
-
   return (
-    <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
+    <section className="w-full h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
       {/* 관심사 검색 */}
       <article className="w-full mb-[10px] flex flex-col justify-between">
         <div className="relative">
-          <form onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="search"
-              placeholder="관심사를 입력하세요"
-              className="w-full h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button className="w-[20px] h-[20px] absolute top-1/2 right-[20px] transform -translate-y-1/2">
-              <img src={search} alt="검색하기" className="w-full h-full" />
-            </button>
-          </form>
-        </div>
-
-        {/* 검색 결과 없을 때 안내 문구 */}
-        <div className="text-alertColor text-xs flex justify-start my-1">
-          원하시는 관심사가 없을 경우 <br />
-          하단의 1:1문의를 통해 요청해주세요
+          <input
+            type="search"
+            placeholder="관심사를 입력하세요"
+            className="w-full h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
 
         {filteredInterestList.length > 0 ? (
-          <article className="border-dashed border-2 border-alertColor w-full h-[100px] mb-[10px] overflow-auto">
+          <article className="border-dashed border-2 border-alertColor w-full h-[100px] my-[10px] overflow-auto flex flex-col justify-start">
             {filteredInterestList.map((elem) => {
               return <InterestListItem key={elem.interestIdx} data={elem} />;
             })}
           </article>
         ) : (
-          <article className="text-xs p-2 border-dashed border-2 border-alertColor w-full h-[100px] mb-[10px] overflow-auto">
+          <article className="text-xs p-2 border-dashed border-2 border-alertColor w-full h-[100px] my-[10px] overflow-auto">
             선택 가능한 관심사가 없습니다.
             <br />
             1:1문의를 통해 원하는 관심사를 제안해주세요.

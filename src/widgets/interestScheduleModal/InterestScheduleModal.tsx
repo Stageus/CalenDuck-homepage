@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import ManagerScheduleItem from "widgets/managerScheduleModal/ManagerScheduleItem";
-import PostNewInterestScheduleItem from "widgets/managerScheduleModal/PostNewInterestScheduleItem";
+import InterestScheduleItem from "widgets/interestScheduleModal/InterestScheduleItem";
+import PostNewInterestScheduleItem from "widgets/interestScheduleModal/PostNewInterestScheduleItem";
 import { useRecoilValue } from "recoil";
 import selectedDateAtom from "shared/recoil/selectedDateAtom";
 import { useCookies } from "react-cookie";
 import { TScheduleItem } from "types";
 
 // 특정 날짜 스케줄 전체 불러오기 GET api 연결 (/schedules/details/interest?date&interest_idx)
-const ManagerScheduleModal: React.FC = () => {
+const InterestScheduleModal: React.FC = () => {
   const selectedDate = useRecoilValue(selectedDateAtom);
   const year = selectedDate && selectedDate.getFullYear();
   const month = selectedDate && (selectedDate.getMonth() + 1).toString().padStart(2, "0");
@@ -106,7 +106,7 @@ const ManagerScheduleModal: React.FC = () => {
         {/* 해당 날짜의 스케줄 리스트 */}
         <article className="flex flex-col items-center justify-start h-[70%] overflow-auto">
           {managingScheduleList.map((elem) => {
-            return <ManagerScheduleItem key={elem.idx} data={elem} />;
+            return <InterestScheduleItem key={elem.idx} data={elem} />;
           })}
         </article>
       </div>
@@ -114,4 +114,4 @@ const ManagerScheduleModal: React.FC = () => {
   );
 };
 
-export default ManagerScheduleModal;
+export default InterestScheduleModal;
