@@ -106,20 +106,23 @@ const SearchSidebar: React.FC = () => {
     <section className="w-[310px] h-sidebar bg-sidebarColor flex flex-col justify-start items-center p-[20px]">
       {/* 검색 입력 */}
       <article className="w-full h-[120px] mb-[50px] flex flex-col justify-between">
-        <div className="w-full h-[90px] flex flex-col justify-between">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="w-full h-[95px] flex flex-col justify-between"
+        >
           {/* 검색 기간 */}
-          <div className="flex justify-between items-center">
+          <div className="w-full flex justify-between items-center">
             <input
               type="date"
               required
-              className="h-[42px] p-[5px] text-sm	border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+              className="pl-1 h-[42px] text-sm	border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
               ref={startDateRef}
             />
-            <div className="mx-[10px]">-</div>
+            <span>-</span>
             <input
               type="date"
               required
-              className="h-[42px] p-[5px] text-sm border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+              className="pl-1 h-[42px] text-sm border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
               ref={endDateRef}
             />
           </div>
@@ -129,7 +132,7 @@ const SearchSidebar: React.FC = () => {
               type="text"
               required
               placeholder="스케줄을 입력하세요"
-              className="w-full h-[42px] p-[5px] border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
+              className="w-full h-[42px] p-1 border border-black rounded-[5px] focus:border-none focus:outline-none focus:shadow focus:shadow-inputFocus"
               ref={keyWordRef}
             />
             <button
@@ -139,7 +142,8 @@ const SearchSidebar: React.FC = () => {
               <img src={search} alt="검색하기" className="w-full h-full" />
             </button>
           </div>
-        </div>
+        </form>
+
         {alert && (
           <div className="text-alertColor text-xs flex justify-end">
             원하시는 기간을 입력해주세요
