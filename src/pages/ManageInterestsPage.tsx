@@ -8,7 +8,7 @@ import NewInterestItem from "widgets/manageInterests/NewInterestItem";
 import { useCookies } from "react-cookie";
 import { TInterestItem } from "types";
 
-// 관심사 목록 불러오기 GET api 연결 (/master/interests)
+// 관심사 목록 불러오기 GET api 연결 (/interests/all)
 const ManageInterestsPage = () => {
   const location = useLocation();
   const [interestsListData, setInterestsListData] = useState<TInterestItem[]>([]);
@@ -17,7 +17,7 @@ const ManageInterestsPage = () => {
   useEffect(() => {
     const getInterestsList = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_KEY}/master/interests`, {
+        const response = await fetch(`${process.env.REACT_APP_API_KEY}/interests/all`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

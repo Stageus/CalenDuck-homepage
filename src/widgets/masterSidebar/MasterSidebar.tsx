@@ -34,13 +34,13 @@ const MasterSidebar = ({ currentPath }: any) => {
         <Link to="/manageEtcRequests">
           <button className={getLinkBtnClassNames("/manageEtcRequests")}>기타 문의</button>
         </Link>
+        <Link to="/manageInterests">
+          <button className={getLinkBtnClassNames("/manageInterests")}>관심사 관리</button>
+        </Link>
         <Link to="/manageManagers">
           <button className={getLinkBtnClassNames("/manageManagers")}>
             관심사 관리자 계정 관리
           </button>
-        </Link>
-        <Link to="/manageInterests">
-          <button className={getLinkBtnClassNames("/manageInterests")}>관심사 관리</button>
         </Link>
       </article>
 
