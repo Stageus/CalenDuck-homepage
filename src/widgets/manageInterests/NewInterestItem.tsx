@@ -79,7 +79,7 @@ const NewInterestItem = () => {
     const inputValue = e.target.value;
     setSelectedInterest(inputValue);
 
-    // 입력값에 따라 리스트 필터링
+    // 입력값에 따라 리스트 필터링(영문일 경우 소문자로 변환해 확인)
     const filtered = interestsList.filter((interest) =>
       interest.interestName.toLowerCase().includes(inputValue.toLowerCase())
     );

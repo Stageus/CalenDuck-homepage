@@ -47,9 +47,11 @@ const SettingSidebar = () => {
     getInterestList();
   }, [cookies.token]);
 
-  // 검색어를 기준으로 관심사 필터링
+  // 검색어를 기준으로 관심사 필터링(영문일 경우 소문자로 변환해 확인)
   const filteredInterestList = searchTerm
-    ? interestListData.filter((item) => item.interestName.includes(searchTerm))
+    ? interestListData.filter((item) =>
+        item.interestName.toLowerCase().includes(searchTerm.toLowerCase())
+      )
     : interestListData;
 
   // const dummyData = [
