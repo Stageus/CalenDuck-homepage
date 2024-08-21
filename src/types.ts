@@ -2,6 +2,10 @@ export type TInterestItem = {
   interestIdx: number;
   interestName: string;
 };
+export type TUserItem = {
+  userIdx: number;
+  userNickname: string;
+};
 
 export type TManagerItem = {
   managerIdx: number;

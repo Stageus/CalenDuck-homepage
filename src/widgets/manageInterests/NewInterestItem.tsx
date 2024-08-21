@@ -39,6 +39,7 @@ const NewInterestItem = () => {
       console.error("서버 에러: ", error);
     }
   };
+
   // 선택된 관심사 추가하기 POST api 연결 (/master/interests)
   const addNewInterestEvent = async () => {
     try {
@@ -74,7 +75,7 @@ const NewInterestItem = () => {
     }
   };
 
-  // 사용자가 입력할 때마다 필터링 함수 호출
+  // 관심사 입력할 때마다 필터링 함수 호출
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setSelectedInterest(inputValue);
