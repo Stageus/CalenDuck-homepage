@@ -1,24 +1,53 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import HeaderSidebarContainer from "shared/components/HeaderSidebarContainer";
 import DropDownItem from "shared/components/DropDownItem";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { TCategoryItem } from "types";
 
-// 문의 작성 POST api 연결 (/asks)
 const ContactPage = () => {
-  const contactOptions = ["관심사 추가 요청", "기타 문의"];
-  const [selectedContact, setSelectedContact] = useState<string>(contactOptions[0]);
-  const handleContactChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedContact(e.target.value);
-  };
-  const categoryIdx = selectedContact === contactOptions[0] ? 1 : 2;
-
   const [cookies] = useCookies(["token"]);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
 
+  const [contactOptions, setContactOptions] = useState<{ label: string; value: string }[]>([]);
+  const [selectedCategoryIdx, setSelectedCategoryIdx] = useState<string>("");
+
+  useEffect(() => {
+    // 문의 카테고리 목록 불러오기 GET api 연결 (/asks/category)
+    const getContactOptions = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_KEY}/asks/category`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${cookies.token}`,
+          },
+        });
+        const result = await response.json();
+        if (response.status === 200) {
+          const options = result.list.map((item: TCategoryItem) => ({
+            label: item.name,
+            value: item.categoryIdx.toString(),
+          }));
+          setContactOptions(options);
+          setSelectedCategoryIdx(options[0].value); // 첫 번째 옵션을 기본 선택
+        } else if (response.status === 401) {
+          console.log("잘못된 인증 정보 제공");
+        }
+      } catch (error) {
+        console.error("서버 에러: ", error);
+      }
+    };
+    getContactOptions();
+  }, [cookies.token]);
+
+  const handleContactChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategoryIdx(e.target.value);
+  };
+
+  // 문의 작성 POST api 연결 (/asks)
   const submitRequest = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_API_KEY}/asks`, {
@@ -28,7 +57,7 @@ const ContactPage = () => {
           Authorization: `Bearer ${cookies.token}`,
         },
         body: JSON.stringify({
-          categoryIdx: categoryIdx,
+          categoryIdx: parseInt(selectedCategoryIdx, 10),
           askTitle: title,
           askContents: contents,
         }),
@@ -61,17 +90,17 @@ const ContactPage = () => {
           <div className="border border-black w-[90%] h-[50px] flex justify-start p-[10px]">
             <DropDownItem
               options={contactOptions}
-              value={selectedContact}
+              value={selectedCategoryIdx}
               onChange={handleContactChange}
             />
           </div>
         </article>
 
-        {selectedContact === "관심사 추가 요청" && (
+        {selectedCategoryIdx === "1" && (
           <span className="text-alertColor my-[30px]">
             ️※ 관심사 추가 요청이 수락될 경우, <br />
-            해당 관심사에 대한 관리자가 되어 관련 스케줄에 대한 기입, 수정, 삭제 등의 책임을 지니게
-            됩니다. 
+            해당 관심사에 대한 관리자가 되어 관련 스케줄에 대한 기입, 수정, 삭제 등의 책임을 지니게
+            됩니다.
           </span>
         )}
 

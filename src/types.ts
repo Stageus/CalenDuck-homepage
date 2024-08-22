@@ -39,3 +39,8 @@ export type TScheduleItem = {
   contents: string;
   priority: boolean;
 };
+
+export type TCategoryItem = {
+  categoryIdx: number;
+  name: string;
+};

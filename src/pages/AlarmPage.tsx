@@ -65,8 +65,6 @@ const AlarmPage = () => {
           }),
         });
         const result = await response.json();
-        console.log("알람 리스트", result);
-
         if (response.status === 200) {
           setNotifListData(result.list);
         } else if (response.status === 401) {
