@@ -88,15 +88,6 @@ const ScheduleModal: React.FC = () => {
   }, [fullDate, cookies.token]);
 
   // 관심사 카테고리 선택 GET api 연결 (/interests)
-  // const interestOptions = [
-  //   "전체보기",
-  //   "미식축구",
-  //   "아이브",
-  //   "뮤지컬",
-  //   "르세라핌",
-  //   "에스파",
-  //   "개인",
-  // ];
   useEffect(() => {
     const getInterestOptions = async () => {
       try {

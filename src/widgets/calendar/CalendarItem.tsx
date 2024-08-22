@@ -16,21 +16,40 @@ const CalendarItem: React.FC<CalendarItemProps> = ({ onDateClick }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [cookies] = useCookies(["token"]);
+  const [interestOptions, setInterestOptions] = useState<string[]>([]);
 
   const urlSearch = new URLSearchParams(location.search);
   const initialDate =
     urlSearch.get("date") ||
     `${new Date().getFullYear()}${(new Date().getMonth() + 1).toString().padStart(2, "0")}`;
 
-  const interestOptions = [
-    "전체보기",
-    "미식축구",
-    "아이브",
-    "뮤지컬",
-    "르세라핌",
-    "에스파",
-    "개인",
-  ];
+  // 관심사 카테고리 선택 GET api 연결 (/interests)
+  useEffect(() => {
+    const getInterestOptions = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_KEY}/interests`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${cookies.token}`,
+          },
+        });
+        const result = await response.json();
+        if (response.status === 200) {
+          const interests = result.list.map((item: { interestName: string }) => item.interestName);
+          setInterestOptions(["전체보기", ...interests]);
+        } else if (response.status === 204) {
+          setInterestOptions(["전체보기"]);
+        } else if (response.status === 401) {
+          console.log("토큰 검증 실패");
+        }
+      } catch (error) {
+        console.error("서버 에러: ", error);
+      }
+    };
+
+    getInterestOptions();
+  }, [cookies.token]);
   const yearOptions = [
     "2020",
     "2021",
