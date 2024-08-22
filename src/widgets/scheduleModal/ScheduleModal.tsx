@@ -115,12 +115,6 @@ const ScheduleModal: React.FC = () => {
     getInterestOptions();
   }, [cookies.token]);
 
-  // 스케줄 알람 여부 토글
-  const [alarm, setAlarm] = useState<boolean>(false);
-  const clickSetAlarmEvent = () => {
-    setAlarm(!alarm);
-  };
-
   return (
     <section className="bg-keyColor w-[717px] h-[486px] p-[20px] flex justify-center items-center drop-shadow">
       <div className="bg-white w-full h-full flex flex-col items-center ">

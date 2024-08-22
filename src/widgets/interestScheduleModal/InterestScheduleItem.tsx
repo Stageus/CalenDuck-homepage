@@ -7,10 +7,18 @@ import { useCookies } from "react-cookie";
 import { TScheduleItem } from "types";
 import { useRecoilState } from "recoil";
 import selectedDateAtom from "shared/recoil/selectedDateAtom";
+import InterestScheduleAlarmOnBtn from "./InterestScheduleAlarmOnBtn";
+import InterestScheduleAlarmOffBtn from "./InterestScheduleAlarmOffBtn";
 
 const InterestScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
   const { idx, name, time, contents, priority } = props.data;
   const [cookies] = useCookies(["token"]);
+
+  // 스케줄 알람 여부 버튼 토글
+  const [alarm, setAlarm] = useState<boolean>(priority);
+  const clickSetAlarmEvent = () => {
+    setAlarm(!alarm);
+  };
 
   // 수정 중인 타이틀 반영
   const titleRef = useRef<HTMLInputElement>(null);
@@ -78,6 +86,15 @@ const InterestScheduleItem: React.FC<{ data: TScheduleItem }> = (props) => {
       } w-[638px] h-[70px] rounded-[5px] flex justify-between items-center p-[20px] m-[5px]`}
     >
       <div className="w-[80%] flex items-center">
+        {alarm ? (
+          <div onClick={clickSetAlarmEvent}>
+            <InterestScheduleAlarmOnBtn idx={idx} />
+          </div>
+        ) : (
+          <div onClick={clickSetAlarmEvent}>
+            <InterestScheduleAlarmOffBtn idx={idx} />
+          </div>
+        )}
         {editing ? (
           <input type="time" onChange={(e) => setScheduleTime(e.target.value)} />
         ) : (
