@@ -42,10 +42,10 @@ const NewManagerItem = () => {
       }
     };
 
-    // 아직 매니저 배정을 받지 않은 관심사 목록 전체 불러오기 GET api 연결
+    // 아직 매니저 배정을 받지 않은 관심사 목록 전체 불러오기 GET api  (/master/interests)
     const getNoManagerInterests = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_KEY}/interests/all`, {
+        const response = await fetch(`${process.env.REACT_APP_API_KEY}/master/interests`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -53,13 +53,17 @@ const NewManagerItem = () => {
           },
         });
 
-        if (response.ok) {
-          const result = await response.json();
+        if (!response.ok) {
+          if (response.status === 401) {
+            console.log("잘못된 인증 정보 제공");
+          } else if (response.status === 403) {
+            console.log("권한이 없는 사용자의 접근");
+          }
+          return;
+        }
+        const result = await response.json();
+        if (response.status === 200) {
           setInterestsList(result.list);
-        } else if (response.status === 401) {
-          console.log("잘못된 인증 정보 제공");
-        } else if (response.status === 403) {
-          console.log("권한이 없는 사용자의 접근");
         }
       } catch (error) {
         console.error("서버 에러: ", error);
