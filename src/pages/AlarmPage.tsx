@@ -49,7 +49,7 @@ const AlarmPage = () => {
     if (!cookies.token) {
       navigate("/");
     }
-  }, [cookies.token]);
+  }, [navigate, cookies.token]);
 
   useEffect(() => {
     const getAlarmList = async () => {

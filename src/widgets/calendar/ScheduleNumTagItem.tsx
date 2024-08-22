@@ -1,22 +1,22 @@
 import React from "react";
+import { TScheduleLabelItem } from "types";
 
-interface ScheduleNumTagItemProps {
-  data: {
-    interest: string;
-    scheduleNum: number;
-  };
-}
-const ScheduleNumTagItem: React.FC<ScheduleNumTagItemProps> = (props) => {
-  const { interest, scheduleNum } = props.data;
+const ScheduleNumTagItem: React.FC<{ data: TScheduleLabelItem }> = (props) => {
+  const { type, name, count } = props.data;
+
+  if (type !== "interest") {
+    return null;
+  }
+
   return (
     <div className="w-[70px] h-[27px] bg-tagColor m-[2px] px-[10px] flex justify-center rounded-[20px]">
-      <div className="w-[60px] flex flex justify-between items-center">
+      <div className="w-[60px] flex justify-between items-center">
         <div className="flex justify-start w-[40px] text-[10px] ">
-          <div className="truncate ... ">{interest}</div>
+          <div className="truncate ... ">{name}</div>
         </div>
 
         <span className="flex justify-center w-[20px] text-[10px] ">
-          {scheduleNum >= 5 ? "[5+]" : `[${scheduleNum}]`}
+          {count >= 5 ? "[5+]" : `[${count}]`}
         </span>
       </div>
     </div>
